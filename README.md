@@ -3,7 +3,7 @@
 JavaScript & jQuery elements movement.
 The plugin is based on:
 
-**[Tilt.js](gijsroge.github.io/tilt.js/)** by **[Gijs Rogé](https://twitter.com/GijsRoge)** and **[vanilla-tilt.js](https://micku7zu.github.io/vanilla-tilt.js/index.html)** by **[Șandor Sergiu](https://github.com/micku7zu)**
+**[Tilt.js](https://gijsroge.github.io/tilt.js/)** by **[Gijs Rogé](https://twitter.com/GijsRoge)** and **[vanilla-tilt.js](https://micku7zu.github.io/vanilla-tilt.js/index.html)** by **[Șandor Sergiu](https://github.com/micku7zu)**
 
 **universal-tilt.js** contains additional functions for **mobile devices (having a gyroscope)** and new **Position Base option**
 
