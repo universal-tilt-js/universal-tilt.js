@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width initial-scale=1.0"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <title>universal-tilt.js | JavaScript & jQuery elements movement</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!--<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <div class="tilt" data-shadow="true" data-shine="true" data-shine-opacity="0.5">
+          <h1 style="color: #fff">universal-tilt.js</h1>
+        </div>
+      </div>
+    </header>
+
+    <div class="desc">
+      <p>With <b>universal-tilt.js</b> You can add movement to elements on your website (or app).<br>
+      The script is based on the position of the cursor over the item (desktop) or on the gyroscope movement (mobile devices).</p>
+      <p>You can use universal-tilt.js with Vanilla JavaScript e.g:</p>
+      <pre class="language-javascript"><code>var tilts = document.querySelectorAll('.tilt');<br>
+var options = {};<br>
+var liveTilt = new UniversalTilt(tilts, options);</code></pre>
+      <p>or jQuery:</p>
+      <pre class="language-javascript"><code>$('.tilt').UniversalTilt();</code></pre>
+    </div>
+
+    <div class="example">
+      <div class="container">
+        <div class="tilt"></div>
+      </div>
+      <div class="description">
+        <div class="content">
+          <h2>Basic</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dui enim, vulputate quis posuere malesuada, sodales nec nibh. Cras nec convallis dui.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="container">
+        <div class="tilt" data-shine="true" data-shine-save="true" data-shine-opacity="0.3"></div>
+      </div>
+      <div class="description">
+        <div class="content">
+          <h2>Shine</h2>
+          <p>To add shine to single element use following code in div tag:</p>
+          <pre class="language-html"><code>data-shine-opacity="0.3"</code></pre>
+          <p>To add shine to all elements place in JavaScript (or jQuery) options:</p>
+          <pre class="language-javascript"><code>shine: true,<br>
+'shine-opacity': 0.3,
+'shine-save': true</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="container">
+        <div class="tilt" data-shadow="true" data-shadow-save="true"></div>
+      </div>
+      <div class="description">
+        <div class="content">
+          <h2>Shadow</h2>
+          <p>To add shadow to single element use following code in div tag:</p>
+          <pre class="language-html"><code>data-shadow="true"</code></pre>
+          <p>To add shadow to all elements place in JavaScript (or jQuery) options:</p>
+          <pre class="language-javascript"><code>shadow: true,
+'shadow-save': true</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="container">
+        <div class="tilt" data-scale="1.3"></div>
+      </div>
+      <div class="description">
+        <div class="content">
+          <h2>Scale</h2>
+          <p>To add scale to single element use following code in div tag:</p>
+          <pre class="language-html"><code>data-scale="1.3"</code></pre>
+          <p>To add scale to all elements place in JavaScript (or jQuery) options:</p>
+          <pre class="language-javascript"><code>scale: 1.3</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="container">
+        <div class="tilt">
+          <div class="tilt-inner"></div>
+        </div>
+      </div>
+      <div class="description">
+        <div class="content">
+          <h2>Parallax</h2>
+          <p>Add to your tilt element:<pre class="language-css"><code>transform-style: preserve-3d</code></pre></p>
+          <p>Add to your inner elements that have to pop out:<pre class="language-css"><code>transform: translateZ(20px)</code></pre></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="container">
+        <div class="tilt" data-disabled="x"></div>
+      </div>
+      <div class="description">
+        <div class="content">
+          <h2>Disable X</h2>
+          <p>To disable X-axis of single element use:</p>
+          <pre class="language-html"><code>data-disabled="x"</code></pre>
+          <p>To disable X-axis of all elements place in JavaScript (or jQuery) options:</p>
+          <pre class="language-javascript"><code>disabled: 'X'</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="container">
+        <div class="tilt" data-disabled="y"></div>
+      </div>
+      <div class="description">
+        <div class="content">
+          <h2>Disable Y</h2>
+          <p>To disable Y-axis of single element use:</p>
+          <pre class="language-html"><code>data-disabled="y"</code></pre>
+          <p>To disable Y-axis of all elements place in JavaScript (or jQuery) options:</p>
+          <pre class="language-javascript"><code>disabled: 'Y'</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="container">
+        <div class="tilt" data-reset="false"></div>
+      </div>
+      <div class="description">
+        <div class="content">
+          <h2>Reset (Only desktop)</h2>
+          <p>To disable reset single element move on mouse out use:</p>
+          <pre class="language-html"><code>data-reset="false"</code></pre>
+          <p>To disable reset all elements move place in JavaScript (or jQuery) options:</p>
+          <pre class="language-javascript"><code>reset: false</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="container">
+        <div class="tilt" data-reverse="true"></div>
+      </div>
+      <div class="description">
+        <div class="content">
+          <h2>Reverse</h2>
+          <p>To dreverse single element move use:</p>
+          <pre class="language-html"><code>data-reverse="true"</code></pre>
+          <p>To reverse all elements move place in JavaScript (or jQuery) options:</p>
+          <pre class="language-javascript"><code>reverse: true</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="container">
+        <div class="tilt" data-position-base="window"></div>
+      </div>
+      <div class="description">
+        <div class="content">
+          <h2>Position base (Only desktop)</h2>
+          <p>Tilt base on cursor position over tilt element or window</p>
+          <pre class="language-html"><code>data-position-base="window"</code></pre>
+          <p>Tilt base on cursor position over tilt element or window</p>
+          <pre class="language-javascript"><code>'position-base': 'window'</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="container">
+        <div class="tilt" id="event"></div>
+      </div>
+      <div class="description">
+        <div class="content">
+          <h2>Change event</h2>
+          <p>Change event will output the x, y & percentages of tilting.</p>
+          <pre class="language-javascript"><ul class="output"></ul></pre>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/prism.js"></script>
+    <script src="../src/universal-tilt.js"></script>
+    <script src="js/script.js"></script>
+
+  </body>
+</html>
