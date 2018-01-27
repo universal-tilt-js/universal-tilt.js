@@ -50,7 +50,7 @@ pre[class*="language-"] {
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
   border-radius: 5px;
-  background: #eee; }
+  background: #f8f8f8; }
 
 /* Inline code */
 :not(pre) > code[class*="language-"] {
@@ -123,6 +123,7 @@ header {
   margin: 0 auto; }
 
 header h1 {
+  color: #fff;
   position: relative;
   -webkit-transform: translateZ(80px);
   transform: translateZ(80px);
