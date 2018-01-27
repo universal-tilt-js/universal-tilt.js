@@ -112,9 +112,9 @@ class UniversalTilt {
       this.element.style.transform = `perspective(${this.settings.perspective}px) rotateX(0deg) rotateY(0deg) scale(1)`;
     }
 
-    // set animation when is enabled
-    if (this.settings.animation) {
-      this.element.style.transition = 'all 500ms ease';
+    // set transition when is enabled
+    if (this.settings.transition) {
+      this.element.style.transition = `all 500ms ${this.settings.easing}`;
     }
 
     // reset shine effect
@@ -215,8 +215,8 @@ class UniversalTilt {
   update() {
     let values = this.getValues();
 
-    if (this.settings.animation) {
-      this.element.style.transition = 'all 100ms ease';
+    if (this.settings.transition) {
+      this.element.style.transition = `all 100ms ${this.settings.easing}`;
     }
 
     if (this.settings.shadow) {
@@ -290,17 +290,22 @@ class UniversalTilt {
     let defaults = {
       'position-base': 'element', // element or window
       reset: true,
+
       shadow: false,
       'shadow-save': false,
+
       shine: false,
       'shine-opacity': 0,
       'shine-save': false,
+
       max: 35,
       perspective: 1000,
       scale: 1.0,
       disabled: null,
       reverse: false,
-      animation: true
+
+      transition: true,
+      easing: 'cubic-bezier(.03,.98,.52,.99)'
     }
 
     let custom = {};
