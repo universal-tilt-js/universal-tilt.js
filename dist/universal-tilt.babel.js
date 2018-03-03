@@ -5,7 +5,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /*!
-* universal-tilt.js v0.5
+* universal-tilt.js v1.0 beta 1
 * Created 2018 by Jakub Biesiada
 * Original idea: https://github.com/gijsroge/tilt.js
 * MIT License
@@ -38,9 +38,7 @@ var UniversalTilt = function () {
     this.reverse = this.settings.reverse ? -1 : 1;
 
     // call shine function if shine setting enabled
-    if (this.settings.shine) {
-      this.shine();
-    }
+    if (this.settings.shine) this.shine();
 
     this.element.style.transform = 'perspective(' + this.settings.perspective + 'px)';
 
@@ -139,26 +137,22 @@ var UniversalTilt = function () {
         pageY: this.top + this.height / 2
       };
 
-      if (this.settings.reset) {
-        this.element.style.transform = 'perspective(' + this.settings.perspective + 'px) rotateX(0deg) rotateY(0deg) scale(1)';
-      }
+      if (this.settings.reset) this.element.style.transform = 'perspective(' + this.settings.perspective + 'px) rotateX(0deg) rotateY(0deg) scale(1)';
 
-      // set animation when is enabled
-      if (this.settings.animation) {
-        this.element.style.transition = 'all 500ms ease';
-      }
+      // set transition when is enabled
+      if (this.settings.transition) this.element.style.transition = 'all 500ms ' + this.settings.easing;
 
       // reset shine effect
       if (this.settings.shine && !this.settings['shine-save']) {
-        this.shineElement.style.transition = 'all 500ms ease';
-        this.shineElement.style.transform = 'rotate(180deg) translate3d(-50%, -50%, 0)';
-        this.shineElement.style.opacity = '0';
+        Object.assign(this.shineElement.style, {
+          'transition': 'all 500ms ease',
+          'transform': 'rotate(180deg) translate3d(-50%, -50%, 0)',
+          'opacity': '0'
+        });
       }
 
       // reset box shadow
-      if (this.settings.shadow && !this.settings['shadow-save']) {
-        this.element.style.boxShadow = '0 45px 100px rgba(0, 0, 0, 0)';
-      }
+      if (this.settings.shadow && !this.settings['shadow-save']) this.element.style.boxShadow = '0 45px 100px rgba(0, 0, 0, 0)';
     }
   }, {
     key: 'getValues',
@@ -249,25 +243,21 @@ var UniversalTilt = function () {
     value: function update() {
       var values = this.getValues();
 
-      if (this.settings.animation) {
-        this.element.style.transition = 'all 100ms ease';
-      }
+      if (this.settings.transition) this.element.style.transition = 'all 100ms ' + this.settings.easing;
 
-      if (this.settings.shadow) {
-        this.boxShadow = '0 45px 100px rgba(0, 0, 0, 0.4)';
-      }
+      if (this.settings.shadow) this.boxShadow = '0 45px 100px ' + this.settings['shadow-color'];
 
-      this.element.style.transform = 'perspective(' + this.settings.perspective + 'px)\n    rotateX(' + (this.settings.disabled === "X" || this.settings.disabled === "x" ? 0 : values.tiltY) + 'deg)\n    rotateY(' + (this.settings.disabled === "Y" || this.settings.disabled === "y" ? 0 : values.tiltX) + 'deg)\n    scale(' + this.settings.scale + ')';
+      this.element.style.transform = 'perspective(' + this.settings.perspective + 'px)\n     rotateX(' + (this.settings.disabled === "X" || this.settings.disabled === "x" ? 0 : values.tiltY) + 'deg)\n     rotateY(' + (this.settings.disabled === "Y" || this.settings.disabled === "y" ? 0 : values.tiltX) + 'deg)\n     scale(' + this.settings.scale + ')';
 
       if (this.settings.shine) {
-        this.shineElement.style.transition = 'all 0ms ease';
-        this.shineElement.style.transform = 'rotate(' + -values.angle + 'deg) translate3d(-50%, -50%, 0)';
-        this.shineElement.style.opacity = '' + this.settings["shine-opacity"];
+        Object.assign(this.shineElement.style, {
+          'transition': 'all 0ms ease',
+          'transform': 'rotate(' + -values.angle + 'deg) translate3d(-50%, -50%, 0)',
+          'opacity': '' + this.settings["shine-opacity"]
+        });
       }
 
-      if (this.settings.shadow) {
-        this.element.style.boxShadow = this.boxShadow;
-      }
+      if (this.settings.shadow) this.element.style.boxShadow = this.boxShadow;
 
       // tilt position change event
       this.element.dispatchEvent(new CustomEvent("tiltChange", {
@@ -322,18 +312,24 @@ var UniversalTilt = function () {
       // defaults
       var defaults = {
         'position-base': 'element', // element or window
-        reset: true,
-        shadow: false,
-        'shadow-save': false,
-        shine: false,
-        'shine-opacity': 0,
-        'shine-save': false,
-        max: 35,
-        perspective: 1000,
-        scale: 1.0,
-        disabled: null,
-        reverse: false,
-        animation: true
+        reset: true, // allow/disable element position reset after mouseout
+
+        shadow: false, // show/hide shadow
+        'shadow-save': false, // allow/disable element shadow hide after mouseout (shadow value must be true)
+        'shadow-color': 'rgba(0, 0, 0, 0.4)', // set color of tilt element shadow
+
+        shine: false, // add/remove shine effect on mouseover
+        'shine-opacity': 0, // set shine opacity (0-1)
+        'shine-save': false, // save/reset shine effect on mouseout
+
+        max: 24,
+        perspective: 600, // tilt effect perspective
+        scale: 1.0, // element scale on mouseover
+        disabled: null, // disable axis (X or Y)
+        reverse: false, // reverse tilt effect directory
+
+        transition: true, // allow/disable tilt effect transition
+        easing: 'cubic-bezier(.03,.98,.52,.99)' // set transition easing
       };
 
       var custom = {};
@@ -367,9 +363,23 @@ var UniversalTilt = function () {
 if (window.jQuery) {
   var $ = window.jQuery;
 
-  $.fn.UniversalTilt = function (options) {
+  $.fn.universalTilt = function (options) {
     for (var element = 0; element < this.length; element++) {
       new UniversalTilt(this[element], options);
     }
   };
+}
+
+// AMD
+if (typeof define === "function" && define.amd) {
+  define("UniversalTilt", [], function () {
+    return UniversalTilt;
+  });
+
+  // Common JS
+} else if (typeof exports !== 'undefined' && !exports.nodeType) {
+  if (typeof module !== 'undefined' && !module.nodeType && module.exports) {
+    exports = module.exports = UniversalTilt;
+  }
+  exports.default = UniversalTilt;
 }

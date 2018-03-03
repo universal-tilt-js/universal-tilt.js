@@ -1,9 +1,7 @@
-// LOAD PLUGIN (JAVASCRIPT) ...
-var tilts = document.querySelectorAll('.tilt');
-var liveTilt = new UniversalTilt(tilts);
-
-// ... (JQUERY)
-//$('.tilt').UniversalTilt();
+const tilts = document.querySelectorAll('.tilt');
+const liveTilt = new UniversalTilt(tilts, {
+	'shadow-color': 'rgba(255, 255, 255, 0.2)'
+});
 
 let eventBox = document.querySelector("#event");
 let outputContainer = document.querySelector(".output");
