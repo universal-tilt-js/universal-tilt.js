@@ -24,8 +24,8 @@ yarn add universal-tilt.js // yarn
 const UniversalTilt = require('universal-tilt.js'); // CommonJS
 import UniversalTilt form 'universal-tilt.js'; // ES6
 ```
-
 <br>
+
 **Next use library with Vanilla JavaScript e.g:**
 ```
 const tilts = document.querySelectorAll('.tilt');
