@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.0 beta 2
+* updated README.md
+* updated demo page
+* code cleaned up
+* added autoinit
+* fixed performance of shine effect
+* fixed performance on mobile devices
+
 ## 1.0.0 beta 1
 * npm added
 * AMD & CommonJS support added

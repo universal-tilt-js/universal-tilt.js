@@ -5,7 +5,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /*!
-* universal-tilt.js v1.0 beta 1
+* universal-tilt.js v1.0 beta 2
 * Created 2018 by Jakub Biesiada
 * Original idea: https://github.com/gijsroge/tilt.js
 * MIT License
@@ -31,6 +31,12 @@ var UniversalTilt = function () {
       this.element = elements;
     }
 
+    this.width = null;
+    this.height = null;
+    this.left = null;
+    this.top = null;
+    this.timeout = null;
+
     // set settings
     this.settings = this.settings(settings);
 
@@ -50,9 +56,14 @@ var UniversalTilt = function () {
     key: 'init',
     value: function init(elements, settings) {
       // split parallax elements
-      for (var element = 0; element < elements.length; element++) {
-        new UniversalTilt(elements[element], settings);
+      for (var i = 0; i < elements.length; i++) {
+        this.universalTilt = new UniversalTilt(elements[i], settings);
       }
+    }
+  }, {
+    key: 'isMobile',
+    value: function isMobile() {
+      if (window.DeviceMotionEvent && "ontouchstart" in document.documentElement) return true;
     }
   }, {
     key: 'addEventListeners',
@@ -60,7 +71,7 @@ var UniversalTilt = function () {
       var _this = this;
 
       // if is mobile device
-      if (window.DeviceMotionEvent && "ontouchstart" in document.documentElement) {
+      if (this.isMobile()) {
         this.onDeviceMoveBind = this.onDeviceMove.bind(this);
 
         // devicemotion event
@@ -68,28 +79,29 @@ var UniversalTilt = function () {
 
         // if is desktop
       } else {
-        if (this.settings['position-base'] === 'element') {
-          this.onMouseMoveBind = this.onMouseMove.bind(this);
+        this.onMouseMoveBind = this.onMouseMove.bind(this);
 
-          // mousemove event
-          this.element.addEventListener('mousemove', this.onMouseMoveBind);
+        if (this.settings['position-base'] === 'element') this.base = this.element;else if (this.settings['position-base'] === 'window') this.base = window;
 
-          // mouseleave event
-          this.element.addEventListener('mouseleave', function () {
-            return _this.onMouseLeave();
-          });
-        } else if (this.settings['position-base'] === 'window') {
-          this.onMouseMoveBind = this.onMouseMove.bind(this);
+        this.base.addEventListener('mouseenter', function () {
+          return _this.onMouseEnter();
+        });
 
-          // mousemove event
-          window.addEventListener('mousemove', this.onMouseMoveBind);
+        // mousemove event
+        this.base.addEventListener('mousemove', this.onMouseMoveBind);
 
-          // mouseleave event
-          window.addEventListener('mouseleave', function () {
-            return _this.onMouseLeave();
-          });
-        }
+        // mouseleave event
+        this.base.addEventListener('mouseleave', function () {
+          return _this.onMouseLeave();
+        });
       }
+    }
+  }, {
+    key: 'onMouseEnter',
+    value: function onMouseEnter(event) {
+      this.updateElementPosition();
+
+      this.transitions();
     }
   }, {
     key: 'onMouseMove',
@@ -100,34 +112,28 @@ var UniversalTilt = function () {
       this.event = event;
       this.updateElementPosition();
 
-      // optimize movement effect
-      if (window.DeviceMotionEvent && "ontouchstart" in document.documentElement) {
-        this.update();
-      } else {
-        window.requestAnimationFrame(function () {
-          return _this2.update();
-        });
-      }
+      window.requestAnimationFrame(function () {
+        return _this2.update();
+      });
     }
   }, {
     key: 'onMouseLeave',
-    value: function onMouseLeave() {
+    value: function onMouseLeave(event) {
       var _this3 = this;
 
-      if (window.DeviceMotionEvent && "ontouchstart" in document.documentElement) {
-        this.reset();
-      } else {
-        window.requestAnimationFrame(function () {
-          return _this3.reset();
-        });
-      }
+      this.transitions();
+
+      window.requestAnimationFrame(function () {
+        return _this3.reset();
+      });
     }
   }, {
     key: 'onDeviceMove',
     value: function onDeviceMove(event) {
-      this.movementEvent = event;
       this.update();
       this.updateElementPosition();
+
+      this.transitions();
     }
   }, {
     key: 'reset',
@@ -137,15 +143,11 @@ var UniversalTilt = function () {
         pageY: this.top + this.height / 2
       };
 
-      if (this.settings.reset) this.element.style.transform = 'perspective(' + this.settings.perspective + 'px) rotateX(0deg) rotateY(0deg) scale(1)';
-
-      // set transition when is enabled
-      if (this.settings.transition) this.element.style.transition = 'all 500ms ' + this.settings.easing;
+      if (this.settings.reset) this.element.style.transform = 'perspective(' + this.settings.perspective + 'px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
 
       // reset shine effect
       if (this.settings.shine && !this.settings['shine-save']) {
         Object.assign(this.shineElement.style, {
-          'transition': 'all 500ms ease',
           'transform': 'rotate(180deg) translate3d(-50%, -50%, 0)',
           'opacity': '0'
         });
@@ -157,43 +159,43 @@ var UniversalTilt = function () {
   }, {
     key: 'getValues',
     value: function getValues() {
-      var x;
-      var y;
+      var x = void 0;
+      var y = void 0;
 
       // if is mobile device (touch screen + gyroscope)
-      if (window.DeviceMotionEvent && "ontouchstart" in document.documentElement) {
+      if (this.isMobile()) {
 
         // revert axis (device rotation)
-        x = Math.round(event.accelerationIncludingGravity.x) / 6;
-        y = Math.round(event.accelerationIncludingGravity.y) / 6;
+        x = event.accelerationIncludingGravity.x / 4;
+        y = event.accelerationIncludingGravity.y / 4;
 
-        var stateX;
-        var stateY;
+        var stateX = void 0;
+        var stateY = void 0;
 
         if (window.orientation === 90) {
-          stateX = 1.0 + x;
-          stateY = 1.0 - y;
+          stateX = (1.0 + x) / 2;
+          stateY = (1.0 - y) / 2;
 
-          y = stateX / 2;
-          x = stateY / 2;
+          y = stateX;
+          x = stateY;
         } else if (window.orientation === -90) {
-          stateX = 1.0 - x;
-          stateY = 1.0 + y;
+          stateX = (1.0 - x) / 2;
+          stateY = (1.0 + y) / 2;
 
-          y = stateX / 2;
-          x = stateY / 2;
+          y = stateX;
+          x = stateY;
         } else if (window.orientation === 0) {
-          stateY = 1.0 + y;
-          stateX = 1.0 + x;
+          stateY = (1.0 + y) / 2;
+          stateX = (1.0 + x) / 2;
 
-          y = stateY / 2;
-          x = stateX / 2;
+          y = stateY;
+          x = stateX;
         } else if (window.orientation === 180) {
-          stateY = 1.0 - y;
-          stateX = 1.0 - x;
+          stateY = (1.0 - y) / 2;
+          stateX = (1.0 - x) / 2;
 
-          y = stateY / 2;
-          x = stateX / 2;
+          y = stateY;
+          x = stateX;
         }
 
         // if desktop
@@ -207,24 +209,22 @@ var UniversalTilt = function () {
           x = this.event.clientX / window.innerWidth;
           y = this.event.clientY / window.innerHeight;
         }
-
-        // set movement for axis
-        x = Math.min(Math.max(x, 0), 1);
-        y = Math.min(Math.max(y, 0), 1);
       }
+
+      // set movement for axis
+      x = Math.min(Math.max(x, 0), 1);
+      y = Math.min(Math.max(y, 0), 1);
 
       var tiltX = (this.settings.max / 2 - x * this.settings.max).toFixed(2);
       var tiltY = (y * this.settings.max - this.settings.max / 2).toFixed(2);
 
       // set angle
-      var angle = Math.atan2(0.5 - x, y - 0.5) * (180 / Math.PI);
+      var angle = Math.atan2(x - 0.5, 0.5 - y) * (180 / Math.PI);
 
       // return values
       return {
         tiltX: this.reverse * tiltX,
         tiltY: this.reverse * tiltY,
-        percentageX: x * 100,
-        percentageY: y * 100,
         angle: angle
       };
     }
@@ -243,16 +243,13 @@ var UniversalTilt = function () {
     value: function update() {
       var values = this.getValues();
 
-      if (this.settings.transition) this.element.style.transition = 'all 100ms ' + this.settings.easing;
-
       if (this.settings.shadow) this.boxShadow = '0 45px 100px ' + this.settings['shadow-color'];
 
-      this.element.style.transform = 'perspective(' + this.settings.perspective + 'px)\n     rotateX(' + (this.settings.disabled === "X" || this.settings.disabled === "x" ? 0 : values.tiltY) + 'deg)\n     rotateY(' + (this.settings.disabled === "Y" || this.settings.disabled === "y" ? 0 : values.tiltX) + 'deg)\n     scale(' + this.settings.scale + ')';
+      this.element.style.transform = 'perspective(' + this.settings.perspective + 'px)\n     rotateX(' + (this.settings.disabled && this.settings.disabled.toUpperCase() === "X" ? 0 : values.tiltY) + 'deg)\n     rotateY(' + (this.settings.disabled && this.settings.disabled.toUpperCase() === "Y" ? 0 : values.tiltX) + 'deg)\n     scale3d(' + this.settings.scale + ', ' + this.settings.scale + ', ' + this.settings.scale + ')';
 
       if (this.settings.shine) {
         Object.assign(this.shineElement.style, {
-          'transition': 'all 0ms ease',
-          'transform': 'rotate(' + -values.angle + 'deg) translate3d(-50%, -50%, 0)',
+          'transform': 'rotate(' + values.angle + 'deg) translate3d(-50%, -50%, 0)',
           'opacity': '' + this.settings["shine-opacity"]
         });
       }
@@ -261,28 +258,25 @@ var UniversalTilt = function () {
 
       // tilt position change event
       this.element.dispatchEvent(new CustomEvent("tiltChange", {
-        "detail": {
-          'X': values.tiltX,
-          'Y': values.tiltY
-        }
+        'detail': values
       }));
     }
   }, {
     key: 'shine',
     value: function shine() {
-      var createShine = document.createElement("div");
-      createShine.classList.add("shine");
+      var shineOuter = document.createElement("div");
+      shineOuter.classList.add("shine");
 
-      var createShineInner = document.createElement("div");
-      createShineInner.classList.add("shine-inner");
+      var shineInner = document.createElement("div");
+      shineInner.classList.add("shine-inner");
 
-      createShine.appendChild(createShineInner);
-      this.element.appendChild(createShine);
+      shineOuter.appendChild(shineInner);
+      this.element.appendChild(shineOuter);
 
-      this.shineElementWrapper = this.element.querySelector(".shine");
+      this.shineWrapper = this.element.querySelector(".shine");
       this.shineElement = this.element.querySelector(".shine-inner");
 
-      Object.assign(this.shineElementWrapper.style, {
+      Object.assign(this.shineWrapper.style, {
         'position': 'absolute',
         'top': '0',
         'left': '0',
@@ -306,6 +300,22 @@ var UniversalTilt = function () {
       });
     }
   }, {
+    key: 'transitions',
+    value: function transitions() {
+      var _this4 = this;
+
+      clearTimeout(this.timeout);
+      this.element.style.transition = 'all ' + this.settings.speed + 'ms ' + this.settings.easing;
+      if (this.settings.shine) this.shineElement.style.transition = 'opacity ' + this.settings.speed + 'ms ' + this.settings.easing;
+
+      this.timeout = setTimeout(function () {
+        _this4.element.style.transition = '';
+        if (_this4.settings.shine) {
+          _this4.shineElement.style.transition = '';
+        }
+      }, this.settings.speed);
+    }
+  }, {
     key: 'settings',
     value: function settings(_settings) {
 
@@ -316,20 +326,20 @@ var UniversalTilt = function () {
 
         shadow: false, // show/hide shadow
         'shadow-save': false, // allow/disable element shadow hide after mouseout (shadow value must be true)
-        'shadow-color': 'rgba(0, 0, 0, 0.4)', // set color of tilt element shadow
+        'shadow-color': 'rgba(0, 0, 0, 0.4)', // color of tilt element shadow  (shadow value must be true)
 
         shine: false, // add/remove shine effect on mouseover
-        'shine-opacity': 0, // set shine opacity (0-1)
-        'shine-save': false, // save/reset shine effect on mouseout
+        'shine-opacity': 0, // shine opacity (0-1) (shine value must be true)
+        'shine-save': false, // save/reset shine effect on mouseout (shine value must be true)
 
-        max: 24,
-        perspective: 600, // tilt effect perspective
+        max: 35, // max tilt value
+        perspective: 1000, // tilt effect perspective
         scale: 1.0, // element scale on mouseover
         disabled: null, // disable axis (X or Y)
         reverse: false, // reverse tilt effect directory
 
-        transition: true, // allow/disable tilt effect transition
-        easing: 'cubic-bezier(.03,.98,.52,.99)' // set transition easing
+        speed: 300, // transition speed
+        easing: 'cubic-bezier(.03,.98,.52,.99)' // transition easing
       };
 
       var custom = {};
@@ -357,16 +367,17 @@ var UniversalTilt = function () {
   return UniversalTilt;
 }();
 
+// autoinit
+
+
+var autoInit = new UniversalTilt(document.querySelectorAll('[data-tilt]'));
+
 // jQuery
-
-
 if (window.jQuery) {
   var $ = window.jQuery;
 
   $.fn.universalTilt = function (options) {
-    for (var element = 0; element < this.length; element++) {
-      new UniversalTilt(this[element], options);
-    }
+    new UniversalTilt(this, options);
   };
 }
 
@@ -376,7 +387,7 @@ if (typeof define === "function" && define.amd) {
     return UniversalTilt;
   });
 
-  // Common JS
+  // CommonJS
 } else if (typeof exports !== 'undefined' && !exports.nodeType) {
   if (typeof module !== 'undefined' && !module.nodeType && module.exports) {
     exports = module.exports = UniversalTilt;

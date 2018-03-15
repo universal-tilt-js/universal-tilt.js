@@ -6,8 +6,8 @@ const liveTilt = new UniversalTilt(tilts, {
 let eventBox = document.querySelector("#event");
 let outputContainer = document.querySelector(".output");
 
-eventBox.addEventListener("tiltChange", function(event) {
+eventBox.addEventListener("tiltChange", (event) => {
 	let li = document.createElement("li");
-	li.innerHTML = `<strong>X</strong>: ${event.detail.X} | <strong>Y</strong>: ${event.detail.Y}`;
+	li.innerHTML = `<strong>X</strong>: ${event.detail.tiltX} | <strong>Y</strong>: ${event.detail.tiltY}`;
 	outputContainer.insertBefore(li, outputContainer.firstChild);
 });
