@@ -61,6 +61,14 @@ $('.tilt').universalTilt({
 });
 ```
 
+**&bull; Plugin supports autoinit**
+
+To use it, add `data-tilt` to html element e.g:
+```
+<div data-tilt></div>
+```
+
+
 ## Options
 Name | Type | Default | Description | Available options
 -|-|-|-|-

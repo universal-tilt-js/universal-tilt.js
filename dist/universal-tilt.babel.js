@@ -162,7 +162,7 @@ var UniversalTilt = function () {
       var x = void 0;
       var y = void 0;
 
-      // if is mobile device (touch screen + gyroscope)
+      // if is mobile device
       if (this.isMobile()) {
 
         // revert axis (device rotation)
@@ -318,7 +318,6 @@ var UniversalTilt = function () {
   }, {
     key: 'settings',
     value: function settings(_settings) {
-
       // defaults
       var defaults = {
         'position-base': 'element', // element or window
@@ -326,7 +325,7 @@ var UniversalTilt = function () {
 
         shadow: false, // show/hide shadow
         'shadow-save': false, // allow/disable element shadow hide after mouseout (shadow value must be true)
-        'shadow-color': 'rgba(0, 0, 0, 0.4)', // color of tilt element shadow  (shadow value must be true)
+        'shadow-color': 'rgba(0, 0, 0, 0.4)', // color of tilt element shadow (shadow value must be true)
 
         shine: false, // add/remove shine effect on mouseover
         'shine-opacity': 0, // shine opacity (0-1) (shine value must be true)
