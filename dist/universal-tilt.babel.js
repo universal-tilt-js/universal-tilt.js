@@ -5,7 +5,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /*!
-* universal-tilt.js v1.0 beta 2
+* universal-tilt.js v1.0 beta 3
 * Created 2018 by Jakub Biesiada
 * Original idea: https://github.com/gijsroge/tilt.js
 * MIT License
@@ -63,7 +63,7 @@ var UniversalTilt = function () {
   }, {
     key: 'isMobile',
     value: function isMobile() {
-      if (window.DeviceMotionEvent && "ontouchstart" in document.documentElement) return true;
+      if (window.DeviceMotionEvent && 'ontouchstart' in document.documentElement) return true;
     }
   }, {
     key: 'addEventListeners',
@@ -102,6 +102,8 @@ var UniversalTilt = function () {
       this.updateElementPosition();
 
       this.transitions();
+
+      this.settings.onMouseEnter(this.element);
     }
   }, {
     key: 'onMouseMove',
@@ -115,6 +117,8 @@ var UniversalTilt = function () {
       window.requestAnimationFrame(function () {
         return _this2.update();
       });
+
+      this.settings.onMouseMove(this.element);
     }
   }, {
     key: 'onMouseLeave',
@@ -126,6 +130,8 @@ var UniversalTilt = function () {
       window.requestAnimationFrame(function () {
         return _this3.reset();
       });
+
+      this.settings.onMouseLeave(this.element);
     }
   }, {
     key: 'onDeviceMove',
@@ -134,6 +140,8 @@ var UniversalTilt = function () {
       this.updateElementPosition();
 
       this.transitions();
+
+      this.settings.onDeviceMove(this.element);
     }
   }, {
     key: 'reset',
@@ -152,9 +160,6 @@ var UniversalTilt = function () {
           'opacity': '0'
         });
       }
-
-      // reset box shadow
-      if (this.settings.shadow && !this.settings['shadow-save']) this.element.style.boxShadow = '0 45px 100px rgba(0, 0, 0, 0)';
     }
   }, {
     key: 'getValues',
@@ -243,38 +248,34 @@ var UniversalTilt = function () {
     value: function update() {
       var values = this.getValues();
 
-      if (this.settings.shadow) this.boxShadow = '0 45px 100px ' + this.settings['shadow-color'];
-
-      this.element.style.transform = 'perspective(' + this.settings.perspective + 'px)\n     rotateX(' + (this.settings.disabled && this.settings.disabled.toUpperCase() === "X" ? 0 : values.tiltY) + 'deg)\n     rotateY(' + (this.settings.disabled && this.settings.disabled.toUpperCase() === "Y" ? 0 : values.tiltX) + 'deg)\n     scale3d(' + this.settings.scale + ', ' + this.settings.scale + ', ' + this.settings.scale + ')';
+      this.element.style.transform = 'perspective(' + this.settings.perspective + 'px)\n     rotateX(' + (this.settings.disabled && this.settings.disabled.toUpperCase() === 'X' ? 0 : values.tiltY) + 'deg)\n     rotateY(' + (this.settings.disabled && this.settings.disabled.toUpperCase() === 'Y' ? 0 : values.tiltX) + 'deg)\n     scale3d(' + this.settings.scale + ', ' + this.settings.scale + ', ' + this.settings.scale + ')';
 
       if (this.settings.shine) {
         Object.assign(this.shineElement.style, {
           'transform': 'rotate(' + values.angle + 'deg) translate3d(-50%, -50%, 0)',
-          'opacity': '' + this.settings["shine-opacity"]
+          'opacity': '' + this.settings['shine-opacity']
         });
       }
 
-      if (this.settings.shadow) this.element.style.boxShadow = this.boxShadow;
-
       // tilt position change event
-      this.element.dispatchEvent(new CustomEvent("tiltChange", {
+      this.element.dispatchEvent(new CustomEvent('tiltChange', {
         'detail': values
       }));
     }
   }, {
     key: 'shine',
     value: function shine() {
-      var shineOuter = document.createElement("div");
-      shineOuter.classList.add("shine");
+      var shineOuter = document.createElement('div');
+      shineOuter.classList.add('shine');
 
-      var shineInner = document.createElement("div");
-      shineInner.classList.add("shine-inner");
+      var shineInner = document.createElement('div');
+      shineInner.classList.add('shine-inner');
 
       shineOuter.appendChild(shineInner);
       this.element.appendChild(shineOuter);
 
-      this.shineWrapper = this.element.querySelector(".shine");
-      this.shineElement = this.element.querySelector(".shine-inner");
+      this.shineWrapper = this.element.querySelector('.shine');
+      this.shineElement = this.element.querySelector('.shine-inner');
 
       Object.assign(this.shineWrapper.style, {
         'position': 'absolute',
@@ -323,10 +324,6 @@ var UniversalTilt = function () {
         'position-base': 'element', // element or window
         reset: true, // allow/disable element position reset after mouseout
 
-        shadow: false, // show/hide shadow
-        'shadow-save': false, // allow/disable element shadow hide after mouseout (shadow value must be true)
-        'shadow-color': 'rgba(0, 0, 0, 0.4)', // color of tilt element shadow (shadow value must be true)
-
         shine: false, // add/remove shine effect on mouseover
         'shine-opacity': 0, // shine opacity (0-1) (shine value must be true)
         'shine-save': false, // save/reset shine effect on mouseout (shine value must be true)
@@ -338,7 +335,12 @@ var UniversalTilt = function () {
         reverse: false, // reverse tilt effect directory
 
         speed: 300, // transition speed
-        easing: 'cubic-bezier(.03,.98,.52,.99)' // transition easing
+        easing: 'cubic-bezier(.03,.98,.52,.99)', // transition easing
+
+        onMouseEnter: null, // call function on mouse enter
+        onMouseMove: null, // call function on mouse move
+        onMouseLeave: null, // call function on mouse leave
+        onDeviceMove: null // call function on device move
       };
 
       var custom = {};
@@ -381,8 +383,8 @@ if (window.jQuery) {
 }
 
 // AMD
-if (typeof define === "function" && define.amd) {
-  define("UniversalTilt", [], function () {
+if (typeof define === 'function' && define.amd) {
+  define('UniversalTilt', [], function () {
     return UniversalTilt;
   });
 

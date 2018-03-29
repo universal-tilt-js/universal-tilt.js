@@ -1,6 +1,6 @@
 {
   "name": "universal-tilt.js",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.3",
   "description": "JavaScript & jQuery parallax tilt effect",
   "main": "dist/universal-tilt.js",
   "repository": {
@@ -23,7 +23,7 @@
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "gulp-babel": "^7.0.1",
-    "gulp-sass": "^3.2.0"
+    "gulp-sass": "^3.2.1"
   },
   "dependencies": {
     "babel-register": "^6.26.0",

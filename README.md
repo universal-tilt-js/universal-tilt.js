@@ -74,11 +74,8 @@ Name | Type | Default | Description | Available options
 -|-|-|-|-
 **position-base** | string | `element` | The surface from which the location of the mouse is captured | `element` or `window`
 **reset** | boolean | `true` | Allow/disable element position reset after mouseout | `true` *(allow)*, `false` *(disable)*
-**shadow** | boolean | `false` | Show/hide shadow effect | `true` *(allow)*, `false` *(disable)*
-**shadow-save**<sup>1</sup> | boolean | `false` | Show/hide shadow effect | `true` *(allow)*, `false` *(disable)*
-**shadow-color**<sup>1</sup> | string | `rgba(0, 0, 0, 0.4)` | Color of tilt element shadow | Color value in hex/rgb(a)/hsl/etc.
 **shine** | boolean | `false` | Add/remove shine effect on mouseover | `true` *(add)*, `false` *(remove)*
-**shine-opacity**<sup>2</sup> | number | `0` | Add/remove shine effect on mouseover | values >= 0  and <= 1
+**shine-opacity**<sup>1</sup> | number | `0` | Add/remove shine effect on mouseover | values >= 0  and <= 1
 **shine-save**<sup>2</sup> | boolean | `false` | Save/reset shine effect on mouseout | `true` *(save)*, `false` *(reset)*
 **max** | number | `35` | Max tilt value | e.g: `28`
 **perspective** | number | `1000` | Tilt effect perspective | e.g: `700`
@@ -87,10 +84,12 @@ Name | Type | Default | Description | Available options
 **reverse** | boolean | `false` | Reverse tilt effect directory | `true` *(reverse directory)*, `false` *(standard directory)*
 **speed** | number | `300` | Transition speed (ms) | e.g: `500`
 **easing** | string | `cubic-bezier(.03,.98,.52,.99)` | Transition easing | `cubic-bezier`/`ease`/`linear`/etc.
+**onMouseEnter** | function | `null` | Call function on mouse enter | `el => { // code }`
+**onMouseMove** | function | `null` | Call function on mouse move | `el => { // code }`
+**onMouseLeave** | function | `null` | Call function on mouse leave | `el => { // code }`
+**onDeviceMove** | function | `null` | Call function on device move | `el => { // code }`
 
-<sup>1</sup> *shadow value must be true*
-
-<sup>2</sup> *shine value must be true*
+<sup>1</sup> *shine value must be true*
 
 
 ## License
