@@ -8,8 +8,8 @@ body {
   background-color: #131a20; }
 
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
@@ -85,14 +85,11 @@ header,
 .description h3 {
   margin: 0; }
 
-.tilt h1,
-[data-tilt] h1 {
+.tilt h1 {
   font-size: 40px; }
 
 .tilt h1,
-[data-tilt] h1,
-.tilt h2,
-[data-tilt] h2 {
+.tilt h2 {
   color: #fff; }
 
 p {
@@ -109,20 +106,16 @@ a {
   transform: translateZ(50px);
   text-align: center; }
 
-[data-tilt] span,
 .tilt span {
   font-weight: lighter;
   display: block; }
 
-[data-tilt] h1 span,
 .tilt h1 span {
   font-size: 18px; }
 
-[data-tilt] h2 span,
 .tilt h2 span {
   font-size: 14px; }
 
-[data-tilt],
 .tilt {
   width: 320px;
   height: 320px;
@@ -137,20 +130,14 @@ a {
   -ms-flex-align: center;
   align-items: center; }
 
-.wrap [data-tilt] {
-  width: 340px;
-  height: 340px; }
-
-.wrap .container [data-tilt] h2,
 .wrap .container .tilt h2 {
   font-size: 28px; }
 
-.wrap .container .tilt,
-.wrap .container [data-tilt] {
+.wrap .container .tilt {
   width: 200px;
   height: 200px; }
 
-.wrap [data-tilt] {
+.wrap .tilt:first-child {
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   background: #ff0084;
@@ -177,7 +164,7 @@ a {
   transform: translateZ(100px);
   -webkit-box-shadow: 0 0 50px 0 rgba(51, 51, 51, 0.3);
   box-shadow: 0 0 50px 0 rgba(51, 51, 51, 0.3);
-  background-color: white; }
+  background-color: #fff; }
 
 .output {
   list-style: none;
@@ -185,102 +172,92 @@ a {
   overflow: scroll; }
 
 .example:first-child .tilt {
-  background: #347cf7;
-  background: linear-gradient(45deg, #5df07b 0%, #0c4ef5 100%); }
-
-.example:first-child .description h3 {
-  background: #347cf7;
-  background: linear-gradient(45deg, #5df07b 0%, #0c4ef5 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; }
-
-.example:nth-child(2) .tilt {
   background: #a90329;
   background: linear-gradient(135deg, #a90329 0%, #eb8415 100%); }
 
-.example:nth-child(2) .description h3 {
+.example:first-child .description h3 {
   background: #a90329;
   background: linear-gradient(135deg, #a90329 0%, #eb8415 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; }
 
-.example:nth-child(3) .tilt {
+.example:nth-child(2) .tilt {
   background: #b7deed;
   background: linear-gradient(135deg, #b7deed 0%, #6321de 100%); }
 
-.example:nth-child(3) .description h3 {
+.example:nth-child(2) .description h3 {
   background: #b7deed;
   background: linear-gradient(135deg, #b7deed 0%, #6321de 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; }
 
-.example:nth-child(4) .tilt {
+.example:nth-child(3) .tilt {
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   background: #ebceb7;
   background: linear-gradient(45deg, #ebceb7 0%, #de21de 100%); }
 
-.example:nth-child(4) .description h3 {
+.example:nth-child(3) .description h3 {
   background: #ebceb7;
   background: linear-gradient(45deg, #ebceb7 0%, #de21de 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; }
 
-.example:nth-child(5) .tilt {
+.example:nth-child(4) .tilt {
   background: #1dde5d;
   background: linear-gradient(45deg, #1dde5d 0%, #1f3b08 100%); }
 
-.example:nth-child(5) .description h3 {
+.example:nth-child(4) .description h3 {
   background: #1dde5d;
   background: linear-gradient(45deg, #1dde5d 0%, #1f3b08 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; }
 
-.example:nth-child(6) .tilt {
+.example:nth-child(5) .tilt {
   background: #c5cf76;
   background: linear-gradient(45deg, #c5cf76 0%, #49a5bf 100%); }
 
-.example:nth-child(6) .description h3 {
+.example:nth-child(5) .description h3 {
   background: #c5cf76;
   background: linear-gradient(45deg, #c5cf76 0%, #49a5bf 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; }
 
-.example:nth-child(7) .tilt {
+.example:nth-child(6) .tilt {
   background: #ccc;
   background: linear-gradient(45deg, #ccc 0%, #333 100%); }
 
-.example:nth-child(7) .description h3 {
+.example:nth-child(6) .description h3 {
   background: #ccc;
   background: linear-gradient(45deg, #ccc 0%, #333 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; }
 
-.example:nth-child(8) .tilt {
+.example:nth-child(7) .tilt {
   background: #f3e2c7;
   background: linear-gradient(45deg, #f3e2c7 0%, #b68d4c 100%); }
 
-.example:nth-child(8) .description h3 {
+.example:nth-child(7) .description h3 {
   background: #f3e2c7;
   background: linear-gradient(45deg, #f3e2c7 0%, #b68d4c 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; }
 
-.example:nth-child(9) .tilt {
+.example:nth-child(8) .tilt {
   background: #cb60b3;
   background: linear-gradient(135deg, #cb60b3 0%, #a80077 100%); }
 
-.example:nth-child(9) .description h3 {
+.example:nth-child(8) .description h3 {
   background: #cb60b3;
   background: linear-gradient(135deg, #cb60b3 0%, #a80077 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; }
 
-.example:nth-child(10) .tilt {
+.example:nth-child(9) .tilt {
   background: #696bff;
   background: linear-gradient(338deg, #696bff 0%, #8cffe6 100%); }
 
-.example:nth-child(10) .description h3 {
+.example:nth-child(9) .description h3 {
   background: #696bff;
   background: linear-gradient(338deg, #696bff 0%, #8cffe6 100%);
   -webkit-background-clip: text;
@@ -312,6 +289,9 @@ a {
   .example .container,
   .example .description {
     width: 100%; }
+  header .tilt:first-child {
+    width: 340px;
+    height: 340px; }
   .tilt {
     width: 240px;
     height: 240px; }
@@ -337,9 +317,9 @@ a {
     display: block; } }
 
 @media screen and (max-width: 460px) {
-  header [data-tilt] {
-    width: 240px !important;
-    height: 240px !important; }
+  header .tilt:first-child {
+    width: 240px;
+    height: 240px; }
   h3 {
     font-size: 26px !important; }
   header {
@@ -347,6 +327,13 @@ a {
   header h1 {
     font-size: 30px !important; } }
 
+/* PrismJS 1.13.0
+http://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clike+javascript */
+/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
 code[class*="language-"],
 pre[class*="language-"] {
   color: #f8f8f2;
@@ -363,6 +350,7 @@ pre[class*="language-"] {
   -o-tab-size: 4;
   tab-size: 4;
   -webkit-hyphens: none;
+  -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none; }
 
