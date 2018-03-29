@@ -76,7 +76,7 @@ Name | Type | Default | Description | Available options
 **reset** | boolean | `true` | Allow/disable element position reset after mouseout | `true` *(allow)*, `false` *(disable)*
 **shine** | boolean | `false` | Add/remove shine effect on mouseover | `true` *(add)*, `false` *(remove)*
 **shine-opacity**<sup>1</sup> | number | `0` | Add/remove shine effect on mouseover | values >= 0  and <= 1
-**shine-save**<sup>2</sup> | boolean | `false` | Save/reset shine effect on mouseout | `true` *(save)*, `false` *(reset)*
+**shine-save**<sup>1</sup> | boolean | `false` | Save/reset shine effect on mouseout | `true` *(save)*, `false` *(reset)*
 **max** | number | `35` | Max tilt value | e.g: `28`
 **perspective** | number | `1000` | Tilt effect perspective | e.g: `700`
 **scale** | number | `1.0` | Element scale on mouseover | `0.9`/`1.3`/etc.
