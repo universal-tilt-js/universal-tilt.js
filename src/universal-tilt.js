@@ -1,5 +1,5 @@
 /*!
-* universal-tilt.js v1.0 beta 3
+* universal-tilt.js v1.0
 * Created 2018 by Jakub Biesiada
 * Original idea: https://github.com/gijsroge/tilt.js
 * MIT License
@@ -85,7 +85,8 @@ class UniversalTilt {
 
     this.transitions();
 
-    this.settings.onMouseEnter(this.element);
+    if (typeof this.settings.onMouseEnter === 'function')
+     this.settings.onMouseEnter(this.element);
   }
 
   onMouseMove(event) {
@@ -95,7 +96,8 @@ class UniversalTilt {
 
     window.requestAnimationFrame(() => this.update());
 
-    this.settings.onMouseMove(this.element);
+    if (typeof this.settings.onMouseMove === 'function')
+     this.settings.onMouseMove(this.element);
   }
 
   onMouseLeave(event) {
@@ -103,7 +105,8 @@ class UniversalTilt {
 
     window.requestAnimationFrame(() => this.reset());
 
-    this.settings.onMouseLeave(this.element);
+    if (typeof this.settings.onMouseLeave === 'function')
+     this.settings.onMouseLeave(this.element);
   }
 
   onDeviceMove(event) {
@@ -112,7 +115,8 @@ class UniversalTilt {
 
     this.transitions();
 
-    this.settings.onDeviceMove(this.element);
+    if (typeof this.settings.onDeviceMove === 'function')
+     this.settings.onDeviceMove(this.element);
   }
 
   reset() {
