@@ -24,8 +24,8 @@ yarn add universal-tilt.js // yarn
 const UniversalTilt = require('universal-tilt.js'); // CommonJS
 import UniversalTilt form 'universal-tilt.js'; // ES6
 ```
-<br>
 
+<br>
 Next use library with:
 
 **&bull; Vanilla JavaScript e.g:**
@@ -62,12 +62,10 @@ $('.tilt').universalTilt({
 ```
 
 **&bull; Plugin supports autoinit**
-
 To use it, add `data-tilt` to html element e.g:
 ```
 <div data-tilt></div>
 ```
-
 
 ## Options
 Name | Type | Default | Description | Available options
@@ -90,7 +88,6 @@ Name | Type | Default | Description | Available options
 **onDeviceMove** | function | `null` | Call function on device move | `el => { // code }`
 
 <sup>1</sup> *shine value must be true*
-
 
 ## License
 This project is licensed under the MIT License
