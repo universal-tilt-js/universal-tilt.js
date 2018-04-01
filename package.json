@@ -1,6 +1,6 @@
 {
   "name": "universal-tilt.js",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0",
   "description": "JavaScript & jQuery parallax tilt effect",
   "main": "dist/universal-tilt.js",
   "repository": {

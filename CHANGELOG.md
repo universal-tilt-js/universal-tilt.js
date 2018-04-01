@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.0
+* fixed bug with callbacks (when value is `null`)
+
 ## 1.0.0 beta 3
 * **removed shadow options**
 * **added callbacks on mouse enter, move, leave and device move**
