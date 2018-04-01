@@ -5,7 +5,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /*!
-* universal-tilt.js v1.0 beta 3
+* universal-tilt.js v1.0
 * Created 2018 by Jakub Biesiada
 * Original idea: https://github.com/gijsroge/tilt.js
 * MIT License
@@ -103,7 +103,7 @@ var UniversalTilt = function () {
 
       this.transitions();
 
-      this.settings.onMouseEnter(this.element);
+      if (typeof this.settings.onMouseEnter === 'function') this.settings.onMouseEnter(this.element);
     }
   }, {
     key: 'onMouseMove',
@@ -118,7 +118,7 @@ var UniversalTilt = function () {
         return _this2.update();
       });
 
-      this.settings.onMouseMove(this.element);
+      if (typeof this.settings.onMouseMove === 'function') this.settings.onMouseMove(this.element);
     }
   }, {
     key: 'onMouseLeave',
@@ -131,7 +131,7 @@ var UniversalTilt = function () {
         return _this3.reset();
       });
 
-      this.settings.onMouseLeave(this.element);
+      if (typeof this.settings.onMouseLeave === 'function') this.settings.onMouseLeave(this.element);
     }
   }, {
     key: 'onDeviceMove',
@@ -141,7 +141,7 @@ var UniversalTilt = function () {
 
       this.transitions();
 
-      this.settings.onDeviceMove(this.element);
+      if (typeof this.settings.onDeviceMove === 'function') this.settings.onDeviceMove(this.element);
     }
   }, {
     key: 'reset',
