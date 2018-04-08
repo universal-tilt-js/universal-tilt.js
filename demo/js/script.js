@@ -13,8 +13,8 @@ const liveTilt = new UniversalTilt(tilts, {
 	}
 });
 
-let eventBox = document.querySelector('#event');
-let outputContainer = document.querySelector('.output');
+const eventBox = document.querySelector('#event');
+const outputContainer = document.querySelector('.output');
 
 eventBox.addEventListener('tiltChange', event => {
 	let li = document.createElement('li');

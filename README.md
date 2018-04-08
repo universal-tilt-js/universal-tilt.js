@@ -71,7 +71,8 @@ To use it, add `data-tilt` to html element e.g:
 Name | Type | Default | Description | Available options
 -|-|-|-|-
 **position-base** | string | `element` | The surface from which the location of the mouse is captured | `element` or `window`
-**reset** | boolean | `true` | Allow/disable element position reset after mouseout | `true` *(allow)*, `false` *(disable)*
+**reset** | boolean | `true` | Enable/disable element position reset after mouseout | `true` *(enable)*, `false` *(disable)*
+**mobile** | boolean | `true` | Enable/disable tilt effect on mobile devices | `true` *(enable)*, `false` *(disable)*
 **shine** | boolean | `false` | Add/remove shine effect on mouseover | `true` *(add)*, `false` *(remove)*
 **shine-opacity**<sup>1</sup> | number | `0` | Add/remove shine effect on mouseover | values >= 0  and <= 1
 **shine-save**<sup>1</sup> | boolean | `false` | Save/reset shine effect on mouseout | `true` *(save)*, `false` *(reset)*
@@ -85,9 +86,10 @@ Name | Type | Default | Description | Available options
 **onMouseEnter** | function | `null` | Call function on mouse enter | `el => { // code }`
 **onMouseMove** | function | `null` | Call function on mouse move | `el => { // code }`
 **onMouseLeave** | function | `null` | Call function on mouse leave | `el => { // code }`
-**onDeviceMove** | function | `null` | Call function on device move | `el => { // code }`
+**onDeviceMove**<sup>2</sup> | function | `null` | Call function on device move | `el => { // code }`
 
 <sup>1</sup> *shine value must be true*
+<sup>2</sup> *mobile value must be true*
 
 ## License
 This project is licensed under the MIT License

@@ -5,7 +5,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /*!
-* universal-tilt.js v1.0
+* universal-tilt.js v1.0.1
 * Created 2018 by Jakub Biesiada
 * Original idea: https://github.com/gijsroge/tilt.js
 * MIT License
@@ -63,7 +63,7 @@ var UniversalTilt = function () {
   }, {
     key: 'isMobile',
     value: function isMobile() {
-      if (window.DeviceMotionEvent && 'ontouchstart' in document.documentElement) return true;
+      if (window.DeviceMotionEvent && 'ontouchstart' in document.documentElement && this.settings.mobile) return true;
     }
   }, {
     key: 'addEventListeners',
@@ -265,14 +265,14 @@ var UniversalTilt = function () {
   }, {
     key: 'shine',
     value: function shine() {
-      var shineOuter = document.createElement('div');
-      shineOuter.classList.add('shine');
+      var SHINE_OUTER = document.createElement('div');
+      SHINE_OUTER.classList.add('shine');
 
-      var shineInner = document.createElement('div');
-      shineInner.classList.add('shine-inner');
+      var SHINE_INNER = document.createElement('div');
+      SHINE_INNER.classList.add('shine-inner');
 
-      shineOuter.appendChild(shineInner);
-      this.element.appendChild(shineOuter);
+      SHINE_OUTER.appendChild(SHINE_INNER);
+      this.element.appendChild(SHINE_OUTER);
 
       this.shineWrapper = this.element.querySelector('.shine');
       this.shineElement = this.element.querySelector('.shine-inner');
@@ -322,7 +322,8 @@ var UniversalTilt = function () {
       // defaults
       var defaults = {
         'position-base': 'element', // element or window
-        reset: true, // allow/disable element position reset after mouseout
+        reset: true, // enable/disable element position reset after mouseout
+        mobile: true, // enable/disable tilt effect on mobile devices
 
         shine: false, // add/remove shine effect on mouseover
         'shine-opacity': 0, // shine opacity (0-1) (shine value must be true)
@@ -371,7 +372,7 @@ var UniversalTilt = function () {
 // autoinit
 
 
-var autoInit = new UniversalTilt(document.querySelectorAll('[data-tilt]'));
+var AUTO_INIT = new UniversalTilt(document.querySelectorAll('[data-tilt]'));
 
 // jQuery
 if (window.jQuery) {
