@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.1
+* added mobile option (enable or disable tilt effect on mobile devices)
+
 ## 1.0.0
 * fixed bug with callbacks (when value is `null`)
 
