@@ -88,7 +88,7 @@ Name | Type | Default | Description | Available options
 **onMouseLeave** | function | `null` | Call function on mouse leave | `el => { // code }`
 **onDeviceMove**<sup>2</sup> | function | `null` | Call function on device move | `el => { // code }`
 
-<sup>1</sup> *shine value must be true*
+<sup>1</sup> *shine value must be true*<br>
 <sup>2</sup> *mobile value must be true*
 
 ## License
