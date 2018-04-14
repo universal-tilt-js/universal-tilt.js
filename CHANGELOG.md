@@ -35,4 +35,3 @@
 ## 0.5.0
 * **Position Base option**
 * **mobile support (devices with gyroscope)**
-* plugin works in vanillaJS as well as jQuery
