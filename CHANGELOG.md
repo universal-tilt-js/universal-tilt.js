@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.4
+* fixed bug with jQuery and Node.js compatibility
+
+## ~~1.0.2~~ 1.0.3
+* fixed bug with autoinit in Node.js
+
 ## 1.0.1
 * added mobile option (enable or disable tilt effect on mobile devices)
 
