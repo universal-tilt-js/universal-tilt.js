@@ -210,7 +210,7 @@ var UniversalTilt = function () {
         if (this.settings['position-base'] === 'element') {
           x = (this.event.clientX - this.left) / this.width;
           y = (this.event.clientY - this.top) / this.height;
-        } else {
+        } else if (this.settings['position-base'] === 'window') {
           x = this.event.clientX / window.innerWidth;
           y = this.event.clientY / window.innerHeight;
         }
