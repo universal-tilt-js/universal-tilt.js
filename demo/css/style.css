@@ -254,10 +254,20 @@ a {
   -webkit-text-fill-color: transparent; }
 
 .example:nth-child(9) .tilt {
+  background: #f1e767;
+  background: linear-gradient(45deg, #f1e767 0%, #feb645 100%); }
+
+.example:nth-child(9) .description h3 {
+  background: #f1e767;
+  background: linear-gradient(45deg, #f1e767 0%, #feb645 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; }
+
+.example:nth-child(10) .tilt {
   background: #696bff;
   background: linear-gradient(338deg, #696bff 0%, #8cffe6 100%); }
 
-.example:nth-child(9) .description h3 {
+.example:nth-child(10) .description h3 {
   background: #696bff;
   background: linear-gradient(338deg, #696bff 0%, #8cffe6 100%);
   -webkit-background-clip: text;

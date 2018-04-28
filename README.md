@@ -94,5 +94,8 @@ Name | Type | Default | Description | Available options
 <sup>1</sup> *shine value must be true*<br>
 <sup>2</sup> *mobile value must be true*
 
+## Event
+`tiltChange` event will output the x & y of tilting
+
 ## License
 This project is licensed under the MIT License

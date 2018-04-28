@@ -209,12 +209,27 @@ data-shine-save="true"</code></pre>
 
       <div class="example">
         <div class="container">
+          <div class="tilt" data-mobile="false"></div>
+        </div>
+        <div class="description">
+          <div class="content">
+            <h3>Disable tilt on mobile</h3>
+            <p>To disable tilt on mobile devices for single element use:</p>
+            <pre class="language-html"><code>data-mobile="false"</code></pre>
+            <p>To disable tilt on mobile devices for all elements use:</p>
+            <pre class="language-javascript"><code>'mobile': false</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="container">
           <div class="tilt" id="event"></div>
         </div>
         <div class="description">
           <div class="content">
             <h3>Change event</h3>
-            <p>Change event will output the x, y & percentages of tilting.</p>
+            <p>Change event will output the x & y of tilting</p>
             <pre class="language-javascript"><ul class="output"></ul></pre>
           </div>
         </div>
