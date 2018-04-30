@@ -66,6 +66,7 @@ class UniversalTilt {
       else if (this.settings['position-base'] === 'window')
        this.base = window;
 
+      // mouseenter event
       this.base.addEventListener('mouseenter', event => this.onMouseEnter(event));
 
       // mousemove event
@@ -289,7 +290,7 @@ class UniversalTilt {
     let defaults = {
       'position-base': 'element', // element or window
       reset: true, // enable/disable element position reset after mouseout
-      mobile: true, // enable/disable tilt effect on mobile devices
+      mobile: true, // enable/disable tilt effect on mobile devices with gyroscope (tilt effect on touch is always enabled)
 
       shine: false, // add/remove shine effect on mouseover
       'shine-opacity': 0, // shine opacity (0-1) (shine value must be true)
@@ -302,7 +303,7 @@ class UniversalTilt {
       reverse: false, // reverse tilt effect directory
 
       speed: 300, // transition speed
-      easing: 'cubic-bezier(.03,.98,.52,.99)', // transition easing
+      easing: 'cubic-bezier(.03, .98, .52, .99)', // transition easing
 
       onMouseEnter: null, // call function on mouse enter
       onMouseMove: null, // call function on mouse move
