@@ -1,5 +1,5 @@
 /*!
-* universal-tilt.js v1.0.4
+* universal-tilt.js v1.0.6
 * Created 2018 by Jakub Biesiada
 * Original idea: https://github.com/gijsroge/tilt.js
 * MIT License
@@ -56,27 +56,23 @@ class UniversalTilt {
   addEventListeners() {
     // if is mobile device
     if (this.isMobile()) {
-      this.onDeviceMoveBind = this.onDeviceMove.bind(this);
-
       // devicemotion event
-      window.addEventListener('devicemotion', this.onDeviceMoveBind);
+      window.addEventListener('devicemotion', event => this.onDeviceMove(event));
 
     // if is desktop
     } else {
-      this.onMouseMoveBind = this.onMouseMove.bind(this);
-
       if (this.settings['position-base'] === 'element')
        this.base = this.element;
       else if (this.settings['position-base'] === 'window')
        this.base = window;
 
-      this.base.addEventListener('mouseenter', () => this.onMouseEnter());
+      this.base.addEventListener('mouseenter', event => this.onMouseEnter(event));
 
       // mousemove event
-      this.base.addEventListener('mousemove', this.onMouseMoveBind);
+      this.base.addEventListener('mousemove', event => this.onMouseMove(event));
 
       // mouseleave event
-      this.base.addEventListener('mouseleave', () => this.onMouseLeave());
+      this.base.addEventListener('mouseleave', event => this.onMouseLeave(event));
     }
   }
 

@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.6
+* improved events performance
+
 ## 1.0.4/1.0.5
 * fixed bug with jQuery and Node.js compatibility
 

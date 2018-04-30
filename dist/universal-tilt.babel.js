@@ -5,7 +5,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /*!
-* universal-tilt.js v1.0.4
+* universal-tilt.js v1.0.6
 * Created 2018 by Jakub Biesiada
 * Original idea: https://github.com/gijsroge/tilt.js
 * MIT License
@@ -72,27 +72,27 @@ var UniversalTilt = function () {
 
       // if is mobile device
       if (this.isMobile()) {
-        this.onDeviceMoveBind = this.onDeviceMove.bind(this);
-
         // devicemotion event
-        window.addEventListener('devicemotion', this.onDeviceMoveBind);
+        window.addEventListener('devicemotion', function (event) {
+          return _this.onDeviceMove(event);
+        });
 
         // if is desktop
       } else {
-        this.onMouseMoveBind = this.onMouseMove.bind(this);
-
         if (this.settings['position-base'] === 'element') this.base = this.element;else if (this.settings['position-base'] === 'window') this.base = window;
 
-        this.base.addEventListener('mouseenter', function () {
-          return _this.onMouseEnter();
+        this.base.addEventListener('mouseenter', function (event) {
+          return _this.onMouseEnter(event);
         });
 
         // mousemove event
-        this.base.addEventListener('mousemove', this.onMouseMoveBind);
+        this.base.addEventListener('mousemove', function (event) {
+          return _this.onMouseMove(event);
+        });
 
         // mouseleave event
-        this.base.addEventListener('mouseleave', function () {
-          return _this.onMouseLeave();
+        this.base.addEventListener('mouseleave', function (event) {
+          return _this.onMouseLeave(event);
         });
       }
     }
