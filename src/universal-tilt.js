@@ -191,11 +191,11 @@ class UniversalTilt {
     x = Math.min(Math.max(x, 0), 1);
     y = Math.min(Math.max(y, 0), 1);
 
-    let tiltX = ((this.settings.max / 2) - (x * this.settings.max)).toFixed(2);
-    let tiltY = ((y * this.settings.max) - (this.settings.max / 2)).toFixed(2);
+    const tiltX = ((this.settings.max / 2) - (x * this.settings.max)).toFixed(2);
+    const tiltY = ((y * this.settings.max) - (this.settings.max / 2)).toFixed(2);
 
     // set angle
-    let angle = Math.atan2(x - 0.5, 0.5 - y) * (180 / Math.PI);
+    const angle = Math.atan2(x - 0.5, 0.5 - y) * (180 / Math.PI);
 
     // return values
     return {
@@ -206,7 +206,7 @@ class UniversalTilt {
   }
 
   updateElementPosition() {
-    let rect = this.element.getBoundingClientRect();
+    const rect = this.element.getBoundingClientRect();
 
     this.width = this.element.offsetWidth;
     this.height = this.element.offsetHeight;
@@ -215,7 +215,7 @@ class UniversalTilt {
   }
 
   update() {
-    let values = this.getValues();
+    const values = this.getValues();
 
     this.element.style.transform = `perspective(${this.settings.perspective}px)
      rotateX(${this.settings.disabled && this.settings.disabled.toUpperCase() === 'X' ? 0 : values.tiltY}deg)
@@ -236,14 +236,14 @@ class UniversalTilt {
   }
 
   shine() {
-    const SHINE_OUTER = document.createElement('div');
-    SHINE_OUTER.classList.add('shine');
+    const shineOuter = document.createElement('div');
+    shineOuter.classList.add('shine');
 
-    const SHINE_INNER = document.createElement('div');
-    SHINE_INNER.classList.add('shine-inner');
+    const shineInner = document.createElement('div');
+    shineInner.classList.add('shine-inner');
 
-    SHINE_OUTER.appendChild(SHINE_INNER);
-    this.element.appendChild(SHINE_OUTER);
+    shineOuter.appendChild(shineInner);
+    this.element.appendChild(shineOuter);
 
     this.shineWrapper = this.element.querySelector('.shine');
     this.shineElement = this.element.querySelector('.shine-inner');
@@ -287,7 +287,7 @@ class UniversalTilt {
 
   settings(settings) {
     // defaults
-    let defaults = {
+    const defaults = {
       'position-base': 'element', // element or window
       reset: true, // enable/disable element position reset after mouseout
       mobile: true, // enable/disable tilt effect on mobile devices with gyroscope (tilt effect on touch is always enabled)
@@ -311,14 +311,14 @@ class UniversalTilt {
       onDeviceMove: null // call function on device move
     };
 
-    let custom = {};
+    const custom = {};
 
     // apply settings and get values from data-*
     for (let setting in defaults) {
       if (setting in settings) {
         custom[setting] = settings[setting];
       } else if (this.element.getAttribute(`data-${setting}`)) {
-        let attribute = this.element.getAttribute(`data-${setting}`);
+        const attribute = this.element.getAttribute(`data-${setting}`);
         try {
           custom[setting] = JSON.parse(attribute);
         } catch (e) {
@@ -347,7 +347,7 @@ else if (typeof global !== 'undefined')
  scope = global;
 
 if (scope && scope.jQuery) {
-  let $ = scope.jQuery;
+  const $ = scope.jQuery;
 
   $.fn.universalTilt = function(options) {
     new UniversalTilt(this, options);
