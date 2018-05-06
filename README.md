@@ -75,7 +75,7 @@ Name | Type | Default | Description | Available options
 -|-|-|-|-
 **position-base** | string | `element` | The surface from which the location of the mouse is captured | `element` or `window`
 **reset** | boolean | `true` | Enable/disable element position reset after mouseout | `true` *(enable)*, `false` *(disable)*
-**mobile** | boolean | `true` | Enable/disable tilt effect on mobile devices | `true` *(enable)*, `false` *(disable)*
+**mobile** | boolean | `true` | Enable/disable tilt effect on mobile devices with gyroscope (tilt effect on touch is always enabled) | `true` *(enable)*, `false` *(disable)*
 **shine** | boolean | `false` | Add/remove shine effect on mouseover | `true` *(add)*, `false` *(remove)*
 **shine-opacity**<sup>1</sup> | number | `0` | Add/remove shine effect on mouseover | values >= 0  and <= 1
 **shine-save**<sup>1</sup> | boolean | `false` | Save/reset shine effect on mouseout | `true` *(save)*, `false` *(reset)*
@@ -85,7 +85,7 @@ Name | Type | Default | Description | Available options
 **disabled** | string | `null` | Disable axis | `x` or `y`
 **reverse** | boolean | `false` | Reverse tilt effect directory | `true` *(reverse directory)*, `false` *(standard directory)*
 **speed** | number | `300` | Transition speed (ms) | e.g: `500`
-**easing** | string | `cubic-bezier(.03,.98,.52,.99)` | Transition easing | `cubic-bezier`/`ease`/`linear`/etc.
+**easing** | string | `cubic-bezier(.03, .98, .52, .99)` | Transition easing | `cubic-bezier`/`ease`/`linear`/etc.
 **onMouseEnter** | function | `null` | Call function on mouse enter | `el => { // code }`
 **onMouseMove** | function | `null` | Call function on mouse move | `el => { // code }`
 **onMouseLeave** | function | `null` | Call function on mouse leave | `el => { // code }`

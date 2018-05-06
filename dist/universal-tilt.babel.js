@@ -81,6 +81,7 @@ var UniversalTilt = function () {
       } else {
         if (this.settings['position-base'] === 'element') this.base = this.element;else if (this.settings['position-base'] === 'window') this.base = window;
 
+        // mouseenter event
         this.base.addEventListener('mouseenter', function (event) {
           return _this.onMouseEnter(event);
         });
@@ -265,14 +266,14 @@ var UniversalTilt = function () {
   }, {
     key: 'shine',
     value: function shine() {
-      var SHINE_OUTER = document.createElement('div');
-      SHINE_OUTER.classList.add('shine');
+      var shineOuter = document.createElement('div');
+      shineOuter.classList.add('shine');
 
-      var SHINE_INNER = document.createElement('div');
-      SHINE_INNER.classList.add('shine-inner');
+      var shineInner = document.createElement('div');
+      shineInner.classList.add('shine-inner');
 
-      SHINE_OUTER.appendChild(SHINE_INNER);
-      this.element.appendChild(SHINE_OUTER);
+      shineOuter.appendChild(shineInner);
+      this.element.appendChild(shineOuter);
 
       this.shineWrapper = this.element.querySelector('.shine');
       this.shineElement = this.element.querySelector('.shine-inner');
@@ -323,7 +324,7 @@ var UniversalTilt = function () {
       var defaults = {
         'position-base': 'element', // element or window
         reset: true, // enable/disable element position reset after mouseout
-        mobile: true, // enable/disable tilt effect on mobile devices
+        mobile: true, // enable/disable tilt effect on mobile devices with gyroscope (tilt effect on touch is always enabled)
 
         shine: false, // add/remove shine effect on mouseover
         'shine-opacity': 0, // shine opacity (0-1) (shine value must be true)
@@ -336,7 +337,7 @@ var UniversalTilt = function () {
         reverse: false, // reverse tilt effect directory
 
         speed: 300, // transition speed
-        easing: 'cubic-bezier(.03,.98,.52,.99)', // transition easing
+        easing: 'cubic-bezier(.03, .98, .52, .99)', // transition easing
 
         onMouseEnter: null, // call function on mouse enter
         onMouseMove: null, // call function on mouse move
