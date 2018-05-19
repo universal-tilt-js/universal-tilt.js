@@ -39,7 +39,7 @@ Next use library with:
 ```js
 const tilts = document.querySelectorAll('.tilt');
 const liveTilt = new UniversalTilt(tilts, {
-   // options...
+  // options...
 });
 ```
 
@@ -64,7 +64,7 @@ const jQuery = require('jquery');
 *and call plugin on element*
 ```js
 $('.tilt').universalTilt({
-   // options...
+  // options...
 });
 ```
 
