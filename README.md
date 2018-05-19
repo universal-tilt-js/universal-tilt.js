@@ -25,7 +25,7 @@ yarn add universal-tilt.js // yarn
 
 ```
 const UniversalTilt = require('universal-tilt.js'); // CommonJS
-import UniversalTilt form 'universal-tilt.js'; // ES6
+import UniversalTilt from 'universal-tilt.js'; // ES6
 ```
 
 <br>
