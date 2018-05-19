@@ -3,7 +3,7 @@
 [![NPM version](http://img.shields.io/npm/v/universal-tilt.js.svg?style=flat-square)](https://www.npmjs.com/package/universal-tilt.js)
 [![NPM downloads](http://img.shields.io/npm/dm/universal-tilt.js.svg?style=flat-square)](https://www.npmjs.com/package/universal-tilt.js)
 
-JavaScript & jQuery elements movement plugin based on:
+JavaScript & jQuery elements movement library based on:
 
 **[Tilt.js](https://gijsroge.github.io/tilt.js/)** by **[Gijs Rogé](https://twitter.com/GijsRoge)** and **[vanilla-tilt.js](https://micku7zu.github.io/vanilla-tilt.js/index.html)** by **[Șandor Sergiu](https://github.com/micku7zu)**
 
@@ -30,7 +30,7 @@ $ yarn add universal-tilt.js // yarn
 **If you added library via package manager use CommonJS/ES6 import:**
 ```js
 const UniversalTilt = require('universal-tilt.js'); // CommonJS
-import UniversalTilt form 'universal-tilt.js'; // ES6
+import UniversalTilt from 'universal-tilt.js'; // ES6
 ```
 
 Next use library with:

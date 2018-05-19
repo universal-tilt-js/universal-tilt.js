@@ -27,6 +27,6 @@
     "gulp-babel": "^7.0.1",
     "gulp-rename": "^1.2.3",
     "gulp-sass": "^4.0.1",
-    "gulp-uglify-es": "^1.0.1"
+    "gulp-uglify-es": "^1.0.4"
   }
 }
