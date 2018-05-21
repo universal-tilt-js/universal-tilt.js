@@ -44,6 +44,3 @@
 #### New Feature
 - Position Base option
 - mobile support (devices with gyroscope)
-
-[unreleased]: https://github.com/JB1905/universal-tilt.js/compare/master...1.1
-[v1.0.x]: https://github.com/jb1905/universal-tilt.js/compare/v1.0.0...master
