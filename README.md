@@ -9,10 +9,10 @@ JavaScript & jQuery elements movement library based on:
 
 **universal-tilt.js** contains additional functions for **mobile devices (having a gyroscope)**, new **Position Base option** and more!
 
-### Demo
+## Demo
 **[See plugin in action](https://jb1905.github.io/universal-tilt.js/)**
 
-### How to Install
+## How to Install
 At the beginning connect the library with Your project:
 
 **&bull; using script tag in HTML:**
@@ -26,7 +26,7 @@ $ npm install universal-tilt.js // npm
 $ yarn add universal-tilt.js // yarn
 ```
 
-### Getting Started
+## Getting Started
 **If you added library via package manager use CommonJS/ES6 import:**
 ```js
 const UniversalTilt = require('universal-tilt.js'); // CommonJS
@@ -75,7 +75,7 @@ To use it, add `data-tilt` to html element e.g:
 <div data-tilt></div>
 ```
 
-### Options
+## Options
 Name | Type | Default | Description | Available options
 -|-|-|-|-
 **position-base** | string | `element` | The surface from which the location of the mouse is captured | `element` or `window`
@@ -99,8 +99,8 @@ Name | Type | Default | Description | Available options
 <sup>1</sup> *shine value must be true*<br>
 <sup>2</sup> *mobile value must be true*
 
-### Event
+## Event
 `tiltChange` event will output the x & y of tilting
 
-### License
+## License
 This project is licensed under the MIT License © 2018-present Jakub Biesiada
