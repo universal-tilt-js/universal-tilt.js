@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   padding: 0;
   margin: 0; }
@@ -15,17 +16,26 @@ body {
 
 h3 {
   font-weight: 500;
-  margin: 0;
-  font-size: 36px; }
+  margin: 14px 0;
+  font-size: 25px; }
 
 code {
-  font-size: 18px; }
+  font-size: 15px; }
+
+.idea {
+  font-size: 34px; }
+
+.light {
+  font-weight: 200; }
+
+.heavy {
+  font-weight: 500; }
 
 .example {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  min-height: 480px;
+  min-height: 440px;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
@@ -33,31 +43,23 @@ code {
   -ms-flex-align: center;
   align-items: center; }
 
-.outer {
-  width: 50%; }
-
-.wrap,
-.desc,
-.example {
+header,
+section {
   max-width: 1200px;
   width: calc(100% - 60px);
   position: relative;
   margin: 20px auto; }
 
-.description,
-.container {
-  width: 50%;
-  position: relative; }
-
 header {
-  width: 50%; }
+  min-height: 400px; }
 
-header,
+section {
+  margin-bottom: 20px; }
+
 .container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 400px;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
@@ -65,25 +67,15 @@ header,
   -ms-flex-align: center;
   align-items: center; }
 
-.wrap,
-.inner {
-  -webkit-box-align: end;
-  -ms-flex-align: end;
-  align-items: flex-end;
+header,
+.split {
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex; }
-
-.wrap .container {
-  width: 50%;
-  height: 300px; }
-
-.content h3 {
-  font-weight: 500;
-  font-size: 40px; }
-
-.description h3 {
-  margin: 0; }
 
 .tilt h1 {
   font-size: 40px; }
@@ -93,21 +85,26 @@ header,
   color: #fff; }
 
 p {
-  font-size: 22px; }
+  margin: 12px 0;
+  font-size: 18px; }
 
 a {
   outline: none;
   text-decoration: none; }
 
-.wrap h1,
-.wrap h2 {
+pre {
+  margin-top: 15px !important;
+  margin-bottom: 24px !important; }
+
+header h1,
+header h2 {
   font-weight: 400;
   -webkit-transform: translateZ(50px);
   transform: translateZ(50px);
   text-align: center; }
 
 .tilt span {
-  font-weight: lighter;
+  font-weight: 100;
   display: block; }
 
 .tilt h1 span {
@@ -115,6 +112,25 @@ a {
 
 .tilt h2 span {
   font-size: 14px; }
+
+.content {
+  margin-bottom: 34px; }
+
+.secondary {
+  width: 50%; }
+
+header h3 {
+  margin-bottom: 40px; }
+
+.primary {
+  display: flex;
+  justify-content: center;
+  width: 50%; }
+
+.split > div {
+  width: 50%;
+  display: flex;
+  justify-content: center; }
 
 .tilt {
   width: 320px;
@@ -130,28 +146,26 @@ a {
   -ms-flex-align: center;
   align-items: center; }
 
-.wrap .container .tilt h2 {
+header .tilt h2 {
   font-size: 28px; }
 
-.wrap .container .tilt {
+.secondary .tilt {
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
   width: 200px;
   height: 200px; }
 
-.wrap .tilt:first-child {
+.primary .tilt {
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   background: #ff0084;
   background: linear-gradient(45deg, #3c3aad 0%, #f7c340 100%); }
 
-.wrap .container:first-child .tilt {
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
+.split > div:first-child .tilt {
   background: #ff0084;
   background: linear-gradient(150deg, #5a00ff 0%, #ff1ff7 100%); }
 
-.wrap .container:nth-child(2) .tilt {
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
+.split > div:last-child .tilt {
   background: #ff0084;
   background: linear-gradient(135deg, #347cf7 0%, #f6290c 100%); }
 
@@ -168,140 +182,102 @@ a {
 
 .output {
   list-style: none;
-  height: 300px;
+  height: 200px;
   overflow: scroll; }
 
-.example:first-child .tilt {
+.example h3 {
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent; }
+
+.example:first-child .tilt,
+.example:first-child h3 {
   background: #a90329;
   background: linear-gradient(135deg, #a90329 0%, #eb8415 100%); }
 
-.example:first-child .description h3 {
-  background: #a90329;
-  background: linear-gradient(135deg, #a90329 0%, #eb8415 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; }
-
-.example:nth-child(2) .tilt {
+.example:nth-child(2) .tilt,
+.example:nth-child(2) h3 {
   background: #b7deed;
   background: linear-gradient(135deg, #b7deed 0%, #6321de 100%); }
 
-.example:nth-child(2) .description h3 {
-  background: #b7deed;
-  background: linear-gradient(135deg, #b7deed 0%, #6321de 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; }
-
 .example:nth-child(3) .tilt {
   -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
+  transform-style: preserve-3d; }
+
+.example:nth-child(3) .tilt,
+.example:nth-child(3) h3 {
   background: #ebceb7;
   background: linear-gradient(45deg, #ebceb7 0%, #de21de 100%); }
 
-.example:nth-child(3) .description h3 {
-  background: #ebceb7;
-  background: linear-gradient(45deg, #ebceb7 0%, #de21de 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; }
-
-.example:nth-child(4) .tilt {
+.example:nth-child(4) .tilt,
+.example:nth-child(4) h3 {
   background: #1dde5d;
   background: linear-gradient(45deg, #1dde5d 0%, #1f3b08 100%); }
 
-.example:nth-child(4) .description h3 {
-  background: #1dde5d;
-  background: linear-gradient(45deg, #1dde5d 0%, #1f3b08 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; }
-
-.example:nth-child(5) .tilt {
+.example:nth-child(5) .tilt,
+.example:nth-child(5) h3 {
   background: #c5cf76;
   background: linear-gradient(45deg, #c5cf76 0%, #49a5bf 100%); }
 
-.example:nth-child(5) .description h3 {
-  background: #c5cf76;
-  background: linear-gradient(45deg, #c5cf76 0%, #49a5bf 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; }
-
-.example:nth-child(6) .tilt {
+.example:nth-child(6) .tilt,
+.example:nth-child(6) h3 {
   background: #ccc;
   background: linear-gradient(45deg, #ccc 0%, #333 100%); }
 
-.example:nth-child(6) .description h3 {
-  background: #ccc;
-  background: linear-gradient(45deg, #ccc 0%, #333 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; }
-
-.example:nth-child(7) .tilt {
+.example:nth-child(7) .tilt,
+.example:nth-child(7) h3 {
   background: #f3e2c7;
   background: linear-gradient(45deg, #f3e2c7 0%, #b68d4c 100%); }
 
-.example:nth-child(7) .description h3 {
-  background: #f3e2c7;
-  background: linear-gradient(45deg, #f3e2c7 0%, #b68d4c 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; }
-
-.example:nth-child(8) .tilt {
+.example:nth-child(8) .tilt,
+.example:nth-child(8) h3 {
   background: #cb60b3;
   background: linear-gradient(135deg, #cb60b3 0%, #a80077 100%); }
 
-.example:nth-child(8) .description h3 {
-  background: #cb60b3;
-  background: linear-gradient(135deg, #cb60b3 0%, #a80077 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; }
-
-.example:nth-child(9) .tilt {
+.example:nth-child(9) .tilt,
+.example:nth-child(9) h3 {
   background: #f1e767;
   background: linear-gradient(45deg, #f1e767 0%, #feb645 100%); }
 
-.example:nth-child(9) .description h3 {
-  background: #f1e767;
-  background: linear-gradient(45deg, #f1e767 0%, #feb645 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; }
-
-.example:nth-child(10) .tilt {
+.example:nth-child(10) .tilt,
+.example:nth-child(10) h3 {
   background: #696bff;
   background: linear-gradient(338deg, #696bff 0%, #8cffe6 100%); }
 
-.example:nth-child(10) .description h3 {
-  background: #696bff;
-  background: linear-gradient(338deg, #696bff 0%, #8cffe6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; }
-
 @media screen and (max-width: 1040px) {
-  .inner {
+  .split {
     display: block; }
-  .wrap {
+  .primary,
+  .secondary .split > div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center; }
   header {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
+  .primary {
     width: 60%; }
-  .outer {
+  .secondary {
     width: 40%; }
-  .outer h3 {
+  header h3 {
     margin: 0 auto;
     width: 230px; }
-  .outer .container {
+  .secondary .split > div {
     width: 100%;
-    height: 280px; }
-  .example .container {
-    width: 60%; }
-  .example .description {
-    width: 40%; } }
+    height: 280px; } }
 
 @media screen and (max-width: 840px) {
-  .example .container,
-  .example .description {
+  .example > div {
     width: 100%; }
-  header .tilt:first-child {
-    width: 340px;
-    height: 340px; }
+  header .primary .tilt {
+    width: 320px;
+    height: 320px; }
   .tilt {
     width: 240px;
     height: 240px; }
@@ -309,35 +285,41 @@ a {
     display: block; } }
 
 @media screen and (max-width: 740px) {
-  .wrap {
-    display: block; }
   header {
+    display: block; }
+  .secondary .split > div {
+    width: 50%; }
+  .primary,
+  .secondary {
     width: 100%; }
-  .outer {
-    width: 100%; }
-  .outer h3 {
+  header h3 {
     text-align: center; }
-  .inner {
+  .split {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex; } }
 
 @media screen and (max-width: 560px) {
-  .inner {
-    display: block; } }
+  .secondary .split > div {
+    width: 100%;
+    height: 240px; } }
 
 @media screen and (max-width: 460px) {
-  header .tilt:first-child {
+  .primary .tilt:first-child {
     width: 240px;
     height: 240px; }
-  h3 {
-    font-size: 26px !important; }
-  header {
-    height: 320px; }
-  header h1 {
-    font-size: 30px !important; } }
+  header,
+  section {
+    max-width: 1200px;
+    width: calc(100% - 40px); }
+  .idea {
+    font-size: 26px; }
+  .primary {
+    height: 300px; }
+  .tilt h1 {
+    font-size: 30px; } }
 
-/* PrismJS 1.13.0
+/* PrismJS 1.14.0
 http://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clike+javascript */
 /**
  * okaidia theme for JavaScript, CSS and HTML

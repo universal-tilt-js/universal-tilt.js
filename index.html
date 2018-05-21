@@ -5,31 +5,31 @@
     <meta name="viewport" content="width=device-width initial-scale=1.0"/>
     <meta name="description" content="JavaScript & jQuery parallax tilt effect">
     <meta name="keywords" content="tilt,universal-tilt,JavaScript,jQuery,plugin,es6">
-    <title>universal-tilt.js</title>
+    <title>universal-tilt.js | JavaScript & jQuery elements movement library</title>
     <link rel="stylesheet" type="text/css" href="./demo/css/style.css">
   </head>
 
   <body>
-    <div class="wrap">
-      <header>
+    <header>
+      <div class="primary">
         <a href="https://github.com/JB1905/universal-tilt.js" class="tilt" data-shadow="true" data-shine="true" data-max="12" data-perspective="500" data-scale="1.08" data-shine-opacity="0.5">
           <h1>universal-tilt.js
           <span>See on GitHub</span></h1>
         </a>
-      </header>
+      </div>
 
-      <div class="outer">
-        <h3>Based on:</h3>
+      <div class="secondary">
+        <h3 class="idea">Based on:</h3>
 
-        <div class="inner">
-          <div class="container">
+        <div class="split">
+          <div>
             <a href="https://gijsroge.github.io/tilt.js/" class="tilt" data-shadow="true" data-shine="true" data-max="15" data-perspective="500" data-scale="1.1" data-shine-opacity="0.5">
               <h2>tilt.js
               <span>by Gijs Rogé</span></h2>
             </a>
           </div>
 
-          <div class="container">
+          <div>
             <a href="https://micku7zu.github.io/vanilla-tilt.js/index.html" class="tilt" data-shadow="true" data-shine="true" data-max="15" data-perspective="500" data-scale="1.1" data-shine-opacity="0.5">
               <h2>vanilla-tilt.js
               <span>by Șandor Sergiu</span></h2>
@@ -37,58 +37,62 @@
           </div>
         </div>
       </div>
-    </div>
+    </header>
 
-    <div class="desc">
-      <h3>Usage</h3>
-      <p>At the beginning connect the library with Your project:</p>
-      <p>&bull; using script tag in HTML:</p>
-      <pre class="language-html"><code>&#60;script src="/directory/to/library/folder/universal-tilt.js"&#62;&#60;/script&#62;</code></pre>
-      <p>&bull; or via command line and CommonJS/ES6 import:</p>
-      <pre class="language-javascript"><code>npm install universal-tilt.js // npm<br>
-yarn add universal-tilt.js // yarn</code></pre>
-      <pre class="language-javascript"><code>const UniversalTilt = require('universal-tilt.js'); // CommonJS<br>
+    <section>
+      <div>
+        <div class="content">
+          <h3>How to Install</h3>
+          <p class="light">At the beginning connect the library with Your project:</p>
+          <p class="heavy">• using script tag in HTML:</p>
+          <pre class="language-html"><code>&#60;script src="/directory/to/library/folder/universal-tilt.js"&#62;&#60;/script&#62;</code></pre>
+
+          <p class="heavy">• or via command line:</p>
+          <pre class="language-javascript"><code>$ npm install universal-tilt.js
+$ yarn add universal-tilt.js</code></pre>
+        </div>
+
+        <div class="content">
+          <h3>Getting Started</h3>
+          <pre class="language-javascript"><code>const UniversalTilt = require('universal-tilt.js'); // CommonJS
 import UniversalTilt from 'universal-tilt.js'; // ES6</code></pre>
-      <br>
 
-      <p>Next use library with:</p>
-      <p>&bull; Vanilla JavaScript e.g:</p>
-      <pre class="language-javascript"><code>const tilts = document.querySelectorAll('.tilt');<br>
+          <p class="light">Next use library with:</p>
+          <p class="heavy">• Vanilla JavaScript e.g:</p>
+          <pre class="language-javascript"><code>const tilts = document.querySelectorAll('.tilt');<br>
 const liveTilt = new UniversalTilt(tilts, {
   // options...
 });</code></pre>
-      <p>&bull; or jQuery e.g:</p>
 
-      <i>Connect jQuery in HTML</i>
-      <pre class="language-html"><code>&#60;script src="https://code.jquery.com/jquery-3.3.1.min.js"&#62;&#60;/script&#62;</code></pre>
+          <p class="heavy">• or jQuery e.g:</p>
+          <i class="light">Connect jQuery in HTML</i>
+          <pre class="language-html"><code>&#60;script src="https://code.jquery.com/jquery-3.3.1.min.js"&#62;&#60;/script&#62;</code></pre>
 
-      <br>
-      <i>or include via command line and CommonJS</i>
-      <pre class="language-javascript"><code>npm install jquery // npm<br>
-yarn add jquery // yarn<br>
-bower install jquery // bower</code></pre>
+          <i class="light">or include via command line and CommonJS</i>
+          <pre class="language-javascript"><code>$ npm install jquery // npm
+$ yarn add jquery // yarn
+$ bower install jquery // bower</code></pre>
 
-      <pre class="language-javascript"><code>const jQuery = require('jquery');</code></pre>
-      <br>
-      <i>and call plugin on element</i>
-      <pre class="language-javascript"><code>$('.tilt').universalTilt({
+          <pre class="language-javascript"><code>const jQuery = require('jquery');</code></pre>
+          <i class="light">and call plugin on element</i>
+          <pre class="language-javascript"><code>$('.tilt').universalTilt({
   // options...
 });</code></pre>
 
-      <br>
-      <p>&bull; Plugin supports autoinit</p>
+          <p class="heavy">• Plugin supports autoinit</p>
 
-      <p>To use it, add <code>data-tilt</code> to html element e.g:</p>
-      <pre class="language-html"><code>&#60;div data-tilt&#62;&#60;/div&#62;</code></pre>
-    </div>
-
-    <div>
-      <div class="example">
-        <div class="container">
-          <div class="tilt" data-shine="true" data-shine-save="true" data-shine-opacity="0.5"></div>
+          <p class="light">To use it, add <code>data-tilt</code> to html element e.g:</p>
+          <pre class="language-html"><code>&#60;div data-tilt&#62;&#60;/div&#62;</code></pre>
         </div>
-        <div class="description">
-          <div class="content">
+      </div>
+
+      <div>
+        <div class="example">
+          <div class="primary">
+            <div class="tilt" data-shine="true" data-shine-save="true" data-shine-opacity="0.5"></div>
+          </div>
+
+          <div class="secondary">
             <h3>Shine</h3>
             <p>To add shine to single element use following code in div tag:</p>
             <pre class="language-html"><code>data-shine="true"
@@ -100,14 +104,13 @@ data-shine-save="true"</code></pre>
 'shine-save': true</code></pre>
           </div>
         </div>
-      </div>
 
-      <div class="example">
-        <div class="container">
-          <div class="tilt" data-scale="1.3"></div>
-        </div>
-        <div class="description">
-          <div class="content">
+        <div class="example">
+          <div class="primary">
+            <div class="tilt" data-scale="1.2"></div>
+          </div>
+
+          <div class="secondary">
             <h3>Scale</h3>
             <p>To add scale to single element use following code in div tag:</p>
             <pre class="language-html"><code>data-scale="1.3"</code></pre>
@@ -115,29 +118,27 @@ data-shine-save="true"</code></pre>
             <pre class="language-javascript"><code>scale: 1.3</code></pre>
           </div>
         </div>
-      </div>
 
-      <div class="example">
-        <div class="container">
-          <div class="tilt">
-            <div class="tilt-inner"></div>
+        <div class="example">
+          <div class="primary">
+            <div class="tilt">
+              <div class="tilt-inner"></div>
+            </div>
           </div>
-        </div>
-        <div class="description">
-          <div class="content">
+
+          <div class="secondary">
             <h3>Parallax</h3>
             <p>Add to your tilt element:<pre class="language-css"><code>transform-style: preserve-3d</code></pre></p>
             <p>Add to your inner elements that have to pop out:<pre class="language-css"><code>transform: translateZ(20px)</code></pre></p>
           </div>
         </div>
-      </div>
 
-      <div class="example">
-        <div class="container">
-          <div class="tilt" data-max="40" data-perspective="500" data-disabled="x"></div>
-        </div>
-        <div class="description">
-          <div class="content">
+        <div class="example">
+          <div class="primary">
+            <div class="tilt" data-max="40" data-perspective="500" data-disabled="x"></div>
+          </div>
+
+          <div class="secondary">
             <h3>Disable X</h3>
             <p>To disable X-axis of single element use:</p>
             <pre class="language-html"><code>data-disabled="x"</code></pre>
@@ -145,14 +146,12 @@ data-shine-save="true"</code></pre>
             <pre class="language-javascript"><code>disabled: 'X'</code></pre>
           </div>
         </div>
-      </div>
 
-      <div class="example">
-        <div class="container">
-          <div class="tilt" data-max="40" data-perspective="500" data-disabled="y"></div>
-        </div>
-        <div class="description">
-          <div class="content">
+        <div class="example">
+          <div class="primary">
+            <div class="tilt" data-max="40" data-perspective="500" data-disabled="y"></div>
+          </div>
+          <div class="secondary">
             <h3>Disable Y</h3>
             <p>To disable Y-axis of single element use:</p>
             <pre class="language-html"><code>data-disabled="y"</code></pre>
@@ -160,14 +159,12 @@ data-shine-save="true"</code></pre>
             <pre class="language-javascript"><code>disabled: 'Y'</code></pre>
           </div>
         </div>
-      </div>
 
-      <div class="example">
-        <div class="container">
-          <div class="tilt" data-reset="false"></div>
-        </div>
-        <div class="description">
-          <div class="content">
+        <div class="example">
+          <div class="primary">
+            <div class="tilt" data-reset="false"></div>
+          </div>
+          <div class="secondary">
             <h3>Reset (Only desktop)</h3>
             <p>To disable reset single element move on mouse out use:</p>
             <pre class="language-html"><code>data-reset="false"</code></pre>
@@ -175,14 +172,12 @@ data-shine-save="true"</code></pre>
             <pre class="language-javascript"><code>reset: false</code></pre>
           </div>
         </div>
-      </div>
 
-      <div class="example">
-        <div class="container">
-          <div class="tilt" data-reverse="true"></div>
-        </div>
-        <div class="description">
-          <div class="content">
+        <div class="example">
+          <div class="primary">
+            <div class="tilt" data-reverse="true"></div>
+          </div>
+          <div class="secondary">
             <h3>Reverse</h3>
             <p>To reverse single element move use:</p>
             <pre class="language-html"><code>data-reverse="true"</code></pre>
@@ -190,14 +185,12 @@ data-shine-save="true"</code></pre>
             <pre class="language-javascript"><code>reverse: true</code></pre>
           </div>
         </div>
-      </div>
 
-      <div class="example">
-        <div class="container">
-          <div class="tilt" data-position-base="window"></div>
-        </div>
-        <div class="description">
-          <div class="content">
+        <div class="example">
+          <div class="primary">
+            <div class="tilt" data-position-base="window"></div>
+          </div>
+          <div class="secondary">
             <h3>Position base (Only desktop)</h3>
             <p>To set base on cursor position over tilt element or window for single element use:</p>
             <pre class="language-html"><code>data-position-base="window"</code></pre>
@@ -205,14 +198,12 @@ data-shine-save="true"</code></pre>
             <pre class="language-javascript"><code>'position-base': 'window'</code></pre>
           </div>
         </div>
-      </div>
 
-      <div class="example">
-        <div class="container">
-          <div class="tilt" data-mobile="false"></div>
-        </div>
-        <div class="description">
-          <div class="content">
+        <div class="example">
+          <div class="primary">
+            <div class="tilt" data-mobile="false"></div>
+          </div>
+          <div class="secondary">
             <h3>Disable tilt on mobile</h3>
             <p>To disable tilt on mobile devices with gyroscope for single element use:</p>
             <pre class="language-html"><code>data-mobile="false"</code></pre>
@@ -220,21 +211,19 @@ data-shine-save="true"</code></pre>
             <pre class="language-javascript"><code>'mobile': false</code></pre>
           </div>
         </div>
-      </div>
 
-      <div class="example">
-        <div class="container">
-          <div class="tilt" id="event"></div>
-        </div>
-        <div class="description">
-          <div class="content">
+        <div class="example">
+          <div class="primary">
+            <div class="tilt" id="event"></div>
+          </div>
+          <div class="secondary">
             <h3>Change event</h3>
             <p>Change event will output the x & y of tilting</p>
             <pre class="language-javascript"><ul class="output"></ul></pre>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
     <script src="./dist/universal-tilt.babel.min.js"></script>
     <script src="./demo/js/prism.js"></script>

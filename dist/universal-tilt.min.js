@@ -1,6 +1,6 @@
 /*!
 * universal-tilt.js v1.0.6
-* Created 2018 by Jakub Biesiada
+* Copyright © 2018-present Jakub Biesiada. All rights reserved.
 * Original idea: https://github.com/gijsroge/tilt.js
 * MIT License
 */
