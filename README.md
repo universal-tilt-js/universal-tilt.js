@@ -22,8 +22,8 @@ At the beginning connect the library with Your project:
 
 **&bull; or via command line:**
 ```sh
-$ npm install universal-tilt.js // npm
-$ yarn add universal-tilt.js // yarn
+$ npm install universal-tilt.js
+$ yarn add universal-tilt.js
 ```
 
 ## Getting Started
@@ -52,9 +52,9 @@ const liveTilt = new UniversalTilt(tilts, {
 
 *or include via command line and CommonJS*
 ```sh
-$ npm install jquery // npm
-$ yarn add jquery // yarn
-$ bower install jquery // bower
+$ npm install jquery
+$ yarn add jquery
+$ bower install jquery
 ```
 
 ```js

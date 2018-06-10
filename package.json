@@ -25,6 +25,7 @@
     "babel-register": "^6.26.0",
     "gulp": "^4.0.0",
     "gulp-babel": "^7.0.1",
+    "gulp-clean-css": "^3.9.4",
     "gulp-rename": "^1.2.3",
     "gulp-sass": "^4.0.1",
     "gulp-uglify-es": "^1.0.4"
