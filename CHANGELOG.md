@@ -1,40 +1,46 @@
-# Changelog
+# universal-tilt.js Changelog
 
-## 1.0.6
-* improved events performance
+## 1.0.6 (2018-04-30)
+#### Improvement
+- improved events performance
 
-## 1.0.4/1.0.5
-* fixed bug with jQuery and Node.js compatibility
+## 1.0.5 (2018-04-14)
+#### Bug Fix
+- fixed bug with jQuery and Node.js compatibility
 
-## ~~1.0.2~~ 1.0.3
-* fixed bug with autoinit in Node.js
+## 1.0.3 (2018-04-14)
+#### Bug Fix
+- fixed bug with autoinit in Node.js
 
-## 1.0.1
-* added mobile option (enable or disable tilt effect on mobile devices)
+## 1.0.1 (2018-04-14)
+#### New Feature
+- added mobile option (enable or disable tilt effect on mobile devices)
 
-## 1.0.0
-* fixed bug with callbacks (when value is `null`)
+## 1.0.0 (2018-04-01)
+#### Bug Fix
+- fixed bug with callbacks (when value is `null`)
 
-## 1.0.0 beta 3
-* **removed shadow options**
-* **added callbacks on mouse enter, move, leave and device move**
+## 1.0.0 beta 3 (2018-03-29)
+#### New Feature
+- added callbacks on mouse enter, move, leave and device move
 
-## 1.0.0 beta 2
-* updated README.md
-* updated demo page
-* code cleaned up
-* **added autoinit**
-* fixed performance of shine effect
-* fixed performance on mobile devices
+## 1.0.0 beta 2 (2018-03-15)
+#### New Feature
+- added autoinit
 
-## 1.0.0 beta 1
-* npm added
-* AMD & CommonJS support added
-* **redesigned demo page (new header view, dark theme)**
-* updated README.md
-* added shadow-color option (**Removed in 1.0.0 beta 3**)
-* **renamed jQuery plugin from UniversalTilt() to universalTilt()**
+#### Bug Fix
+- fixed performance of shine effect
+- fixed performance on mobile devices
 
-## 0.5.0
-* **Position Base option**
-* **mobile support (devices with gyroscope)**
+## 1.0.0 beta 1 (2018-03-03)
+#### New Feature
+- npm added
+- AMD & CommonJS support added
+
+#### Change
+- renamed jQuery plugin from UniversalTilt() to universalTilt()
+
+## 0.5.0 (2018-01-26)
+#### New Feature
+- Position Base option
+- mobile support (devices with gyroscope)

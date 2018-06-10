@@ -1,6 +1,9 @@
-# universal-tilt.js
+# [universal-tilt.js](https://github.com/jb1905/universal-tilt.js)
 
-JavaScript & jQuery elements movement plugin based on:
+[![NPM version](http://img.shields.io/npm/v/universal-tilt.js.svg?style=flat-square)](https://www.npmjs.com/package/universal-tilt.js)
+[![NPM downloads](http://img.shields.io/npm/dm/universal-tilt.js.svg?style=flat-square)](https://www.npmjs.com/package/universal-tilt.js)
+
+JavaScript & jQuery elements movement library based on:
 
 **[Tilt.js](https://gijsroge.github.io/tilt.js/)** by **[Gijs Rogé](https://twitter.com/GijsRoge)** and **[vanilla-tilt.js](https://micku7zu.github.io/vanilla-tilt.js/index.html)** by **[Șandor Sergiu](https://github.com/micku7zu)**
 
@@ -9,64 +12,66 @@ JavaScript & jQuery elements movement plugin based on:
 ## Demo
 **[See plugin in action](https://jb1905.github.io/universal-tilt.js/)**
 
-## Usage
+## How to Install
 At the beginning connect the library with Your project:
 
 **&bull; using script tag in HTML:**
-```
+```html
 <script src="/directory/to/library/folder/universal-tilt.js"></script>
 ```
 
-**&bull; or via command line and CommonJS/ES6 import:**
-```
-npm install universal-tilt.js // npm
-yarn add universal-tilt.js // yarn
+**&bull; or via command line:**
+```sh
+$ npm install universal-tilt.js
+$ yarn add universal-tilt.js
 ```
 
-```
+## Getting Started
+**If you added library via package manager use CommonJS/ES6 import:**
+```js
 const UniversalTilt = require('universal-tilt.js'); // CommonJS
 import UniversalTilt from 'universal-tilt.js'; // ES6
 ```
 
-<br>
 Next use library with:
 
 **&bull; Vanilla JavaScript e.g:**
-```
+```js
 const tilts = document.querySelectorAll('.tilt');
 const liveTilt = new UniversalTilt(tilts, {
-   // options...
+  // options...
 });
 ```
 
 **&bull; or jQuery e.g:**
 
 *Connect jQuery in HTML*
-```
+```html
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 ```
 
 *or include via command line and CommonJS*
-```
-npm install jquery // npm
-yarn add jquery // yarn
-bower install jquery // bower
+```sh
+$ npm install jquery
+$ yarn add jquery
+$ bower install jquery
 ```
 
-```
+```js
 const jQuery = require('jquery');
 ```
 
 *and call plugin on element*
-```
+```js
 $('.tilt').universalTilt({
-   // options...
+  // options...
 });
 ```
 
 **&bull; Plugin supports autoinit**
+
 To use it, add `data-tilt` to html element e.g:
-```
+```html
 <div data-tilt></div>
 ```
 
@@ -98,4 +103,4 @@ Name | Type | Default | Description | Available options
 `tiltChange` event will output the x & y of tilting
 
 ## License
-This project is licensed under the MIT License
+This project is licensed under the MIT License © 2018-present Jakub Biesiada
