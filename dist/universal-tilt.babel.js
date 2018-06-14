@@ -5,7 +5,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /*!
-* universal-tilt.js v1.0.6
+* universal-tilt.js v1.1.0 beta 0
 * Copyright © 2018-present Jakub Biesiada. All rights reserved.
 * Original idea: https://github.com/gijsroge/tilt.js
 * MIT License
@@ -82,39 +82,37 @@ var UniversalTilt = function () {
         if (this.settings['position-base'] === 'element') this.base = this.element;else if (this.settings['position-base'] === 'window') this.base = window;
 
         // mouseenter event
-        this.base.addEventListener('mouseenter', function (event) {
-          return _this.onMouseEnter(event);
+        this.base.addEventListener('mouseenter', function (e) {
+          return _this.onMouseEnter(e);
         });
 
         // mousemove event
-        this.base.addEventListener('mousemove', function (event) {
-          return _this.onMouseMove(event);
+        this.base.addEventListener('mousemove', function (e) {
+          return _this.onMouseMove(e);
         });
 
         // mouseleave event
-        this.base.addEventListener('mouseleave', function (event) {
-          return _this.onMouseLeave(event);
+        this.base.addEventListener('mouseleave', function (e) {
+          return _this.onMouseLeave(e);
         });
       }
     }
   }, {
     key: 'onMouseEnter',
-    value: function onMouseEnter(event) {
+    value: function onMouseEnter(e) {
       this.updateElementPosition();
-
       this.transitions();
 
       if (typeof this.settings.onMouseEnter === 'function') this.settings.onMouseEnter(this.element);
     }
   }, {
     key: 'onMouseMove',
-    value: function onMouseMove(event) {
+    value: function onMouseMove(e) {
       var _this2 = this;
 
       // set event
-      this.event = event;
+      this.event = e;
       this.updateElementPosition();
-
       window.requestAnimationFrame(function () {
         return _this2.update();
       });
@@ -123,7 +121,7 @@ var UniversalTilt = function () {
     }
   }, {
     key: 'onMouseLeave',
-    value: function onMouseLeave(event) {
+    value: function onMouseLeave(e) {
       var _this3 = this;
 
       this.transitions();
@@ -136,7 +134,7 @@ var UniversalTilt = function () {
     }
   }, {
     key: 'onDeviceMove',
-    value: function onDeviceMove(event) {
+    value: function onDeviceMove(e) {
       this.update();
       this.updateElementPosition();
 
@@ -170,7 +168,6 @@ var UniversalTilt = function () {
 
       // if is mobile device
       if (this.isMobile()) {
-
         // revert axis (device rotation)
         x = event.accelerationIncludingGravity.x / 4;
         y = event.accelerationIncludingGravity.y / 4;
@@ -206,7 +203,6 @@ var UniversalTilt = function () {
 
         // if desktop
       } else {
-
         // find element vertical & horizontal center
         if (this.settings['position-base'] === 'element') {
           x = (this.event.clientX - this.left) / this.width;
@@ -249,7 +245,7 @@ var UniversalTilt = function () {
     value: function update() {
       var values = this.getValues();
 
-      this.element.style.transform = 'perspective(' + this.settings.perspective + 'px)\n     rotateX(' + (this.settings.disabled && this.settings.disabled.toUpperCase() === 'X' ? 0 : values.tiltY) + 'deg)\n     rotateY(' + (this.settings.disabled && this.settings.disabled.toUpperCase() === 'Y' ? 0 : values.tiltX) + 'deg)\n     scale3d(' + this.settings.scale + ', ' + this.settings.scale + ', ' + this.settings.scale + ')';
+      this.element.style.transform = 'perspective(' + this.settings.perspective + 'px)\n      rotateX(' + (this.settings.disabled && this.settings.disabled.toUpperCase() === 'X' ? 0 : values.tiltY) + 'deg)\n      rotateY(' + (this.settings.disabled && this.settings.disabled.toUpperCase() === 'Y' ? 0 : values.tiltX) + 'deg)\n      scale3d(' + this.settings.scale + ', ' + this.settings.scale + ', ' + this.settings.scale + ')';
 
       if (this.settings.shine) {
         Object.assign(this.shineElement.style, {
@@ -312,9 +308,7 @@ var UniversalTilt = function () {
 
       this.timeout = setTimeout(function () {
         _this4.element.style.transition = '';
-        if (_this4.settings.shine) {
-          _this4.shineElement.style.transition = '';
-        }
+        if (_this4.settings.shine) _this4.shineElement.style.transition = '';
       }, this.settings.speed);
     }
   }, {
