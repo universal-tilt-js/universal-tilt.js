@@ -37,8 +37,8 @@ Next use library with:
 
 **&bull; Vanilla JavaScript e.g:**
 ```js
-const tilts = document.querySelectorAll('.tilt');
-const liveTilt = new UniversalTilt(tilts, {
+const elems = document.querySelectorAll('.tilt');
+const universalTilt = new UniversalTilt(elems, {
   // options...
 });
 ```
@@ -70,9 +70,9 @@ $('.tilt').universalTilt({
 
 **&bull; Plugin supports autoinit**
 
-To use it, add `data-tilt` to html element e.g:
+To use it, add `tilt` to html element e.g:
 ```html
-<div data-tilt></div>
+<div tilt></div>
 ```
 
 ## Options

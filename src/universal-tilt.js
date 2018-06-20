@@ -57,7 +57,7 @@ class UniversalTilt {
     // if is mobile device
     if (this.isMobile()) {
       // devicemotion event
-      window.addEventListener('devicemotion', event => this.onDeviceMove(event));
+      window.addEventListener('devicemotion', e => this.onDeviceMove(e));
 
     // if is desktop
     } else {
@@ -315,7 +315,7 @@ class UniversalTilt {
         const attribute = this.element.getAttribute(`data-${setting}`);
         try {
           custom[setting] = JSON.parse(attribute);
-        } catch (e) {
+        } catch (err) {
           custom[setting] = attribute;
         }
       } else {
@@ -329,7 +329,7 @@ class UniversalTilt {
 
 // autoinit
 if (typeof document !== 'undefined') {
-  new UniversalTilt(document.querySelectorAll('[data-tilt]'));
+  new UniversalTilt(document.querySelectorAll('[tilt]'));
 }
 
 // jQuery

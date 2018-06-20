@@ -73,8 +73,8 @@ var UniversalTilt = function () {
       // if is mobile device
       if (this.isMobile()) {
         // devicemotion event
-        window.addEventListener('devicemotion', function (event) {
-          return _this.onDeviceMove(event);
+        window.addEventListener('devicemotion', function (e) {
+          return _this.onDeviceMove(e);
         });
 
         // if is desktop
@@ -349,7 +349,7 @@ var UniversalTilt = function () {
           var attribute = this.element.getAttribute('data-' + setting);
           try {
             custom[setting] = JSON.parse(attribute);
-          } catch (e) {
+          } catch (err) {
             custom[setting] = attribute;
           }
         } else {
@@ -368,7 +368,7 @@ var UniversalTilt = function () {
 
 
 if (typeof document !== 'undefined') {
-  new UniversalTilt(document.querySelectorAll('[data-tilt]'));
+  new UniversalTilt(document.querySelectorAll('[tilt]'));
 }
 
 // jQuery
