@@ -155,8 +155,8 @@ var UniversalTilt = function () {
       // reset shine effect
       if (this.settings.shine && !this.settings['shine-save']) {
         Object.assign(this.shineElement.style, {
-          'transform': 'rotate(180deg) translate3d(-50%, -50%, 0)',
-          'opacity': '0'
+          transform: 'rotate(180deg) translate3d(-50%, -50%, 0)',
+          opacity: '0'
         });
       }
     }
@@ -249,14 +249,14 @@ var UniversalTilt = function () {
 
       if (this.settings.shine) {
         Object.assign(this.shineElement.style, {
-          'transform': 'rotate(' + values.angle + 'deg) translate3d(-50%, -50%, 0)',
-          'opacity': '' + this.settings['shine-opacity']
+          transform: 'rotate(' + values.angle + 'deg) translate3d(-50%, -50%, 0)',
+          opacity: '' + this.settings['shine-opacity']
         });
       }
 
       // tilt position change event
       this.element.dispatchEvent(new CustomEvent('tiltChange', {
-        'detail': values
+        detail: values
       }));
     }
   }, {
@@ -275,26 +275,26 @@ var UniversalTilt = function () {
       this.shineElement = this.element.querySelector('.shine-inner');
 
       Object.assign(this.shineWrapper.style, {
-        'position': 'absolute',
-        'top': '0',
-        'left': '0',
-        'height': '100%',
-        'width': '100%',
-        'overflow': 'hidden'
+        position: 'absolute',
+        top: '0',
+        left: '0',
+        height: '100%',
+        width: '100%',
+        overflow: 'hidden'
       });
 
       // set style for shine element
       Object.assign(this.shineElement.style, {
-        'position': 'absolute',
-        'top': '50%',
-        'left': '50%',
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
         'pointer-events': 'none',
         'background-image': 'linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%)',
-        'width': this.element.offsetWidth * 2 + 'px',
-        'height': this.element.offsetWidth * 2 + 'px',
-        'transform': 'rotate(180deg) translate3d(-50%, -50%, 0)',
+        width: this.element.offsetWidth * 2 + 'px',
+        height: this.element.offsetWidth * 2 + 'px',
+        transform: 'rotate(180deg) translate3d(-50%, -50%, 0)',
         'transform-origin': '0% 0%',
-        'opacity': '0'
+        opacity: '0'
       });
     }
   }, {
