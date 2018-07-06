@@ -7,10 +7,14 @@ JavaScript & jQuery elements movement library based on:
 
 **[Tilt.js](https://gijsroge.github.io/tilt.js/)** by **[Gijs Rogé](https://twitter.com/GijsRoge)** and **[vanilla-tilt.js](https://micku7zu.github.io/vanilla-tilt.js/index.html)** by **[Șandor Sergiu](https://github.com/micku7zu)**
 
-**universal-tilt.js** contains additional functions for **mobile devices (having a gyroscope)**, new **Position Base option** and more!
+**universal-tilt.js** contains additional functions for **mobile devices with gyroscope**, new **Position Base option** and more!
 
 ## Demo
 **[See plugin in action](https://jb1905.github.io/universal-tilt.js/)**
+
+## React.js plugin
+If You use React.js, install component, with the implementation of the universal-tilt.js library!
+**[More here](https://github.com/JB1905/react-universal-tilt/)**
 
 ## How to Install
 At the beginning connect the library with Your project:
@@ -70,9 +74,9 @@ $('.tilt').universalTilt({
 
 **&bull; Plugin supports autoinit**
 
-To use it, add `tilt` to html element e.g:
+To use it, add `data-tilt` to html element e.g:
 ```html
-<div tilt></div>
+<div data-tilt></div>
 ```
 
 ## Options

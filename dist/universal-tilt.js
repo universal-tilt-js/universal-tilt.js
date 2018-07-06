@@ -1,5 +1,5 @@
 /*!
-* universal-tilt.js v1.1.0 beta 0
+* universal-tilt.js v1.0.7
 * Copyright © 2018-present Jakub Biesiada. All rights reserved.
 * Original idea: https://github.com/gijsroge/tilt.js
 * MIT License
@@ -355,7 +355,7 @@ class UniversalTilt {
 
 // autoinit
 if (typeof document !== 'undefined') {
-  new UniversalTilt(document.querySelectorAll('[tilt]'));
+  new UniversalTilt(document.querySelectorAll('[data-tilt]'));
 }
 
 // jQuery

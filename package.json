@@ -1,17 +1,20 @@
 {
   "name": "universal-tilt.js",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "JavaScript & jQuery parallax tilt effect library",
   "main": "dist/universal-tilt.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JB1905/universal-tilt.js.git"
+    "url": "https://github.com/JB1905/universal-tilt.js.git"
   },
   "keywords": [
     "JavaScript",
     "ES6",
     "jQuery",
-    "tilt"
+    "tilt",
+    "parallax",
+    "move",
+    "gyroscope"
   ],
   "author": "Jakub Biesiada",
   "license": "MIT",

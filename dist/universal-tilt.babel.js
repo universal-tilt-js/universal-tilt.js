@@ -5,7 +5,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /*!
-* universal-tilt.js v1.1.0 beta 0
+* universal-tilt.js v1.0.7
 * Copyright © 2018-present Jakub Biesiada. All rights reserved.
 * Original idea: https://github.com/gijsroge/tilt.js
 * MIT License
@@ -368,7 +368,7 @@ var UniversalTilt = function () {
 
 
 if (typeof document !== 'undefined') {
-  new UniversalTilt(document.querySelectorAll('[tilt]'));
+  new UniversalTilt(document.querySelectorAll('[data-tilt]'));
 }
 
 // jQuery

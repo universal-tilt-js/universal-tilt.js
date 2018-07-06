@@ -1,5 +1,12 @@
 # universal-tilt.js Changelog
 
+## 1.0.7 (2018-07-06)
+#### Documentation
+- updated README.md
+
+#### More
+- Internal updates & improvements
+
 ## 1.0.6 (2018-04-30)
 #### Improvement
 - improved events performance
