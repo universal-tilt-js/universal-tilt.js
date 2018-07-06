@@ -59,8 +59,8 @@ import UniversalTilt from 'universal-tilt.js'; // ES6</code></pre>
 
           <p class="light">Next use library with:</p>
           <p class="heavy">• Vanilla JavaScript e.g:</p>
-          <pre class="language-javascript"><code>const tilts = document.querySelectorAll('.tilt');<br>
-const liveTilt = new UniversalTilt(tilts, {
+          <pre class="language-javascript"><code>const elems = document.querySelectorAll('.tilt');<br>
+const universalTilt = new UniversalTilt(elems, {
   // options...
 });</code></pre>
 
@@ -81,8 +81,8 @@ $ bower install jquery</code></pre>
 
           <p class="heavy">• Plugin supports autoinit</p>
 
-          <p class="light">To use it, add <code>data-tilt</code> to html element e.g:</p>
-          <pre class="language-html"><code>&#60;div data-tilt&#62;&#60;/div&#62;</code></pre>
+          <p class="light">To use it, add <code>tilt</code> to html element e.g:</p>
+          <pre class="language-html"><code>&#60;div tilt&#62;&#60;/div&#62;</code></pre>
         </div>
       </div>
 
@@ -225,7 +225,7 @@ data-shine-save="true"&#62;</code></pre>
       </div>
     </section>
 
-    <script src="./dist/universal-tilt.babel.min.js"></script>
+    <script src="./src/universal-tilt.js"></script>
     <script src="./demo/js/prism.js"></script>
     <script src="./demo/js/script.js"></script>
   </body>
