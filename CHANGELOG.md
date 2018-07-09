@@ -1,5 +1,14 @@
 # universal-tilt.js Changelog
 
+## 1.1.0 beta 1 (Soon)
+#### Repository changes
+- switch from Gulp to Webpack
+- update Babel to v7
+- add unit tests
+- only 2 dist version
+- change main file from universal-tilt.js to universal-tilt.min.js
+- move demo to gh-pages branch
+
 ## 1.0.7 (2018-07-06)
 #### Documentation
 - updated README.md
