@@ -30,10 +30,10 @@
   },
   "homepage": "https://github.com/JB1905/universal-tilt.js#readme",
   "devDependencies": {
-    "@babel/cli": "^7.0.0-beta.52",
-    "@babel/core": "^7.0.0-beta.52",
-    "@babel/preset-env": "^7.0.0-beta.52",
-    "@babel/register": "^7.0.0-beta.52",
+    "@babel/cli": "^7.0.0-beta.53",
+    "@babel/core": "^7.0.0-beta.53",
+    "@babel/preset-env": "^7.0.0-beta.53",
+    "@babel/register": "^7.0.0-beta.53",
     "babel-loader": "^8.0.0-beta.4",
     "babel-plugin-add-module-exports": "^0.2.1",
     "chai": "^4.1.2",
@@ -42,7 +42,7 @@
     "jsdom-global": "3.0.2",
     "mocha": "^5.2.0",
     "mock-local-storage": "^1.0.5",
-    "webpack": "^4.15.1",
+    "webpack": "^4.16.0",
     "webpack-cli": "^3.0.8",
     "yargs": "^12.0.1"
   }
