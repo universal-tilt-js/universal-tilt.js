@@ -1,15 +1,3 @@
-logs
-*.log
-pids
-*.pid
-*.seed
-lib-cov
-coverage
-.grunt
-.lock-wscript
-build/Release
 node_modules
-.idea
-.vscode
 .DS_Store
 demo
