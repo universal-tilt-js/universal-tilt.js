@@ -1,13 +1,24 @@
 # universal-tilt.js Changelog
 
-## 1.1.0 beta 1 (Soon)
+## Next
+#### Breaking changes
+- improve plugin init process
+- mobile option improve (OS and platform)
+
+#### New Feature
+- destroy method
+- new callbacks: `onInit`, `onDestroy`
+
+#### Internal
+- code clean up
+
+## 1.1.0 (2018-07-16)
 #### Repository changes
-- switch from Gulp to Webpack
-- update Babel to v7
-- add unit tests
+- switched from Gulp to Webpack
+- updated Babel to v7
 - only 2 dist version
-- change main file from universal-tilt.js to universal-tilt.min.js
-- move demo to gh-pages branch
+- changed main file from universal-tilt.js to universal-tilt.min.js
+- moved demo to gh-pages branch
 
 ## 1.0.7 (2018-07-06)
 #### Documentation
