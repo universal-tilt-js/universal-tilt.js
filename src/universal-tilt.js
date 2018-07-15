@@ -1,11 +1,4 @@
-/*!
-* universal-tilt.js v1.0.7
-* Copyright © 2018-present Jakub Biesiada. All rights reserved.
-* Original idea: https://github.com/gijsroge/tilt.js
-* MIT License
-*/
-
-class UniversalTilt {
+export default class UniversalTilt {
   constructor(elements, settings = {}) {
     // call init function when tilt elements length > 0
     if (elements.length > 0) {
@@ -46,8 +39,8 @@ class UniversalTilt {
 
   init(elements, settings) {
     // split parallax elements
-    for (let i = 0; i < elements.length; i++) {
-      this.universalTilt = new UniversalTilt(elements[i], settings);
+    for (const element of elements) {
+      this.universalTilt = new UniversalTilt(element, settings);
     }
   }
 
@@ -253,9 +246,9 @@ class UniversalTilt {
 
   shine() {
     const shineOuter = document.createElement('div');
-    shineOuter.classList.add('shine');
-
     const shineInner = document.createElement('div');
+
+    shineOuter.classList.add('shine');
     shineInner.classList.add('shine-inner');
 
     shineOuter.appendChild(shineInner);
@@ -334,7 +327,7 @@ class UniversalTilt {
     const custom = {};
 
     // apply settings and get values from data-*
-    for (let setting in defaults) {
+    for (const setting in defaults) {
       if (setting in settings) {
         custom[setting] = settings[setting];
       } else if (this.element.getAttribute(`data-${setting}`)) {
@@ -354,9 +347,8 @@ class UniversalTilt {
 }
 
 // autoinit
-if (typeof document !== 'undefined') {
-  new UniversalTilt(document.querySelectorAll('[data-tilt]'));
-}
+if (typeof document !== 'undefined')
+  new UniversalTilt(document.querySelectorAll('[tilt]'));
 
 // jQuery
 let scope;
@@ -370,18 +362,4 @@ if (scope && scope.jQuery) {
   $.fn.universalTilt = function(options) {
     new UniversalTilt(this, options);
   };
-}
-
-// AMD
-if (typeof define === 'function' && define.amd) {
-  define('UniversalTilt', [], function() {
-    return UniversalTilt;
-  });
-
-  // CommonJS
-} else if (typeof exports !== 'undefined' && !exports.nodeType) {
-  if (typeof module !== 'undefined' && !module.nodeType && module.exports) {
-    exports = module.exports = UniversalTilt;
-  }
-  exports.default = UniversalTilt;
 }

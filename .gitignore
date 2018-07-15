@@ -1,5 +1,3 @@
-*.DS_Store
 node_modules
-demo/sass
-package-lock.json
-gulpfile.js
+.DS_Store
+demo

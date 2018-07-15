@@ -1,8 +1,5 @@
-index.html
 demo
+test
 src
 .babelrc
-gulpfile.js
-.gitignore
-.gitattributes
-package-lock.json
+webpack.config.js

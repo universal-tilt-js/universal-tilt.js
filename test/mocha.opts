@@ -1,0 +1,1 @@
+-r mock-local-storage -r jsdom-global/register
