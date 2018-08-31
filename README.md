@@ -104,7 +104,7 @@ Name | Type | Default | Description | Available options
 <sup>2</sup> *mobile value must be true*
 
 ## Event
-`tiltChange` event will output the x & y of tilting
+`tiltChange` event will output the x, y & angle of tilting
 
 ## License
 This project is licensed under the MIT License © 2018-present Jakub Biesiada

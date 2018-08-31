@@ -1,7 +1,7 @@
 # universal-tilt.js Changelog
 
 ## Next
-#### Breaking changes
+#### Breaking Changes
 - improve plugin init process
 - mobile option improve (OS and platform)
 
@@ -12,8 +12,15 @@
 #### Internal
 - code clean up
 
+## Unreleased
+#### Dependencies
+- updated Babel to `^7.0.0` stable
+- updated babel-plugin-add-module-exports to `^0.3.3`
+- updated Webpack to `^4.17.1`
+- updated babel-loader to `^8.0.0` stable
+
 ## 1.1.0 (2018-07-16)
-#### Repository changes
+#### Repository Changes
 - switched from Gulp to Webpack
 - updated Babel to v7
 - only 2 dist version
