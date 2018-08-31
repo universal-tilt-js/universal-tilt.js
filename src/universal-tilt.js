@@ -39,17 +39,20 @@ export default class UniversalTilt {
       window.DeviceMotionEvent &&
       'ontouchstart' in document.documentElement &&
       this.settings.mobile
-    )
+    ) {
       return true;
+    }
   }
 
   addEventListeners() {
     if (this.isMobile()) {
       window.addEventListener('devicemotion', e => this.onDeviceMove(e));
     } else {
-      if (this.settings['position-base'] === 'element')
+      if (this.settings['position-base'] === 'element') {
         this.base = this.element;
-      else if (this.settings['position-base'] === 'window') this.base = window;
+      } else if (this.settings['position-base'] === 'window') {
+        this.base = window;
+      }
 
       this.base.addEventListener('mouseenter', e => this.onMouseEnter(e));
       this.base.addEventListener('mousemove', e => this.onMouseMove(e));
@@ -102,10 +105,11 @@ export default class UniversalTilt {
       pageY: this.top + this.height / 2
     };
 
-    if (this.settings.reset)
+    if (this.settings.reset) {
       this.element.style.transform = `perspective(${
         this.settings.perspective
       }px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+    }
 
     if (this.settings.shine && !this.settings['shine-save']) {
       Object.assign(this.shineElement.style, {
