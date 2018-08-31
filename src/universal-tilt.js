@@ -9,12 +9,6 @@ export default class UniversalTilt {
       this.element = elements;
     }
 
-    this.width = null;
-    this.height = null;
-    this.left = null;
-    this.top = null;
-    this.timeout = null;
-
     this.settings = this.settings(settings);
 
     this.reverse = this.settings.reverse ? -1 : 1;
@@ -324,12 +318,10 @@ export default class UniversalTilt {
   }
 }
 
-// autoinit
 if (typeof document !== 'undefined') {
   new UniversalTilt(document.querySelectorAll('[tilt]'));
 }
 
-// jQuery
 let scope;
 
 if (typeof window !== 'undefined') scope = window;
