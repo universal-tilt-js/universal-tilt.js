@@ -12,8 +12,8 @@ JavaScript & jQuery elements movement library based on:
 ## Demo
 **[See plugin in action](https://jb1905.github.io/universal-tilt.js/)**
 
-## React.js plugin
-If You use React.js, install component, with the implementation of the universal-tilt.js library!
+## React plugin
+If You use React, install component, with the implementation of the universal-tilt.js library!
 **[More here](https://github.com/JB1905/react-universal-tilt/)**
 
 ## How to Install
