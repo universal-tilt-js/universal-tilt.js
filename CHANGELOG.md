@@ -12,7 +12,10 @@
 #### Internal
 - code clean up
 
-## Unreleased
+#### Bug Fix
+- fix animation performance
+
+## 1.1.1 beta 1 (2018-09-02)
 #### Dependencies
 - updated Babel to `^7.0.0` stable
 - updated babel-plugin-add-module-exports to `^0.3.3`

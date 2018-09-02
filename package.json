@@ -1,6 +1,6 @@
 {
   "name": "universal-tilt.js",
-  "version": "1.1.0",
+  "version": "1.1.1-beta.1",
   "description": "Parallax tilt effect library",
   "main": "lib/universal-tilt.min.js",
   "scripts": {
@@ -33,7 +33,7 @@
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/register": "^7.0.0",
-    "babel-loader": "^8.0.0",
+    "babel-loader": "^8.0.1",
     "babel-plugin-add-module-exports": "^0.3.3",
     "chai": "^4.1.2",
     "gh-pages": "^1.2.0",
