@@ -1,6 +1,6 @@
 # universal-tilt.js Changelog
 
-## Next
+## Next v2
 #### Breaking Changes
 - improve plugin init process
 - mobile option improve (OS and platform)
@@ -9,11 +9,13 @@
 - destroy method
 - new callbacks: `onInit`, `onDestroy`
 
-#### Internal
-- code clean up
-
+## Next v1
 #### Bug Fix
 - fix animation performance
+
+## 1.1.1 (2018-09-04)
+#### Documentation
+- updated README.md
 
 ## 1.1.1 beta 1 (2018-09-02)
 #### Dependencies

@@ -17,21 +17,19 @@ If You use React, install component, with the implementation of the universal-ti
 **[More here](https://github.com/JB1905/react-universal-tilt/)**
 
 ## How to Install
-At the beginning connect the library with Your project:
-
-**&bull; using script tag in HTML:**
-```html
-<script src="/directory/to/library/folder/universal-tilt.js"></script>
-```
-
-**&bull; or via command line:**
+At the beginning install the library in Your project via npm or Yarn:
 ```sh
 $ npm install universal-tilt.js
 $ yarn add universal-tilt.js
 ```
 
 ## Getting Started
-**If you added library via package manager use CommonJS/ES6 import:**
+**Connect using script tag in HTML:**
+```html
+<script src="/directory/to/library/folder/universal-tilt.js"></script>
+```
+
+**Or CommonJS/ES6 import:**
 ```js
 const UniversalTilt = require('universal-tilt.js'); // CommonJS
 import UniversalTilt from 'universal-tilt.js'; // ES6
