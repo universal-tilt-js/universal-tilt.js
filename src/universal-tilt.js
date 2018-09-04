@@ -1,44 +1,28 @@
 export default class UniversalTilt {
   constructor(elements, settings = {}) {
-    // call init function when tilt elements length > 0
     if (elements.length > 0) {
       this.init(elements, settings);
       return;
-
-      // return when no tilt elements
     } else if (elements.length === 0) {
       return;
-
-      // set tilt element
     } else {
       this.element = elements;
     }
 
-    this.width = null;
-    this.height = null;
-    this.left = null;
-    this.top = null;
-    this.timeout = null;
-
-    // set settings
     this.settings = this.settings(settings);
 
-    // reverse change
     this.reverse = this.settings.reverse ? -1 : 1;
 
-    // call shine function if shine setting enabled
     if (this.settings.shine) this.shine();
 
     this.element.style.transform = `perspective(${
       this.settings.perspective
     }px)`;
 
-    // call events function
     this.addEventListeners();
   }
 
   init(elements, settings) {
-    // split parallax elements
     for (const element of elements) {
       this.universalTilt = new UniversalTilt(element, settings);
     }
@@ -49,29 +33,23 @@ export default class UniversalTilt {
       window.DeviceMotionEvent &&
       'ontouchstart' in document.documentElement &&
       this.settings.mobile
-    )
+    ) {
       return true;
+    }
   }
 
   addEventListeners() {
-    // if is mobile device
     if (this.isMobile()) {
-      // devicemotion event
       window.addEventListener('devicemotion', e => this.onDeviceMove(e));
-
-      // if is desktop
     } else {
-      if (this.settings['position-base'] === 'element')
+      if (this.settings['position-base'] === 'element') {
         this.base = this.element;
-      else if (this.settings['position-base'] === 'window') this.base = window;
+      } else if (this.settings['position-base'] === 'window') {
+        this.base = window;
+      }
 
-      // mouseenter event
       this.base.addEventListener('mouseenter', e => this.onMouseEnter(e));
-
-      // mousemove event
       this.base.addEventListener('mousemove', e => this.onMouseMove(e));
-
-      // mouseleave event
       this.base.addEventListener('mouseleave', e => this.onMouseLeave(e));
     }
   }
@@ -80,18 +58,19 @@ export default class UniversalTilt {
     this.updateElementPosition();
     this.transitions();
 
-    if (typeof this.settings.onMouseEnter === 'function')
+    if (typeof this.settings.onMouseEnter === 'function') {
       this.settings.onMouseEnter(this.element);
+    }
   }
 
   onMouseMove(e) {
-    // set event
     this.event = e;
     this.updateElementPosition();
     window.requestAnimationFrame(() => this.update());
 
-    if (typeof this.settings.onMouseMove === 'function')
+    if (typeof this.settings.onMouseMove === 'function') {
       this.settings.onMouseMove(this.element);
+    }
   }
 
   onMouseLeave(e) {
@@ -99,18 +78,19 @@ export default class UniversalTilt {
 
     window.requestAnimationFrame(() => this.reset());
 
-    if (typeof this.settings.onMouseLeave === 'function')
+    if (typeof this.settings.onMouseLeave === 'function') {
       this.settings.onMouseLeave(this.element);
+    }
   }
 
   onDeviceMove(e) {
     this.update();
     this.updateElementPosition();
-
     this.transitions();
 
-    if (typeof this.settings.onDeviceMove === 'function')
+    if (typeof this.settings.onDeviceMove === 'function') {
       this.settings.onDeviceMove(this.element);
+    }
   }
 
   reset() {
@@ -119,12 +99,12 @@ export default class UniversalTilt {
       pageY: this.top + this.height / 2
     };
 
-    if (this.settings.reset)
+    if (this.settings.reset) {
       this.element.style.transform = `perspective(${
         this.settings.perspective
       }px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+    }
 
-    // reset shine effect
     if (this.settings.shine && !this.settings['shine-save']) {
       Object.assign(this.shineElement.style, {
         transform: 'rotate(180deg) translate3d(-50%, -50%, 0)',
@@ -134,17 +114,13 @@ export default class UniversalTilt {
   }
 
   getValues() {
-    let x;
-    let y;
+    let x, y;
 
-    // if is mobile device
     if (this.isMobile()) {
-      // revert axis (device rotation)
       x = event.accelerationIncludingGravity.x / 4;
       y = event.accelerationIncludingGravity.y / 4;
 
-      let stateX;
-      let stateY;
+      let stateX, stateY;
 
       if (window.orientation === 90) {
         stateX = (1.0 + x) / 2;
@@ -171,8 +147,6 @@ export default class UniversalTilt {
         y = stateY;
         x = stateX;
       }
-
-      // if desktop
     } else {
       // find element vertical & horizontal center
       if (this.settings['position-base'] === 'element') {
@@ -191,14 +165,12 @@ export default class UniversalTilt {
     const tiltX = (this.settings.max / 2 - x * this.settings.max).toFixed(2);
     const tiltY = (y * this.settings.max - this.settings.max / 2).toFixed(2);
 
-    // set angle
     const angle = Math.atan2(x - 0.5, 0.5 - y) * (180 / Math.PI);
 
-    // return values
     return {
       tiltX: this.reverse * tiltX,
       tiltY: this.reverse * tiltY,
-      angle: angle
+      angle
     };
   }
 
@@ -236,7 +208,6 @@ export default class UniversalTilt {
       });
     }
 
-    // tilt position change event
     this.element.dispatchEvent(
       new CustomEvent('tiltChange', {
         detail: values
@@ -284,13 +255,16 @@ export default class UniversalTilt {
 
   transitions() {
     clearTimeout(this.timeout);
+
     this.element.style.transition = `all ${this.settings.speed}ms ${
       this.settings.easing
     }`;
-    if (this.settings.shine)
+
+    if (this.settings.shine) {
       this.shineElement.style.transition = `opacity ${this.settings.speed}ms ${
         this.settings.easing
       }`;
+    }
 
     this.timeout = setTimeout(() => {
       this.element.style.transition = '';
@@ -299,7 +273,6 @@ export default class UniversalTilt {
   }
 
   settings(settings) {
-    // defaults
     const defaults = {
       'position-base': 'element', // element or window
       reset: true, // enable/disable element position reset after mouseout
@@ -326,7 +299,6 @@ export default class UniversalTilt {
 
     const custom = {};
 
-    // apply settings and get values from data-*
     for (const setting in defaults) {
       if (setting in settings) {
         custom[setting] = settings[setting];
@@ -346,11 +318,10 @@ export default class UniversalTilt {
   }
 }
 
-// autoinit
-if (typeof document !== 'undefined')
+if (typeof document !== 'undefined') {
   new UniversalTilt(document.querySelectorAll('[tilt]'));
+}
 
-// jQuery
 let scope;
 
 if (typeof window !== 'undefined') scope = window;
