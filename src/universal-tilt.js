@@ -291,10 +291,10 @@ export default class UniversalTilt {
       speed: 300, // transition speed
       easing: 'cubic-bezier(.03, .98, .52, .99)', // transition easing
 
-      onMouseEnter: null, // call function on mouse enter
-      onMouseMove: null, // call function on mouse move
-      onMouseLeave: null, // call function on mouse leave
-      onDeviceMove: null // call function on device move
+      onMouseEnter: null, // callback on mouse enter
+      onMouseMove: null, // callback on mouse move
+      onMouseLeave: null, // callback on mouse leave
+      onDeviceMove: null // callback on device move
     };
 
     const custom = {};
