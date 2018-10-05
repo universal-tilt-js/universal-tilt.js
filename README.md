@@ -93,10 +93,10 @@ Name | Type | Default | Description | Available options
 **reverse** | boolean | `false` | Reverse tilt effect directory | `true` *(reverse directory)*, `false` *(standard directory)*
 **speed** | number | `300` | Transition speed (ms) | e.g: `500`
 **easing** | string | `cubic-bezier(.03, .98, .52, .99)` | Transition easing | `cubic-bezier`/`ease`/`linear`/etc.
-**onMouseEnter** | function | `null` | Call function on mouse enter | `el => { // code }`
-**onMouseMove** | function | `null` | Call function on mouse move | `el => { // code }`
-**onMouseLeave** | function | `null` | Call function on mouse leave | `el => { // code }`
-**onDeviceMove**<sup>2</sup> | function | `null` | Call function on device move | `el => { // code }`
+**onMouseEnter** | function | `null` | Callback on mouse enter | `el => { // code }`
+**onMouseMove** | function | `null` | Callback on mouse move | `el => { // code }`
+**onMouseLeave** | function | `null` | Callback on mouse leave | `el => { // code }`
+**onDeviceMove**<sup>2</sup> | function | `null` | Callback on device move | `el => { // code }`
 
 <sup>1</sup> *shine value must be true*<br>
 <sup>2</sup> *mobile value must be true*
