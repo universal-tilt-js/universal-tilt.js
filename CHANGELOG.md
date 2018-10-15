@@ -13,6 +13,13 @@
 #### Bug Fix
 - fix animation performance
 
+## 1.2.0 beta 1 (2018-10-15)
+#### Breaking Changes
+- replaced `mobile` option with `exclude` (disable tilt effect on selected user agents)
+
+#### Bug Fix
+- fixed bug with tilt effect on devices with gyroscope
+
 ## 1.1.1 (2018-09-04)
 #### Documentation
 - updated README.md

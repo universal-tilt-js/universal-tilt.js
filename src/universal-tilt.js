@@ -31,26 +31,27 @@ export default class UniversalTilt {
   isMobile() {
     if (
       window.DeviceMotionEvent &&
-      'ontouchstart' in document.documentElement &&
-      this.settings.mobile
+      'ontouchstart' in document.documentElement
     ) {
       return true;
     }
   }
 
   addEventListeners() {
-    if (this.isMobile()) {
-      window.addEventListener('devicemotion', e => this.onDeviceMove(e));
-    } else {
-      if (this.settings['position-base'] === 'element') {
-        this.base = this.element;
-      } else if (this.settings['position-base'] === 'window') {
-        this.base = window;
-      }
+    if (!navigator.userAgent.match(this.settings.exclude)) {
+      if (this.isMobile()) {
+        window.addEventListener('devicemotion', e => this.onDeviceMove(e));
+      } else {
+        if (this.settings['position-base'] === 'element') {
+          this.base = this.element;
+        } else if (this.settings['position-base'] === 'window') {
+          this.base = window;
+        }
 
-      this.base.addEventListener('mouseenter', e => this.onMouseEnter(e));
-      this.base.addEventListener('mousemove', e => this.onMouseMove(e));
-      this.base.addEventListener('mouseleave', e => this.onMouseLeave(e));
+        this.base.addEventListener('mouseenter', e => this.onMouseEnter(e));
+        this.base.addEventListener('mousemove', e => this.onMouseMove(e));
+        this.base.addEventListener('mouseleave', e => this.onMouseLeave(e));
+      }
     }
   }
 
@@ -84,6 +85,8 @@ export default class UniversalTilt {
   }
 
   onDeviceMove(e) {
+    this.event = e;
+
     this.update();
     this.updateElementPosition();
     this.transitions();
@@ -117,8 +120,8 @@ export default class UniversalTilt {
     let x, y;
 
     if (this.isMobile()) {
-      x = event.accelerationIncludingGravity.x / 4;
-      y = event.accelerationIncludingGravity.y / 4;
+      x = this.event.accelerationIncludingGravity.x / 4;
+      y = this.event.accelerationIncludingGravity.y / 4;
 
       let stateX, stateY;
 
@@ -276,7 +279,7 @@ export default class UniversalTilt {
     const defaults = {
       'position-base': 'element', // element or window
       reset: true, // enable/disable element position reset after mouseout
-      mobile: true, // enable/disable tilt effect on mobile devices with gyroscope (tilt effect on touch is always enabled)
+      exclude: null, // enable/disable tilt effect on selected user agents
 
       shine: false, // add/remove shine effect on mouseover
       'shine-opacity': 0, // shine opacity (0-1) (shine value must be true)
