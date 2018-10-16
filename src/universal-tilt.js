@@ -66,6 +66,7 @@ export default class UniversalTilt {
 
   onMouseMove(e) {
     this.event = e;
+
     this.updateElementPosition();
     window.requestAnimationFrame(() => this.update());
 
@@ -76,7 +77,6 @@ export default class UniversalTilt {
 
   onMouseLeave(e) {
     this.transitions();
-
     window.requestAnimationFrame(() => this.reset());
 
     if (typeof this.settings.onMouseLeave === 'function') {
