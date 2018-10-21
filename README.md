@@ -82,7 +82,7 @@ Name | Type | Default | Description | Available options
 -|-|-|-|-
 **position-base** | string | `element` | The surface from which the location of the mouse is captured | `element` or `window`
 **reset** | boolean | `true` | Enable/disable element position reset after mouseout | `true` *(enable)*, `false` *(disable)*
-**mobile** | boolean | `true` | Enable/disable tilt effect on mobile devices with gyroscope (tilt effect on touch is always enabled) | `true` *(enable)*, `false` *(disable)*
+**exclude** | RegExp | `null` | Disable tilt effect on selected user agents | e.g: <code>/(Mozilla&#124;iPad)/</code>
 **shine** | boolean | `false` | Add/remove shine effect on mouseover | `true` *(add)*, `false` *(remove)*
 **shine-opacity**<sup>1</sup> | number | `0` | Add/remove shine effect on mouseover | values >= `0`  and <= `1`
 **shine-save**<sup>1</sup> | boolean | `false` | Save/reset shine effect on mouseout | `true` *(save)*, `false` *(reset)*

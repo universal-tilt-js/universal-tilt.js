@@ -1,17 +1,23 @@
 # universal-tilt.js Changelog
 
 ## Next v2
-#### Breaking Changes
-- improve plugin init process
-- mobile option improve (OS and platform)
-
 #### New Feature
 - destroy method
 - new callbacks: `onInit`, `onDestroy`
 
+#### Breaking Changes
+- improve plugin init process
+
 ## Next v1
 #### Bug Fix
 - fix animation performance
+
+## 1.2.0 beta 1 / 1.2.0 (2018-10-15)
+#### Breaking Changes
+- replaced `mobile` option with `exclude` (disable tilt effect on selected user agents)
+
+#### Bug Fix
+- fixed bug with tilt effect on devices with gyroscope
 
 ## 1.1.1 (2018-09-04)
 #### Documentation
