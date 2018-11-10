@@ -1,6 +1,6 @@
 {
   "name": "universal-tilt.js",
-  "version": "1.2.0",
+  "version": "1.2.1-beta.0",
   "description": "Parallax tilt effect library",
   "main": "lib/universal-tilt.min.js",
   "scripts": {
@@ -29,19 +29,19 @@
   },
   "homepage": "https://github.com/JB1905/universal-tilt.js#readme",
   "devDependencies": {
-    "@babel/cli": "^7.1.2",
-    "@babel/core": "^7.1.2",
-    "@babel/preset-env": "^7.1.0",
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.5",
+    "@babel/preset-env": "^7.1.5",
     "@babel/register": "^7.0.0",
     "babel-loader": "^8.0.4",
     "babel-plugin-add-module-exports": "^1.0.0",
     "chai": "^4.2.0",
     "gh-pages": "^2.0.1",
-    "jsdom": "12.2.0",
+    "jsdom": "13.0.0",
     "jsdom-global": "^3.0.2",
     "mocha": "^5.2.0",
     "mock-local-storage": "^1.1.7",
-    "webpack": "^4.22.0",
+    "webpack": "^4.25.1",
     "webpack-cli": "^3.1.2"
   }
 }
