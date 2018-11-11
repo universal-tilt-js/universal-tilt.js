@@ -8,24 +8,25 @@ let outputFile, mode, devtool;
 
 if (env === 'build') {
   mode = 'production';
-  outputFile = libraryName + '.min.js';
+  outputFile = `${libraryName}.min.js`;
   devtool = false;
 } else {
   mode = 'development';
-  outputFile = libraryName + '.js';
+  outputFile = `${libraryName}.js`;
   devtool = 'source-map';
 }
 
 const config = {
   mode,
-  entry: __dirname + '/src/index.js',
+  entry: `${__dirname}/src/${libraryName}.js`,
   devtool,
   output: {
-    path: __dirname + '/lib',
+    path: `${__dirname}/lib`,
     filename: outputFile,
     library: 'UniversalTilt',
     libraryTarget: 'umd',
-    umdNamedDefine: true
+    umdNamedDefine: true,
+    globalObject: 'global'
   },
   module: {
     rules: [
