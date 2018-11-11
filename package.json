@@ -1,6 +1,6 @@
 {
   "name": "universal-tilt.js",
-  "version": "1.2.1-beta.0",
+  "version": "1.2.1",
   "description": "Parallax tilt effect library",
   "main": "lib/universal-tilt.min.js",
   "scripts": {
