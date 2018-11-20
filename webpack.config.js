@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const env = require('yargs').argv.env;
 
-let libraryName = 'universal-tilt';
+const libraryName = 'universal-tilt';
 
 let outputFile, mode, devtool;
 
