@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack --env dev && webpack --env build && npm run test",
     "dev": "webpack --progress --colors --watch --env dev",
+    "lint": "eslint ./src --fix",
     "test": "mocha -r @babel/register --colors ./test/*.spec.js",
     "test:watch": "mocha -r @babel/register --colors -w ./test/*.spec.js",
     "deploy": "gh-pages -d demo/build"
@@ -34,14 +35,22 @@
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/preset-env": "^7.1.6",
     "@babel/register": "^7.0.0",
+    "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.4",
     "babel-plugin-add-module-exports": "^1.0.0",
     "chai": "^4.2.0",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-prettier": "^3.0.0",
     "gh-pages": "^2.0.1",
+    "jquery": "^3.3.1",
     "jsdom": "13.0.0",
     "jsdom-global": "^3.0.2",
     "mocha": "^5.2.0",
-    "webpack": "^4.26.0",
+    "prettier": "^1.15.3",
+    "webpack": "^4.26.1",
     "webpack-cli": "^3.1.2"
   }
 }
