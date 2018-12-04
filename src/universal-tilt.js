@@ -1,15 +1,18 @@
 export default class UniversalTilt {
-  constructor(elements, settings = {}) {
-    if (elements.length > 0) {
-      this.init(elements, settings);
-      return;
-    } else if (elements.length === 0) {
-      return;
-    } else {
-      this.element = elements;
-    }
+  constructor(element, settings = {}) {
+    this.width = null;
+    this.height = null;
+    this.left = null;
+    this.top = null;
+    this.timeout = null;
+    this.updateCall = null;
 
-    this.settings = this.settings(settings);
+    this.element = element;
+    this.settings = this.extendSettings(settings);
+
+    if (typeof this.settings.onInit === 'function') {
+      this.settings.onInit(this.element);
+    }
 
     this.reverse = this.settings.reverse ? -1 : 1;
 
@@ -22,25 +25,16 @@ export default class UniversalTilt {
     this.addEventListeners();
   }
 
-  init(elements, settings) {
-    for (const element of elements) {
-      this.universalTilt = new UniversalTilt(element, settings);
-    }
-  }
-
   isMobile() {
-    if (
-      window.DeviceMotionEvent &&
-      'ontouchstart' in document.documentElement
-    ) {
-      return true;
-    }
+    return (
+      window.DeviceMotionEvent && 'ontouchstart' in document.documentElement
+    );
   }
 
   addEventListeners() {
     if (!navigator.userAgent.match(this.settings.exclude)) {
       if (this.isMobile()) {
-        window.addEventListener('devicemotion', e => this.onDeviceMove(e));
+        window.addEventListener('devicemotion', this.onDeviceMove);
       } else {
         if (this.settings['position-base'] === 'element') {
           this.base = this.element;
@@ -48,43 +42,73 @@ export default class UniversalTilt {
           this.base = window;
         }
 
-        this.base.addEventListener('mouseenter', e => this.onMouseEnter(e));
-        this.base.addEventListener('mousemove', e => this.onMouseMove(e));
-        this.base.addEventListener('mouseleave', e => this.onMouseLeave(e));
+        this.base.addEventListener('mouseenter', this.onMouseEnter);
+        this.base.addEventListener('mousemove', this.onMouseMove);
+        this.base.addEventListener('mouseleave', this.onMouseLeave);
       }
     }
   }
 
-  onMouseEnter(e) {
+  removeEventListeners() {
+    window.removeEventListener('devicemotion', this.onDeviceMove);
+    this.base.removeEventListener('mouseenter', this.onMouseEnter);
+    this.base.removeEventListener('mousemove', this.onMouseMove);
+    this.base.removeEventListener('mouseleave', this.onMouseLeave);
+  }
+
+  destroy() {
+    clearTimeout(this.timeout);
+    if (this.updateCall !== null) {
+      cancelAnimationFrame(this.updateCall);
+    }
+
+    if (typeof this.settings.onDestroy === 'function') {
+      this.settings.onDestroy(this.element);
+    }
+
+    this.reset();
+
+    this.removeEventListeners();
+    this.element.universalTilt = null;
+    delete this.element.universalTilt;
+
+    this.element = null;
+  }
+
+  onMouseEnter = () => {
     this.updateElementPosition();
     this.transitions();
 
     if (typeof this.settings.onMouseEnter === 'function') {
       this.settings.onMouseEnter(this.element);
     }
-  }
+  };
 
-  onMouseMove(e) {
+  onMouseMove = e => {
+    if (this.updateCall !== null) {
+      cancelAnimationFrame(this.updateCall);
+    }
+
     this.event = e;
 
     this.updateElementPosition();
-    window.requestAnimationFrame(() => this.update());
+    this.updateCall = window.requestAnimationFrame(() => this.update());
 
     if (typeof this.settings.onMouseMove === 'function') {
       this.settings.onMouseMove(this.element);
     }
-  }
+  };
 
-  onMouseLeave(e) {
+  onMouseLeave = () => {
     this.transitions();
     window.requestAnimationFrame(() => this.reset());
 
     if (typeof this.settings.onMouseLeave === 'function') {
       this.settings.onMouseLeave(this.element);
     }
-  }
+  };
 
-  onDeviceMove(e) {
+  onDeviceMove = e => {
     this.event = e;
 
     this.update();
@@ -94,7 +118,7 @@ export default class UniversalTilt {
     if (typeof this.settings.onDeviceMove === 'function') {
       this.settings.onDeviceMove(this.element);
     }
-  }
+  };
 
   reset() {
     this.event = {
@@ -150,15 +174,12 @@ export default class UniversalTilt {
         y = stateY;
         x = stateX;
       }
-    } else {
-      // find element vertical & horizontal center
-      if (this.settings['position-base'] === 'element') {
-        x = (this.event.clientX - this.left) / this.width;
-        y = (this.event.clientY - this.top) / this.height;
-      } else if (this.settings['position-base'] === 'window') {
-        x = this.event.clientX / window.innerWidth;
-        y = this.event.clientY / window.innerHeight;
-      }
+    } else if (this.settings['position-base'] === 'element') {
+      x = (this.event.clientX - this.left) / this.width;
+      y = (this.event.clientY - this.top) / this.height;
+    } else if (this.settings['position-base'] === 'window') {
+      x = this.event.clientX / window.innerWidth;
+      y = this.event.clientY / window.innerHeight;
     }
 
     // set movement for axis
@@ -216,6 +237,8 @@ export default class UniversalTilt {
         detail: values
       })
     );
+
+    this.updateCall = null;
   }
 
   shine() {
@@ -275,8 +298,8 @@ export default class UniversalTilt {
     }, this.settings.speed);
   }
 
-  settings(settings) {
-    const defaults = {
+  extendSettings(settings) {
+    const defaultSettings = {
       'position-base': 'element', // element or window
       reset: true, // enable/disable element position reset after mouseout
       exclude: null, // enable/disable tilt effect on selected user agents
@@ -294,35 +317,45 @@ export default class UniversalTilt {
       speed: 300, // transition speed
       easing: 'cubic-bezier(.03, .98, .52, .99)', // transition easing
 
+      onInit: null, // callback on plugin init
       onMouseEnter: null, // callback on mouse enter
       onMouseMove: null, // callback on mouse move
       onMouseLeave: null, // callback on mouse leave
-      onDeviceMove: null // callback on device move
+      onDeviceMove: null, // callback on device move
+      onDestroy: null // callback on plugin destroy
     };
 
-    const custom = {};
+    const newSettings = {};
 
-    for (const setting in defaults) {
-      if (setting in settings) {
-        custom[setting] = settings[setting];
-      } else if (this.element.getAttribute(`data-${setting}`)) {
-        const attribute = this.element.getAttribute(`data-${setting}`);
+    Object.keys(defaultSettings).forEach(property => {
+      if (property in settings) {
+        newSettings[property] = settings[property];
+      } else if (this.element.getAttribute(`data-${property}`)) {
+        const attribute = this.element.getAttribute(`data-${property}`);
         try {
-          custom[setting] = JSON.parse(attribute);
+          newSettings[property] = JSON.parse(attribute);
         } catch (err) {
-          custom[setting] = attribute;
+          newSettings[property] = attribute;
         }
       } else {
-        custom[setting] = defaults[setting];
+        newSettings[property] = defaultSettings[property];
       }
-    }
+    });
 
-    return custom;
+    return newSettings;
   }
-}
 
-if (typeof document !== 'undefined') {
-  new UniversalTilt(document.querySelectorAll('[tilt]'));
+  static init(elements, settings) {
+    if (elements instanceof Node) elements = [elements];
+    if (elements instanceof NodeList) elements = [].slice.call(elements);
+    if (!(elements instanceof Array)) return;
+
+    elements.forEach(element => {
+      if (!('universalTilt' in element)) {
+        element.universalTilt = new UniversalTilt(element, settings);
+      }
+    });
+  }
 }
 
 let scope;
@@ -330,10 +363,16 @@ let scope;
 if (typeof window !== 'undefined') scope = window;
 else if (typeof global !== 'undefined') scope = global;
 
+if (typeof document !== 'undefined') {
+  scope.UniversalTilt = UniversalTilt;
+
+  UniversalTilt.init(document.querySelectorAll('[tilt]'));
+}
+
 if (scope && scope.jQuery) {
   const $ = scope.jQuery;
 
-  $.fn.universalTilt = function(options) {
-    new UniversalTilt(this, options);
+  $.fn.universalTilt = (elements, options) => {
+    UniversalTilt.init(elements, options);
   };
 }

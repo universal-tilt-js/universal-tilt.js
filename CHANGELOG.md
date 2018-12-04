@@ -1,16 +1,24 @@
 # universal-tilt.js Changelog
 
-## Next v2
+## 2.0.0 beta 1 (Soon)
 #### New Feature
-- destroy method
-- new callbacks: `onInit`, `onDestroy`
+- added destroy method
+- added new callbacks: `onInit`, `onDestroy`
 
 #### Breaking Changes
-- improve plugin init process
+- improved plugin init process
 
-## Next v1
+#### Internal
+- renamed method `settings()` to `extendSettings()` to avoid conflict with variable `settings`
+
 #### Bug Fix
 - fix animation performance
+
+#### Repository Changes
+- added Travis CI config
+- added Prettier config
+- added ESLint config
+- added tests
 
 ## 1.2.1 (2018-11-11)
 #### Bug Fix
