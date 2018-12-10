@@ -1,6 +1,6 @@
 {
   "name": "universal-tilt.js",
-  "version": "1.2.1",
+  "version": "2.0.0-beta.1",
   "description": "Parallax tilt effect library",
   "main": "lib/universal-tilt.min.js",
   "scripts": {
@@ -39,7 +39,7 @@
     "babel-loader": "^8.0.4",
     "babel-plugin-add-module-exports": "^1.0.0",
     "chai": "^4.2.0",
-    "eslint": "^5.9.0",
+    "eslint": "^5.10.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-import": "^2.14.0",
@@ -50,7 +50,7 @@
     "jsdom-global": "^3.0.2",
     "mocha": "^5.2.0",
     "prettier": "^1.15.3",
-    "webpack": "^4.27.0",
+    "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2"
   }
 }

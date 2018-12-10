@@ -13,11 +13,11 @@ JavaScript & jQuery elements movement library based on:
 **[See plugin in action](https://jb1905.github.io/universal-tilt.js/)**
 
 ## React plugin
-If You use React, install component, with the implementation of the universal-tilt.js library!
+If you use React, install component, with the implementation of the universal-tilt.js library!
 **[More here](https://github.com/JB1905/react-universal-tilt/)**
 
 ## How to Install
-At the beginning install the library in Your project via npm or Yarn:
+At the beginning install the library in your project via npm or Yarn:
 ```sh
 $ npm install universal-tilt.js
 $ yarn add universal-tilt.js
@@ -40,7 +40,14 @@ Next use library with:
 **&bull; Vanilla JavaScript e.g:**
 ```js
 const elems = document.querySelectorAll('.tilt');
-const universalTilt = new UniversalTilt(elems, {
+
+// v1
+const tilt = new UniversalTilt(elems, {
+  // options...
+});
+
+// v2
+const tilt = UniversalTilt.init(elems, {
   // options...
 });
 ```
@@ -75,6 +82,12 @@ $('.tilt').universalTilt({
 To use it, add `data-tilt` to html element e.g:
 ```html
 <div data-tilt></div>
+```
+
+## Methods
+**&bull; Destroy method**
+```js
+elems.universalTilt.destroy();
 ```
 
 ## Options

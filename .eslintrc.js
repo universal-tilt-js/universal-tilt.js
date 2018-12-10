@@ -18,10 +18,7 @@ module.exports = {
       'error',
       { exceptMethods: ['isMobile', 'extendSettings'] }
     ],
-    'no-param-reassign': [
-      'error',
-      { props: true, ignorePropertyModificationsFor: ['elements', 'element'] }
-    ],
+    'no-param-reassign': 'off',
     'new-cap': ['error', { newIsCap: false, capIsNew: false }],
     'max-len': ['error', { ignoreComments: true, ignoreStrings: true }],
     'prettier/prettier': 'error'
