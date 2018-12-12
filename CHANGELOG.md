@@ -19,7 +19,6 @@
 - added Travis CI config
 - added Prettier config
 - added ESLint config
-- added tests
 
 ## 1.2.1 (2018-11-11)
 #### Bug Fix

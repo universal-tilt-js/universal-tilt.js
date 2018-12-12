@@ -327,7 +327,7 @@ export default class UniversalTilt {
 
     const newSettings = {};
 
-    Object.keys(defaultSettings).forEach(property => {
+    for (const property in defaultSettings) {
       if (property in settings) {
         newSettings[property] = settings[property];
       } else if (this.element.getAttribute(`data-${property}`)) {
@@ -340,7 +340,7 @@ export default class UniversalTilt {
       } else {
         newSettings[property] = defaultSettings[property];
       }
-    });
+    }
 
     return newSettings;
   }
@@ -350,11 +350,11 @@ export default class UniversalTilt {
     if (elements instanceof NodeList) elements = [].slice.call(elements);
     if (!(elements instanceof Array)) return;
 
-    elements.forEach(element => {
+    for (const element of elements) {
       if (!('universalTilt' in element)) {
         element.universalTilt = new UniversalTilt(element, settings);
       }
-    });
+    }
   }
 }
 

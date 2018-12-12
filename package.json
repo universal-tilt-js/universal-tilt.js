@@ -7,6 +7,7 @@
     "build": "webpack --env dev && webpack --env build && npm run test",
     "dev": "webpack --progress --colors --watch --env dev",
     "lint": "eslint ./src --fix",
+    "prettier": "prettier --write 'src/**/*.js'",
     "test": "mocha -r @babel/register --colors ./test/*.spec.js",
     "test:watch": "mocha -r @babel/register --colors -w ./test/*.spec.js",
     "deploy": "gh-pages -d demo/build"
@@ -40,7 +41,6 @@
     "babel-plugin-add-module-exports": "^1.0.0",
     "chai": "^4.2.0",
     "eslint": "^5.10.0",
-    "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-prettier": "^3.0.0",
