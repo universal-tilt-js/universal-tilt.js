@@ -1,5 +1,3 @@
-const webpack = require('webpack');
-const path = require('path');
 const env = require('yargs').argv.env;
 
 const libraryName = 'universal-tilt';
@@ -32,16 +30,12 @@ const config = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader'
         }
       }
     ]
-  },
-  resolve: {
-    modules: [path.resolve('./node_modules'), path.resolve('./src')],
-    extensions: ['.json', '.js']
   }
 };
 
