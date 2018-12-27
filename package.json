@@ -4,12 +4,15 @@
   "description": "Parallax tilt effect library",
   "main": "lib/universal-tilt.min.js",
   "scripts": {
-    "build": "webpack --env dev && webpack --env build && npm run test",
-    "dev": "webpack --progress --colors --watch --env dev",
+    "release": "npm run prettier && npm run lint && npm run build:dev && npm run build && npm run test",
+    "build": "webpack --env build",
+    "build:dev": "webpack --env dev",
+    "test": "mocha -r @babel/register --exit",
+    "watch": "npm run build -- --watch",
+    "watch:dev": "npm run build:dev -- --watch",
+    "watch:test": "mocha -r @babel/register --watch",
     "lint": "eslint ./src --fix",
     "prettier": "prettier --write 'src/**/*.js'",
-    "test": "mocha -r @babel/register --colors ./test/*.spec.js",
-    "test:watch": "mocha -r @babel/register --colors -w ./test/*.spec.js",
     "deploy": "gh-pages -d demo/build"
   },
   "repository": {
