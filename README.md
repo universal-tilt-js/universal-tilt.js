@@ -3,36 +3,45 @@
 [![NPM version](http://img.shields.io/npm/v/universal-tilt.js.svg?style=flat-square)](https://www.npmjs.com/package/universal-tilt.js)
 [![NPM downloads](http://img.shields.io/npm/dm/universal-tilt.js.svg?style=flat-square)](https://www.npmjs.com/package/universal-tilt.js)
 
+## About
 JavaScript & jQuery elements movement library based on:
 
 **[Tilt.js](https://gijsroge.github.io/tilt.js/)** by **[Gijs Rogé](https://twitter.com/GijsRoge)** and **[vanilla-tilt.js](https://micku7zu.github.io/vanilla-tilt.js/index.html)** by **[Șandor Sergiu](https://github.com/micku7zu)**
 
 **universal-tilt.js** contains additional functions for **mobile devices with gyroscope**, new **Position Base option** and more!
 
-## Demo
+### Demo
 **[See plugin in action](https://jb1905.github.io/universal-tilt.js/)**
 
-## React plugin
+### React plugin
 If you use React, install component, with the implementation of the universal-tilt.js library!
 **[More here](https://github.com/JB1905/react-universal-tilt/)**
 
 ## How to Install
-At the beginning install the library in your project via npm or Yarn:
-```sh
+At the beginning install the library in your project via npm:
+```bash
 $ npm install universal-tilt.js
+```
+
+Or Yarn:
+```bash
 $ yarn add universal-tilt.js
 ```
 
 ## Getting Started
-**Connect using script tag in HTML:**
+**Connect libary with project using script tag in HTML:**
 ```html
-<script src="/directory/to/library/folder/universal-tilt.js"></script>
+<script src="/path/to/universal-tilt.js"></script>
 ```
 
-**Or CommonJS/ES6 import:**
+**ES6 import:**
 ```js
-const UniversalTilt = require('universal-tilt.js'); // CommonJS
-import UniversalTilt from 'universal-tilt.js'; // ES6
+import UniversalTilt from 'universal-tilt.js';
+```
+
+**Or CommonJS:**
+```js
+const UniversalTilt = require('universal-tilt.js');
 ```
 
 Next use library with:
@@ -59,7 +68,7 @@ const tilt = UniversalTilt.init(elems, {
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 ```
 
-*or include via command line and CommonJS*
+*Or include via command line and CommonJS*
 ```sh
 $ npm install jquery
 $ yarn add jquery
@@ -70,7 +79,7 @@ $ bower install jquery
 const jQuery = require('jquery');
 ```
 
-*and call plugin on element*
+*And call plugin on element*
 ```js
 $('.tilt').universalTilt({
   // options...
