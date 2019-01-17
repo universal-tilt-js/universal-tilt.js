@@ -149,7 +149,7 @@ Name | Description | Available options
 **onMouseMove** | Callback on mouse move | `el => { // code }`
 
 <sup>1</sup> *shine value must be true*<br>
-<sup>2</sup> *mobile value must be true*
+<sup>2</sup> *only for devices supported device motoion*
 
 ## Event
 `tiltChange` event will output the x, y & angle of tilting
