@@ -1,17 +1,12 @@
 export default class UniversalTilt {
-  constructor(element, settings = {}) {
-    this.width = null;
-    this.height = null;
-    this.left = null;
-    this.top = null;
-    this.timeout = null;
-    this.updateCall = null;
-
+  constructor(element, methods = {}, settings = {}) {
     this.element = element;
+    this.methods = methods;
+
     this.settings = this.extendSettings(settings);
 
-    if (typeof this.settings.onInit === 'function') {
-      this.settings.onInit(this.element);
+    if (typeof this.methods.onInit === 'function') {
+      this.methods.onInit(this.element);
     }
 
     this.reverse = this.settings.reverse ? -1 : 1;
@@ -36,9 +31,9 @@ export default class UniversalTilt {
       if (this.isMobile()) {
         window.addEventListener('devicemotion', this.onDeviceMove);
       } else {
-        if (this.settings['position-base'] === 'element') {
+        if (this.settings.base === 'element') {
           this.base = this.element;
-        } else if (this.settings['position-base'] === 'window') {
+        } else if (this.settings.base === 'window') {
           this.base = window;
         }
 
@@ -58,12 +53,13 @@ export default class UniversalTilt {
 
   destroy() {
     clearTimeout(this.timeout);
+
     if (this.updateCall !== null) {
       cancelAnimationFrame(this.updateCall);
     }
 
-    if (typeof this.settings.onDestroy === 'function') {
-      this.settings.onDestroy(this.element);
+    if (typeof this.methods.onDestroy === 'function') {
+      this.methods.onDestroy(this.element);
     }
 
     this.reset();
@@ -79,8 +75,8 @@ export default class UniversalTilt {
     this.updateElementPosition();
     this.transitions();
 
-    if (typeof this.settings.onMouseEnter === 'function') {
-      this.settings.onMouseEnter(this.element);
+    if (typeof this.methods.onMouseEnter === 'function') {
+      this.methods.onMouseEnter(this.element);
     }
   };
 
@@ -94,8 +90,8 @@ export default class UniversalTilt {
     this.updateElementPosition();
     this.updateCall = window.requestAnimationFrame(() => this.update());
 
-    if (typeof this.settings.onMouseMove === 'function') {
-      this.settings.onMouseMove(this.element);
+    if (typeof this.methods.onMouseMove === 'function') {
+      this.methods.onMouseMove(this.element);
     }
   };
 
@@ -103,8 +99,8 @@ export default class UniversalTilt {
     this.transitions();
     window.requestAnimationFrame(() => this.reset());
 
-    if (typeof this.settings.onMouseLeave === 'function') {
-      this.settings.onMouseLeave(this.element);
+    if (typeof this.methods.onMouseLeave === 'function') {
+      this.methods.onMouseLeave(this.element);
     }
   };
 
@@ -115,8 +111,8 @@ export default class UniversalTilt {
     this.updateElementPosition();
     this.transitions();
 
-    if (typeof this.settings.onDeviceMove === 'function') {
-      this.settings.onDeviceMove(this.element);
+    if (typeof this.methods.onDeviceMove === 'function') {
+      this.methods.onDeviceMove(this.element);
     }
   };
 
@@ -174,15 +170,14 @@ export default class UniversalTilt {
         y = stateY;
         x = stateX;
       }
-    } else if (this.settings['position-base'] === 'element') {
+    } else if (this.settings.base === 'element') {
       x = (this.event.clientX - this.left) / this.width;
       y = (this.event.clientY - this.top) / this.height;
-    } else if (this.settings['position-base'] === 'window') {
+    } else if (this.settings.base === 'window') {
       x = this.event.clientX / window.innerWidth;
       y = this.event.clientY / window.innerHeight;
     }
 
-    // set movement for axis
     x = Math.min(Math.max(x, 0), 1);
     y = Math.min(Math.max(y, 0), 1);
 
@@ -263,7 +258,6 @@ export default class UniversalTilt {
       overflow: 'hidden'
     });
 
-    // set style for shine element
     Object.assign(this.shineElement.style, {
       position: 'absolute',
       top: '50%',
@@ -300,29 +294,19 @@ export default class UniversalTilt {
 
   extendSettings(settings) {
     const defaultSettings = {
-      'position-base': 'element', // element or window
-      reset: true, // enable/disable element position reset after mouseout
+      base: 'element', // element or window
+      disabled: null, // disable axis (X or Y)
+      easing: 'cubic-bezier(.03, .98, .52, .99)', // transition easing
       exclude: null, // enable/disable tilt effect on selected user agents
-
+      max: 35, // max tilt value
+      perspective: 1000, // tilt effect perspective
+      reset: true, // enable/disable element position reset after mouseout
+      reverse: false, // reverse tilt effect directory
+      scale: 1.0, // element scale on mouseover
       shine: false, // add/remove shine effect on mouseover
       'shine-opacity': 0, // shine opacity (0-1) (shine value must be true)
       'shine-save': false, // save/reset shine effect on mouseout (shine value must be true)
-
-      max: 35, // max tilt value
-      perspective: 1000, // tilt effect perspective
-      scale: 1.0, // element scale on mouseover
-      disabled: null, // disable axis (X or Y)
-      reverse: false, // reverse tilt effect directory
-
-      speed: 300, // transition speed
-      easing: 'cubic-bezier(.03, .98, .52, .99)', // transition easing
-
-      onInit: null, // callback on plugin init
-      onMouseEnter: null, // callback on mouse enter
-      onMouseMove: null, // callback on mouse move
-      onMouseLeave: null, // callback on mouse leave
-      onDeviceMove: null, // callback on device move
-      onDestroy: null // callback on plugin destroy
+      speed: 300 // transition speed
     };
 
     const newSettings = {};
@@ -332,9 +316,10 @@ export default class UniversalTilt {
         newSettings[property] = settings[property];
       } else if (this.element.getAttribute(`data-${property}`)) {
         const attribute = this.element.getAttribute(`data-${property}`);
+
         try {
           newSettings[property] = JSON.parse(attribute);
-        } catch (err) {
+        } catch {
           newSettings[property] = attribute;
         }
       } else {
@@ -345,34 +330,36 @@ export default class UniversalTilt {
     return newSettings;
   }
 
-  static init(elements, settings) {
+  static init(data = {}) {
+    let { elements, methods, settings } = data;
+
     if (elements instanceof Node) elements = [elements];
     if (elements instanceof NodeList) elements = [].slice.call(elements);
-    if (!(elements instanceof Array)) return;
 
     for (const element of elements) {
       if (!('universalTilt' in element)) {
-        element.universalTilt = new UniversalTilt(element, settings);
+        element.universalTilt = new UniversalTilt(element, methods, settings);
       }
     }
   }
 }
 
-let scope;
-
-if (typeof window !== 'undefined') scope = window;
-else if (typeof global !== 'undefined') scope = global;
-
 if (typeof document !== 'undefined') {
-  scope.UniversalTilt = UniversalTilt;
+  window.UniversalTilt = UniversalTilt;
 
-  UniversalTilt.init(document.querySelectorAll('[tilt]'));
+  const elements = document.querySelectorAll('[data-tilt]');
+
+  elements.length && UniversalTilt.init({ elements });
 }
 
-if (scope && scope.jQuery) {
-  const $ = scope.jQuery;
+if (window.jQuery) {
+  const $ = window.jQuery;
 
-  $.fn.universalTilt = (elements, options) => {
-    UniversalTilt.init(elements, options);
+  $.fn.universalTilt = function(data = {}) {
+    UniversalTilt.init({
+      elements: this,
+      settings: data.settings || {},
+      methods: data.methods || {}
+    });
   };
 }

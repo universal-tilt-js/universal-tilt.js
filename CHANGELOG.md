@@ -4,6 +4,17 @@
 #### Bug Fix
 - fix animation performance
 
+## 2.0.0 beta 2 (Soon)
+#### Breaking Changes
+- splitted `options` prop into `settings` and `methods`
+- renamed option `position-base` to `base`
+
+#### Repository Changes
+- updated npm scripts
+- cleaned up Webpack config
+- removed unused dependencies
+
+#### Bug Fix
 ## 2.0.0 beta 1 (2018-12-10)
 #### New Feature
 - added destroy method

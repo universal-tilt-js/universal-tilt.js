@@ -24,7 +24,7 @@ const config = {
     library: 'UniversalTilt',
     libraryTarget: 'umd',
     umdNamedDefine: true,
-    globalObject: 'global'
+    globalObject: 'typeof window !== "object" ? global.window = global : window'
   },
   module: {
     rules: [
