@@ -110,6 +110,16 @@ To use it, add `data-tilt` to html element e.g:
 elems.universalTilt.destroy();
 ```
 
+**&bull; Get values method**
+```js
+elems.universalTilt.getValues();
+```
+
+**&bull; Reset method**
+```js
+elems.universalTilt.reset();
+```
+
 ## Options
 ### Settings
 Name | Type | Default | Description | Available options
