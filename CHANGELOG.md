@@ -4,6 +4,9 @@
 #### Bug Fix
 - fix animation performance
 
+#### Repository Changes
+- add tests
+
 ## 2.0.0 beta 2 (Soon)
 #### Breaking Changes
 - splitted `options` prop into `settings` and `methods`
@@ -15,6 +18,8 @@
 - removed unused dependencies
 
 #### Bug Fix
+- fixed `window is not defined`
+
 ## 2.0.0 beta 1 (2018-12-10)
 #### New Feature
 - added destroy method
