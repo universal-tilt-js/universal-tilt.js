@@ -7,7 +7,7 @@
 #### Repository Changes
 - add tests
 
-## 2.0.0 beta 2 (Soon)
+## 2.0.0 beta 2 (2019-01-18)
 #### Breaking Changes
 - splitted `options` prop into `settings` and `methods`
 - renamed option `position-base` to `base`
@@ -19,6 +19,7 @@
 
 #### Bug Fix
 - fixed `window is not defined`
+- fixed `global` error (CDN)
 
 ## 2.0.0 beta 1 (2018-12-10)
 #### New Feature
