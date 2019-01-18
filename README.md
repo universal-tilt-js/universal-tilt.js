@@ -28,9 +28,9 @@ Or Yarn:
 $ yarn add universal-tilt.js
 ```
 
-**You can also connect script via one of CDNs:**
-bundle.run: `https://bundle.run/universal-tilt.js`
-jsDelivr: `https://cdn.jsdelivr.net/npm/universal-tilt.js/`
+**You can also connect script via one of CDNs:**<br>
+bundle.run: `https://bundle.run/universal-tilt.js`<br>
+jsDelivr: `https://cdn.jsdelivr.net/npm/universal-tilt.js/`<br>
 unpkg: `https://unpkg.com/universal-tilt.js/`
 
 ## Getting Started
