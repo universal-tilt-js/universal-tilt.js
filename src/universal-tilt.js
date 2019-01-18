@@ -48,14 +48,14 @@ export default class UniversalTilt {
           this.base = window;
         }
 
-        this.base.addEventListener('mouseenter', e => this.onMouseEnter(e));
+        this.base.addEventListener('mouseenter', () => this.onMouseEnter());
         this.base.addEventListener('mousemove', e => this.onMouseMove(e));
-        this.base.addEventListener('mouseleave', e => this.onMouseLeave(e));
+        this.base.addEventListener('mouseleave', () => this.onMouseLeave());
       }
     }
   }
 
-  onMouseEnter(e) {
+  onMouseEnter() {
     this.updateElementPosition();
     this.transitions();
 
@@ -75,7 +75,7 @@ export default class UniversalTilt {
     }
   }
 
-  onMouseLeave(e) {
+  onMouseLeave() {
     this.transitions();
     window.requestAnimationFrame(() => this.reset());
 
@@ -322,16 +322,13 @@ export default class UniversalTilt {
 }
 
 if (typeof document !== 'undefined') {
-  new UniversalTilt(document.querySelectorAll('[tilt]'));
+  const elements = document.querySelectorAll('[data-tilt]');
+
+  elements.length && new UniversalTilt(elements);
 }
 
-let scope;
-
-if (typeof window !== 'undefined') scope = window;
-else if (typeof global !== 'undefined') scope = global;
-
-if (scope && scope.jQuery) {
-  const $ = scope.jQuery;
+if (window.jQuery) {
+  const $ = window.jQuery;
 
   $.fn.universalTilt = function(options) {
     new UniversalTilt(this, options);

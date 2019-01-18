@@ -99,7 +99,7 @@ Name | Type | Default | Description | Available options
 **onDeviceMove**<sup>2</sup> | function | `null` | Callback on device move | `el => { // code }`
 
 <sup>1</sup> *shine value must be true*<br>
-<sup>2</sup> *mobile value must be true*
+<sup>2</sup> *only for devices supported device motion*
 
 ## Event
 `tiltChange` event will output the x, y & angle of tilting

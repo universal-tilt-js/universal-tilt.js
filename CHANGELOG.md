@@ -1,16 +1,10 @@
 # universal-tilt.js Changelog
 
-## Next v2
-#### New Feature
-- destroy method
-- new callbacks: `onInit`, `onDestroy`
-
-#### Breaking Changes
-- improve plugin init process
-
-## Next v1
+## 1.2.2 (2019-01-19)
 #### Bug Fix
-- fix animation performance
+- auto init is active only if element with `data-tilt` exists
+- fixed `window is not defined`
+- fixed `global` error (CDN)
 
 ## 1.2.1 (2018-11-11)
 #### Bug Fix
@@ -62,7 +56,7 @@
 
 ## 1.0.3 (2018-04-14)
 #### Bug Fix
-- fixed bug with autoinit in Node.js
+- fixed bug with auto init in Node.js
 
 ## 1.0.1 (2018-04-14)
 #### New Feature
@@ -78,7 +72,7 @@
 
 ## 1.0.0 beta 2 (2018-03-15)
 #### New Feature
-- added autoinit
+- added auto init
 
 #### Bug Fix
 - fixed performance of shine effect
