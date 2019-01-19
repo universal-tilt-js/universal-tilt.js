@@ -42,7 +42,7 @@
     "babel-loader": "^8.0.5",
     "babel-plugin-add-module-exports": "^1.0.0",
     "chai": "^4.2.0",
-    "eslint": "^5.12.0",
+    "eslint": "^5.12.1",
     "eslint-config-prettier": "^3.5.0",
     "eslint-plugin-prettier": "^3.0.1",
     "gh-pages": "^2.0.1",
