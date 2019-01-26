@@ -1,7 +1,4 @@
 {
   "presets": ["@babel/preset-env"],
-  "plugins": [
-    "babel-plugin-add-module-exports",
-    "@babel/plugin-proposal-class-properties"
-  ]
+  "plugins": ["@babel/plugin-proposal-class-properties"]
 }

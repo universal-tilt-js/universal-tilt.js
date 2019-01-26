@@ -1,6 +1,7 @@
 src
 demo
 test
+coverage
 
 .babelrc
 .travis.yml

@@ -54,9 +54,7 @@ export default class UniversalTilt {
   destroy() {
     clearTimeout(this.timeout);
 
-    if (this.updateCall !== null) {
-      cancelAnimationFrame(this.updateCall);
-    }
+    if (this.updateCall !== null) cancelAnimationFrame(this.updateCall);
 
     if (typeof this.methods.onDestroy === 'function') {
       this.methods.onDestroy(this.element);
@@ -81,9 +79,7 @@ export default class UniversalTilt {
   };
 
   onMouseMove = e => {
-    if (this.updateCall !== null) {
-      cancelAnimationFrame(this.updateCall);
-    }
+    if (this.updateCall !== null) cancelAnimationFrame(this.updateCall);
 
     this.event = e;
 
