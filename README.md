@@ -66,7 +66,7 @@ const tilt = UniversalTilt.init({
   settings: {
     // options...
   },
-  methods: {
+  callbacks: {
     // callbacks...
   }
 });
@@ -96,7 +96,7 @@ $('.tilt').universalTilt({
   settings: {
     // options...
   },
-  methods: {
+  callbacks: {
     // callbacks...
   }
 });
@@ -143,15 +143,15 @@ Name | Type | Default | Description | Available options
 **shine-save**<sup>1</sup> | boolean | `false` | Save/reset shine effect on mouseout | `true` *(save)*, `false` *(reset)*
 **speed** | number | `300` | Transition speed (ms) | e.g: `500`
 
-### Methods
+### Callbacks
 Name | Description | Available options
 -|-|-
-**onDestroy** | Callback on plugin destroy | `el => { // code }`
-**onDeviceMove**<sup>2</sup> | Callback on device move | `el => { // code }`
-**onInit** | Callback on plugin init | `el => { // code }`
-**onMouseEnter** | Callback on mouse enter | `el => { // code }`
-**onMouseLeave** | Callback on mouse leave | `el => { // code }`
-**onMouseMove** | Callback on mouse move | `el => { // code }`
+**onDestroy** | Callback on plugin destroy | `el => { /* code */ }`
+**onDeviceMove**<sup>2</sup> | Callback on device move | `el => { /* code */ }`
+**onInit** | Callback on plugin init | `el => { /* code */ }`
+**onMouseEnter** | Callback on mouse enter | `el => { /* code */ }`
+**onMouseLeave** | Callback on mouse leave | `el => { /* code */ }`
+**onMouseMove** | Callback on mouse move | `el => { /* code */ }`
 
 <sup>1</sup> *shine value must be true*<br>
 <sup>2</sup> *only for devices supported device motion*
