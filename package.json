@@ -1,14 +1,20 @@
 {
   "name": "universal-tilt.js",
-  "version": "1.2.1",
+  "version": "2.0.0",
   "description": "Parallax tilt effect library",
+  "author": "Jakub Biesiada",
+  "license": "MIT",
   "main": "lib/universal-tilt.min.js",
   "scripts": {
-    "build": "webpack --env dev && webpack --env build && npm run test",
-    "dev": "webpack --progress --colors --watch --env dev",
+    "release": "npm run prettier && npm run lint && npm run build:dev && npm run build && npm run test",
+    "build": "webpack --env build",
+    "build:dev": "webpack --env dev",
+    "test": "jest --coverage",
+    "watch": "npm run build -- --watch",
+    "watch:dev": "npm run build:dev -- --watch",
+    "watch:test": "npm run test -- --watch",
     "lint": "eslint ./src --fix",
-    "test": "mocha -r @babel/register --colors ./test/*.spec.js",
-    "test:watch": "mocha -r @babel/register --colors -w ./test/*.spec.js",
+    "prettier": "prettier --write 'src/**/*.js'",
     "deploy": "gh-pages -d demo/build"
   },
   "repository": {
@@ -23,34 +29,25 @@
     "movement",
     "parallax"
   ],
-  "author": "Jakub Biesiada",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/JB1905/universal-tilt.js/issues"
   },
   "homepage": "https://github.com/JB1905/universal-tilt.js#readme",
   "devDependencies": {
-    "@babel/cli": "^7.1.5",
-    "@babel/core": "^7.1.6",
-    "@babel/plugin-proposal-class-properties": "^7.1.0",
-    "@babel/preset-env": "^7.1.6",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "@babel/preset-env": "^7.3.1",
     "@babel/register": "^7.0.0",
     "babel-eslint": "^10.0.1",
-    "babel-loader": "^8.0.4",
-    "babel-plugin-add-module-exports": "^1.0.0",
-    "chai": "^4.2.0",
-    "eslint": "^5.9.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-config-prettier": "^3.3.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-prettier": "^3.0.0",
+    "babel-loader": "^8.0.5",
+    "eslint": "^5.13.0",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-prettier": "^3.0.1",
     "gh-pages": "^2.0.1",
+    "jest": "^24.1.0",
     "jquery": "^3.3.1",
-    "jsdom": "13.0.0",
-    "jsdom-global": "^3.0.2",
-    "mocha": "^5.2.0",
-    "prettier": "^1.15.3",
-    "webpack": "^4.26.1",
-    "webpack-cli": "^3.1.2"
+    "prettier": "^1.16.4",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3"
   }
 }

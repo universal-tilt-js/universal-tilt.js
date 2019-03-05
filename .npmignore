@@ -1,6 +1,7 @@
 src
 demo
 test
+coverage
 
 .babelrc
 .travis.yml
@@ -8,3 +9,4 @@ test
 
 .eslintrc.js
 webpack.config.js
+yarn-error.log
