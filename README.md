@@ -18,7 +18,7 @@ If you use React, install component with the implementation of the universal-til
 **[More here](https://github.com/JB1905/react-universal-tilt/)**
 
 ## How to Install
-At the beginning install the library in your project via npm:
+First, install the library in your project by npm:
 ```bash
 $ npm install universal-tilt.js
 ```

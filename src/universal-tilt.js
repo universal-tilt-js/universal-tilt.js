@@ -84,7 +84,7 @@ export default class UniversalTilt {
     this.event = e;
 
     this.updateElementPosition();
-    this.updateCall = window.requestAnimationFrame(() => this.update());
+    this.updateCall = requestAnimationFrame(() => this.update());
 
     if (typeof this.callbacks.onMouseMove === 'function') {
       this.callbacks.onMouseMove(this.element);
@@ -93,7 +93,7 @@ export default class UniversalTilt {
 
   onMouseLeave = () => {
     this.transitions();
-    window.requestAnimationFrame(() => this.reset());
+    requestAnimationFrame(() => this.reset());
 
     if (typeof this.callbacks.onMouseLeave === 'function') {
       this.callbacks.onMouseLeave(this.element);

@@ -2,6 +2,11 @@
 
 ### [CHANGELOG.md for v1 here](https://github.com/JB1905/universal-tilt.js/blob/v1/CHANGELOG.md)
 
+## 2.0.0 (2019-03-05)
+#### Repository Changes
+- moved Changelog for v1 to branch
+- updated dependencies
+
 ## 2.0.0 beta 2 (2019-01-18)
 #### Breaking Changes
 - splitted `options` prop into `settings` and `methods`
