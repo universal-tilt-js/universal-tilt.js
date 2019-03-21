@@ -1,6 +1,6 @@
 {
   "name": "universal-tilt.js",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Parallax tilt effect library",
   "author": "Jakub Biesiada",
   "license": "MIT",
@@ -34,20 +34,20 @@
   },
   "homepage": "https://github.com/JB1905/universal-tilt.js#readme",
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/plugin-proposal-class-properties": "^7.3.0",
-    "@babel/preset-env": "^7.3.1",
-    "@babel/register": "^7.0.0",
+    "@babel/core": "^7.4.0",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/register": "^7.4.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
-    "eslint": "^5.13.0",
-    "eslint-config-prettier": "^4.0.0",
+    "eslint": "^5.15.3",
+    "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-prettier": "^3.0.1",
     "gh-pages": "^2.0.1",
-    "jest": "^24.1.0",
+    "jest": "^24.5.0",
     "jquery": "^3.3.1",
     "prettier": "^1.16.4",
-    "webpack": "^4.29.3",
-    "webpack-cli": "^3.2.3"
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
   }
 }
