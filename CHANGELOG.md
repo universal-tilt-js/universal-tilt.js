@@ -1,5 +1,9 @@
 # universal-tilt.js Changelog
 
+## 1.2.3 (2019-03-21)
+#### Bug Fix
+- fixed CDN undefined bug
+
 ## 1.2.2 (2019-01-19)
 #### Bug Fix
 - auto init is active only if element with `data-tilt` exists
