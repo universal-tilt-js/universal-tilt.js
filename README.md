@@ -55,12 +55,6 @@ Next use library with:
 ```js
 const elems = document.querySelectorAll('.tilt');
 
-// v1
-const tilt = new UniversalTilt(elems, {
-  // options...
-});
-
-// v2
 const tilt = UniversalTilt.init({
   elements: elems,
   settings: {
