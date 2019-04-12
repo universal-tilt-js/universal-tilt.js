@@ -2,6 +2,7 @@ src
 demo
 test
 
+.DS_Store
 .babelrc
 .travis.yml
 .prettierrc

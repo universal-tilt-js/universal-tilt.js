@@ -1,6 +1,6 @@
 # universal-tilt.js Changelog
 
-## 1.2.3 / 1.2.4 (2019-03-21)
+## 1.2.3 / 1.2.4 / 1.2.5 (2019-03-21)
 #### Bug Fix
 - fixed CDN undefined bug
 
