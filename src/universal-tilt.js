@@ -1,3 +1,5 @@
+import platform from 'platform';
+
 export default class UniversalTilt {
   constructor(element, settings = {}, callbacks = {}) {
     this.element = element;
@@ -27,7 +29,10 @@ export default class UniversalTilt {
   }
 
   addEventListeners() {
-    if (!navigator.userAgent.match(this.settings.exclude)) {
+    if (
+      !platform.name.match(this.settings.exclude) &&
+      !platform.product?.match(this.settings.exclude)
+    ) {
       if (this.isMobile()) {
         window.addEventListener('devicemotion', this.onDeviceMove);
       } else {

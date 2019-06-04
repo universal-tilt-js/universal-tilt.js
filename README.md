@@ -126,7 +126,7 @@ Name | Type | Default | Description | Available options
 **base** | string | `element` | The surface from which the location of the mouse is captured | `element` or `window`
 **disabled** | string | `null` | Disable axis | `x` or `y`
 **easing** | string | `cubic-bezier(.03, .98, .52, .99)` | Transition easing | `cubic-bezier`/`ease`/`linear`/etc.
-**exclude** | RegExp | `null` | Disable tilt effect on selected user agents | e.g: <code>/(Mozilla&#124;iPad)/</code>
+**exclude** | RegExp | `null` | Disable tilt effect on selected user agents | e.g: <code>/(Firefox&#124;iPad)/</code>
 **max** | number | `35` | Max tilt value | e.g: `28`
 **perspective** | number | `1000` | Tilt effect perspective | e.g: `700`
 **reset** | boolean | `true` | Enable/disable element position reset after mouseout | `true` *(enable)*, `false` *(disable)*

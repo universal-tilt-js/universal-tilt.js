@@ -2,6 +2,10 @@
 
 ### [CHANGELOG.md for v1 here](https://github.com/JB1905/universal-tilt.js/blob/v1/CHANGELOG.md)
 
+## 2.0.4 (2019-06-04)
+#### Bug Fix
+- fixed `exclude` option incorrect behavior
+
 ## 2.0.1 / 2.0.2 / 2.0.3 (2019-03-21)
 #### Bug Fix
 - fixed CDN undefined bug
