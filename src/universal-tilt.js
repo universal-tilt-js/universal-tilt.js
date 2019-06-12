@@ -15,9 +15,7 @@ export default class UniversalTilt {
 
     if (this.settings.shine) this.shine();
 
-    this.element.style.transform = `perspective(${
-      this.settings.perspective
-    }px)`;
+    this.element.style.transform = `perspective(${this.settings.perspective}px)`;
 
     this.addEventListeners();
   }
@@ -264,8 +262,7 @@ export default class UniversalTilt {
       top: '50%',
       left: '50%',
       'pointer-events': 'none',
-      'background-image':
-        'linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%)',
+      'background-image': `radial-gradient(circle at top center, rgba(252,253,255,1) 20%,rgba(255,255,255,0) 60%)`,
       width: `${this.element.offsetWidth * 2}px`,
       height: `${this.element.offsetWidth * 2}px`,
       transform: 'rotate(180deg) translate3d(-50%, -50%, 0)',
@@ -277,14 +274,10 @@ export default class UniversalTilt {
   transitions() {
     clearTimeout(this.timeout);
 
-    this.element.style.transition = `all ${this.settings.speed}ms ${
-      this.settings.easing
-    }`;
+    this.element.style.transition = `all ${this.settings.speed}ms ${this.settings.easing}`;
 
     if (this.settings.shine) {
-      this.shineElement.style.transition = `opacity ${this.settings.speed}ms ${
-        this.settings.easing
-      }`;
+      this.shineElement.style.transition = `opacity ${this.settings.speed}ms ${this.settings.easing}`;
     }
 
     this.timeout = setTimeout(() => {
