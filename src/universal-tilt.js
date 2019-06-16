@@ -285,7 +285,7 @@ export default class UniversalTilt {
 
   extendSettings(settings) {
     const defaultSettings = {
-      base: this.element, // element or window
+      base: this.element, // DOM element
       disabled: null, // disable axis (X or Y)
       easing: 'cubic-bezier(.03, .98, .52, .99)', // transition easing
       exclude: null, // enable/disable tilt effect on selected user agents
