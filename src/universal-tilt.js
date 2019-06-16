@@ -34,12 +34,6 @@ export default class UniversalTilt {
       if (this.isMobile()) {
         window.addEventListener('devicemotion', this.onDeviceMove);
       } else {
-        if (this.settings.base === 'element') {
-          this.base = this.element;
-        } else if (this.settings.base === 'window') {
-          this.base = window;
-        }
-
         this.base.addEventListener('mouseenter', this.onMouseEnter);
         this.base.addEventListener('mousemove', this.onMouseMove);
         this.base.addEventListener('mouseleave', this.onMouseLeave);
@@ -169,12 +163,9 @@ export default class UniversalTilt {
         y = stateY;
         x = stateX;
       }
-    } else if (this.settings.base === 'element') {
+    } else {
       x = (this.event.clientX - this.left) / this.width;
       y = (this.event.clientY - this.top) / this.height;
-    } else if (this.settings.base === 'window') {
-      x = this.event.clientX / window.innerWidth;
-      y = this.event.clientY / window.innerHeight;
     }
 
     x = Math.min(Math.max(x, 0), 1);
@@ -193,12 +184,18 @@ export default class UniversalTilt {
   }
 
   updateElementPosition() {
-    const rect = this.element.getBoundingClientRect();
+    this.width = this.base.offsetWidth || this.base.innerWidth;
+    this.height = this.base.offsetHeight || this.base.innerWidth;
 
-    this.width = this.element.offsetWidth;
-    this.height = this.element.offsetHeight;
-    this.left = rect.left;
-    this.top = rect.top;
+    if (this.base.getBoundingClientRect) {
+      const rect = this.base.getBoundingClientRect();
+
+      this.left = rect.left;
+      this.top = rect.top;
+    } else {
+      this.left = 0;
+      this.top = 0;
+    }
   }
 
   update() {
@@ -288,7 +285,7 @@ export default class UniversalTilt {
 
   extendSettings(settings) {
     const defaultSettings = {
-      base: 'element', // element or window
+      base: this.element, // element or window
       disabled: null, // disable axis (X or Y)
       easing: 'cubic-bezier(.03, .98, .52, .99)', // transition easing
       exclude: null, // enable/disable tilt effect on selected user agents
