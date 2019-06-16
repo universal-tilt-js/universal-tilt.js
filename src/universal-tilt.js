@@ -27,11 +27,13 @@ export default class UniversalTilt {
   }
 
   addEventListeners() {
+    this.base = this.settings.base;
+
     if (
       !platform.name.match(this.settings.exclude) &&
       !platform.product?.match(this.settings.exclude)
     ) {
-      if (this.isMobile()) {
+      if (this.isMobile() && this.settings.gyroscope) {
         window.addEventListener('devicemotion', this.onDeviceMove);
       } else {
         this.base.addEventListener('mouseenter', this.onMouseEnter);
@@ -116,9 +118,7 @@ export default class UniversalTilt {
     };
 
     if (this.settings.reset) {
-      this.element.style.transform = `perspective(${
-        this.settings.perspective
-      }px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+      this.element.style.transform = `perspective(${this.settings.perspective}px) rotateX(${this.settings.startX}deg) rotateY(${this.settings.startY}deg) scale3d(1, 1, 1)`;
     }
 
     if (this.settings.shine && !this.settings['shine-save']) {
@@ -289,6 +289,7 @@ export default class UniversalTilt {
       disabled: null, // disable axis (X or Y)
       easing: 'cubic-bezier(.03, .98, .52, .99)', // transition easing
       exclude: null, // enable/disable tilt effect on selected user agents
+      gyroscope: true, // enable/disable gyroscope control on mobile devices
       max: 35, // max tilt value
       perspective: 1000, // tilt effect perspective
       reset: true, // enable/disable element position reset after mouseout
@@ -297,7 +298,9 @@ export default class UniversalTilt {
       shine: false, // add/remove shine effect on mouseover
       'shine-opacity': 0, // shine opacity (0-1) (shine value must be true)
       'shine-save': false, // save/reset shine effect on mouseout (shine value must be true)
-      speed: 300 // transition speed
+      speed: 300, // transition speed
+      startX: 0, // startup X axis value
+      startY: 0 // startup Y axis value
     };
 
     const newSettings = {};
