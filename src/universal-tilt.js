@@ -15,9 +15,7 @@ export default class UniversalTilt {
 
     if (this.settings.shine) this.shine();
 
-    this.element.style.transform = `perspective(${
-      this.settings.perspective
-    }px)`;
+    this.element.style.transform = `perspective(${this.settings.perspective}px)`;
 
     this.addEventListeners();
   }
@@ -124,9 +122,7 @@ export default class UniversalTilt {
     };
 
     if (this.settings.reset) {
-      this.element.style.transform = `perspective(${
-        this.settings.perspective
-      }px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+      this.element.style.transform = `perspective(${this.settings.perspective}px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
     }
 
     if (this.settings.shine && !this.settings['shine-save']) {
@@ -277,14 +273,10 @@ export default class UniversalTilt {
   transitions() {
     clearTimeout(this.timeout);
 
-    this.element.style.transition = `all ${this.settings.speed}ms ${
-      this.settings.easing
-    }`;
+    this.element.style.transition = `all ${this.settings.speed}ms ${this.settings.easing}`;
 
     if (this.settings.shine) {
-      this.shineElement.style.transition = `opacity ${this.settings.speed}ms ${
-        this.settings.easing
-      }`;
+      this.shineElement.style.transition = `opacity ${this.settings.speed}ms ${this.settings.easing}`;
     }
 
     this.timeout = setTimeout(() => {
