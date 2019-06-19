@@ -332,7 +332,11 @@ export default class UniversalTilt {
 
     for (const element of elements) {
       if (!('universalTilt' in element)) {
-        element.universalTilt = new UniversalTilt(element, settings, callbacks);
+        return (element.universalTilt = new UniversalTilt(
+          element,
+          settings,
+          callbacks
+        ));
       }
     }
   }
@@ -350,7 +354,7 @@ if (window.jQuery) {
   const $ = window.jQuery;
 
   $.fn.universalTilt = function(data = {}) {
-    UniversalTilt.init({
+    return UniversalTilt.init({
       elements: this,
       settings: data.settings || {},
       callbacks: data.callbacks || {}

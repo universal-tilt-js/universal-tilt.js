@@ -16,7 +16,6 @@ module.exports = env => {
   return {
     mode,
     entry: `${__dirname}/src/index.js`,
-    externals: ['platform'],
     devtool,
     output: {
       path: `${__dirname}/lib`,
