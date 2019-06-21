@@ -258,12 +258,12 @@ export default class UniversalTilt {
       position: 'absolute',
       top: '50%',
       left: '50%',
-      'pointer-events': 'none',
-      'background-image': `radial-gradient(circle at top center, rgba(252,253,255,1) 20%,rgba(255,255,255,0) 60%)`,
+      pointerEvents: 'none',
+      backgroundImage: `radial-gradient(circle at top center, rgba(252,253,255,1) 20%,rgba(255,255,255,0) 60%)`,
       width: `${this.element.offsetWidth * 2}px`,
       height: `${this.element.offsetWidth * 2}px`,
       transform: 'rotate(180deg) translate3d(-50%, -50%, 0)',
-      'transform-origin': '0% 0%',
+      transformOrigin: '0% 0%',
       opacity: '0'
     });
   }
@@ -347,7 +347,7 @@ if (typeof document !== 'undefined') {
 
   const elements = document.querySelectorAll('[data-tilt]');
 
-  elements.length && UniversalTilt.init({ elements });
+  if (elements.length) UniversalTilt.init({ elements });
 }
 
 if (window.jQuery) {
