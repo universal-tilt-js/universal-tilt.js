@@ -233,17 +233,21 @@ export default class UniversalTilt {
   }
 
   shine() {
-    const shineOuter = document.createElement('div');
-    const shineInner = document.createElement('div');
+    if (!this.settings['shine-prerender']) {
+      const shineOuter = document.createElement('div');
+      const shineInner = document.createElement('div');
 
-    shineOuter.classList.add('shine');
-    shineInner.classList.add('shine-inner');
+      shineOuter.classList.add('shine');
+      shineInner.classList.add('shine-inner');
 
-    shineOuter.appendChild(shineInner);
-    this.element.appendChild(shineOuter);
+      shineOuter.appendChild(shineInner);
+      this.element.appendChild(shineOuter);
+    }
 
     this.shineWrapper = this.element.querySelector('.shine');
     this.shineElement = this.element.querySelector('.shine-inner');
+
+    if (this.settings['shine-prerender']) return;
 
     Object.assign(this.shineWrapper.style, {
       position: 'absolute',
@@ -297,6 +301,7 @@ export default class UniversalTilt {
       scale: 1.0, // element scale on mouseover
       shine: false, // add/remove shine effect on mouseover
       'shine-opacity': 0, // shine opacity (0-1) (shine value must be true)
+      'shine-prerender': false, // true - disable .shine & .shine-inner auto rendering
       'shine-save': false, // save/reset shine effect on mouseout (shine value must be true)
       speed: 300, // transition speed
       startX: 0, // startup X axis value

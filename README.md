@@ -123,7 +123,7 @@ elems.universalTilt.reset();
 ### Settings
 Name | Type | Default | Description | Available options
 -|-|-|-|-
-**base** | string | `element` | The surface from which the location of the mouse is captured | `element` or `window`
+**base** | DOM element | `this.element` | The surface from which the location of the mouse is captured | e.g: `document.querySelector("#my-element");`
 **disabled** | string | `null` | Disable axis | `x` or `y`
 **easing** | string | `cubic-bezier(.03, .98, .52, .99)` | Transition easing | `cubic-bezier`/`ease`/`linear`/etc.
 **exclude** | RegExp | `null` | Disable tilt effect on selected user agents | e.g: <code>/(Firefox&#124;iPad)/</code>
@@ -134,8 +134,11 @@ Name | Type | Default | Description | Available options
 **scale** | number | `1.0` | Element scale on mouseover | `0.9`/`1.3`/etc.
 **shine** | boolean | `false` | Add/remove shine effect on mouseover | `true` *(add)*, `false` *(remove)*
 **shine-opacity**<sup>1</sup> | number | `0` | Add/remove shine effect on mouseover | values >= `0`  and <= `1`
+**shine-prerender** | boolean | `false` | Disable/enable `.shine` & `.shine-inner` auto rendering | `false` *(enable)*, `true` - *(disable)*
 **shine-save**<sup>1</sup> | boolean | `false` | Save/reset shine effect on mouseout | `true` *(save)*, `false` *(reset)*
 **speed** | number | `300` | Transition speed (ms) | e.g: `500`
+**startX** | number | `0` | Tilt element startup horizontal value | e.g: `20`
+**startY** | number | `0` | Tilt element startup vertical value | e.g: `30`
 
 ### Callbacks
 Name | Description | Available options

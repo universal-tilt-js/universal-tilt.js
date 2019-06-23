@@ -2,6 +2,10 @@
 
 ### [CHANGELOG.md for v1 here](https://github.com/JB1905/universal-tilt.js/blob/v1/CHANGELOG.md)
 
+## 2.0.6 (2019-06-17)
+#### Repository Changes
+- `platform` is now built-in
+
 ## 2.0.4 / 2.0.5 (2019-06-04)
 #### Bug Fix
 - fixed `exclude` option incorrect behavior
