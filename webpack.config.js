@@ -15,7 +15,7 @@ module.exports = env => {
 
   return {
     mode,
-    entry: `${__dirname}/src/index.js`,
+    entry: `${__dirname}/src/index.ts`,
     devtool,
     output: {
       path: `${__dirname}/lib`,
@@ -29,9 +29,12 @@ module.exports = env => {
     module: {
       rules: [
         {
-          test: /\.js$/,
-          loader: 'babel-loader',
-          exclude: /node_modules/
+          test: /\.ts$/,
+          loader: 'ts-loader',
+          exclude: /node_modules/,
+          resolve: {
+            extensions: ['.ts']
+          }
         }
       ]
     }

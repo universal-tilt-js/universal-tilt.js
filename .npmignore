@@ -3,7 +3,7 @@ demo
 test
 coverage
 
-.babelrc
+tsconfig.json
 .travis.yml
 .prettierrc
 
