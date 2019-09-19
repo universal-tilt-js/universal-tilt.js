@@ -68,7 +68,7 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js}": [
+    "src/**/*.{ts}": [
       "npm run prettier",
       "npm run lint",
       "git add"
