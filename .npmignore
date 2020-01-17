@@ -8,5 +8,6 @@ tsconfig.json
 .prettierrc
 
 .eslintrc.js
-webpack.config.js
+rollup.config.js
 yarn-error.log
+.rpt2_cache

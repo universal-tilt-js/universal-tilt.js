@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "module": "esnext",
     "lib": ["es2015", "dom"],
-    "module": "commonjs",
     "checkJs": false,
     "declaration": true,
     "outDir": "lib",
