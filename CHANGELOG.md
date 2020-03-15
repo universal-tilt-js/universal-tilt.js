@@ -1,7 +1,7 @@
 # universal-tilt.js Changelog
 
-### [CHANGELOG.md for v2 here](https://github.com/JB1905/universal-tilt.js/blob/v2/CHANGELOG.md)
-### [CHANGELOG.md for v1 here](https://github.com/JB1905/universal-tilt.js/blob/v1/CHANGELOG.md)
+### [CHANGELOG.md for v2 here](https://github.com/universal-tilt-js/universal-tilt.js/blob/v2/CHANGELOG.md)
+### [CHANGELOG.md for v1 here](https://github.com/universal-tilt-js/universal-tilt.js/blob/v1/CHANGELOG.md)
 
 ## 3.0.0 beta 1 (Soon)
 #### Internal

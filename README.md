@@ -1,4 +1,4 @@
-# [universal-tilt.js](https://github.com/jb1905/universal-tilt.js)
+# [universal-tilt.js](https://github.com/universal-tilt-js/universal-tilt.js)
 
 [![NPM version](http://img.shields.io/npm/v/universal-tilt.js.svg?style=flat-square)](https://www.npmjs.com/package/universal-tilt.js)
 [![NPM downloads](http://img.shields.io/npm/dm/universal-tilt.js.svg?style=flat-square)](https://www.npmjs.com/package/universal-tilt.js)
@@ -11,11 +11,11 @@ JavaScript & jQuery elements movement library based on:
 **universal-tilt.js** contains additional functions for **mobile devices with gyroscope**, new **Position Base option** and more!
 
 ### Demo
-**[See plugin in action](https://jb1905.github.io/universal-tilt.js/)**
+**[See plugin in action](https://universal-tilt-js.github.io/universal-tilt.js/)**
 
 ### React plugin
 If you use React, install component with the implementation of the universal-tilt.js library!
-**[More here](https://github.com/JB1905/react-universal-tilt/)**
+**[More here](https://github.com/universal-tilt-js/react-universal-tilt/)**
 
 ## How to Install
 First, install the library in your project by npm:
@@ -123,16 +123,26 @@ elems.universalTilt.reset();
 ### Settings
 Name | Type | Default | Description | Available options
 -|-|-|-|-
-**base** | DOM element | `this.element` | The surface from which the location of the mouse is captured | e.g: `document.querySelector("#my-element");`
-**disabled** | string | `null` | Disable axis | `x` or `y`
+**axis** | string | `null` | Disable axis | `X` or `Y`
 **easing** | string | `cubic-bezier(.03, .98, .52, .99)` | Transition easing | `cubic-bezier`/`ease`/`linear`/etc.
 **exclude** | RegExp | `null` | Disable tilt effect on selected user agents | e.g: <code>/(Firefox&#124;iPad)/</code>
+**gyroscope** | | | |
+**gyroscopeMinAngleX** | | | |
+**gyroscopeMaxAngleX** | | | |
+**gyroscopeMinAngleY** | | | |
+**gyroscopeMaxAngleY** | | | |
+**gyroscopeSamples** | | | |
+**listener** | DOM element | `this.element` | The surface from which the location of the mouse is captured | e.g: `document.querySelector("#my-element");`
 **max** | number | `35` | Max tilt value | e.g: `28`
 **perspective** | number | `1000` | Tilt effect perspective | e.g: `700`
+**parallax-children-shine** | | | |
+**parallax-children-disable** | | | |
+**parallax-children-invert** | | | |
 **reset** | boolean | `true` | Enable/disable element position reset after mouseout | `true` *(enable)*, `false` *(disable)*
 **reverse** | boolean | `false` | Reverse tilt effect directory | `true` *(reverse directory)*, `false` *(standard directory)*
 **scale** | number | `1.0` | Element scale on mouseover | `0.9`/`1.3`/etc.
 **shine** | boolean | `false` | Add/remove shine effect on mouseover | `true` *(add)*, `false` *(remove)*
+**max-shine** | | | |
 **shine-opacity**<sup>1</sup> | number | `0` | Add/remove shine effect on mouseover | values >= `0`  and <= `1`
 **shine-prerender** | boolean | `false` | Disable/enable `.shine` & `.shine-inner` auto rendering | `false` *(enable)*, `true` - *(disable)*
 **shine-save**<sup>1</sup> | boolean | `false` | Save/reset shine effect on mouseout | `true` *(save)*, `false` *(reset)*
