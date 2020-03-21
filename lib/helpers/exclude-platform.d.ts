@@ -1,1 +1,1 @@
-export declare const excludePlatform: (exclude: RegExp) => "" | RegExpMatchArray | null | undefined;
+export declare const excludePlatform: (exclude: RegExp) => RegExpMatchArray | null | undefined;

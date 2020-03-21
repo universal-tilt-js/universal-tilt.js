@@ -1,0 +1,28 @@
+export declare type Settings = {
+    readonly axis?: 'X' | 'Y' | null;
+    readonly easing?: string;
+    readonly exclude?: RegExp | null;
+    readonly gyroscope?: boolean;
+    readonly gyroscopeMinAngleX?: number;
+    readonly gyroscopeMaxAngleX?: number;
+    readonly gyroscopeMinAngleY?: number;
+    readonly gyroscopeMaxAngleY?: number;
+    readonly gyroscopeSamples?: number;
+    readonly listener?: HTMLElement | Window;
+    readonly max?: number;
+    readonly perspective?: number;
+    readonly 'parallax-children-shine'?: boolean;
+    readonly 'parallax-children-disable'?: boolean;
+    readonly 'parallax-children-invert'?: boolean;
+    readonly reset?: boolean;
+    readonly reverse?: boolean;
+    readonly scale?: number;
+    readonly shine?: boolean;
+    readonly 'max-shine'?: number;
+    readonly 'shine-opacity'?: number;
+    readonly 'shine-prerender'?: boolean;
+    readonly 'shine-save'?: boolean;
+    readonly speed?: number;
+    readonly startX?: number;
+    readonly startY?: number;
+};
