@@ -1,6 +1,6 @@
-import { defaultSettings } from './defaults';
+import type { Settings, Callbacks, Options } from './types';
 
-import { Settings, Callbacks, Options } from './types';
+import { defaultSettings } from './defaults';
 
 import { isMobile, excludePlatform } from './helpers';
 
@@ -64,7 +64,6 @@ export default class UniversalTilt {
   }
 
   public async enableMovementAccess() {
-    // @ts-ignore
     return await window.DeviceMotionEvent.requestPermission();
   }
 
@@ -86,7 +85,7 @@ export default class UniversalTilt {
   private async addEventListeners() {
     this.listener = this.getElementListener();
 
-    if (!excludePlatform(this.settings.exclude!)) {
+    if (!excludePlatform(this.settings.exclude)) {
       if (isMobile() && this.settings.gyroscope) {
         const permission = await this.enableMovementAccess();
 
@@ -97,17 +96,17 @@ export default class UniversalTilt {
           );
         }
       } else {
-        this.listener!.addEventListener('mouseenter', this.onMouseEnter);
-        this.listener!.addEventListener('mousemove', this.onMouseMove);
-        this.listener!.addEventListener('mouseleave', this.onMouseLeave);
+        this.listener.addEventListener('mouseenter', this.onMouseEnter);
+        this.listener.addEventListener('mousemove', this.onMouseMove);
+        this.listener.addEventListener('mouseleave', this.onMouseLeave);
       }
     }
   }
 
   private removeEventListeners() {
-    this.listener!.removeEventListener('mouseenter', this.onMouseEnter);
-    this.listener!.removeEventListener('mousemove', this.onMouseMove);
-    this.listener!.removeEventListener('mouseleave', this.onMouseLeave);
+    this.listener.removeEventListener('mouseenter', this.onMouseEnter);
+    this.listener.removeEventListener('mousemove', this.onMouseMove);
+    this.listener.removeEventListener('mouseleave', this.onMouseLeave);
 
     if (this.settings.gyroscope) {
       window.removeEventListener('deviceorientation', this.onDeviceOrientation);
@@ -179,8 +178,8 @@ export default class UniversalTilt {
 
   public reset() {
     this.event = {
-      pageX: this.left! + this.width! / 2,
-      pageY: this.top! + this.height! / 2,
+      pageX: this.left + this.width / 2,
+      pageY: this.top + this.height / 2,
     };
 
     const perspective = `perspective(${this.settings.perspective}px)`;
@@ -197,7 +196,7 @@ export default class UniversalTilt {
 
   private resetShine() {
     if (this.settings.shine && !this.settings['shine-save']) {
-      Object.assign(this.shineElement!.style, {
+      Object.assign(this.shineElement.style, {
         transform: 'rotate(180deg) translate3d(-50%, -50%, 0)',
         opacity: 0,
       });
@@ -231,22 +230,22 @@ export default class UniversalTilt {
     x = this.event.clientX / this.element.clientWidth;
     y = this.event.clientY / this.element.clientHeight;
 
-    x = Math.min(Math.max(x!, 0), 1);
-    y = Math.min(Math.max(y!, 0), 1);
+    x = Math.min(Math.max(x, 0), 1);
+    y = Math.min(Math.max(y, 0), 1);
 
     // console.log(this.settings.max!, x!, this.settings.max!);
 
     const tiltX = (
-      this.reverse! *
-      (this.settings.max! / 2 - x! * this.settings.max!)
+      this.reverse *
+      (this.settings.max / 2 - x * this.settings.max)
     ).toFixed(2);
 
     const tiltY = (
-      this.reverse! *
-      (y! * this.settings.max! - this.settings.max! / 2)
+      this.reverse *
+      (y * this.settings.max - this.settings.max / 2)
     ).toFixed(2);
 
-    const angle = Math.atan2(x! - 0.5, 0.5 - y!) * (180 / Math.PI);
+    const angle = Math.atan2(x - 0.5, 0.5 - y) * (180 / Math.PI);
 
     return {
       tiltX,
@@ -261,12 +260,12 @@ export default class UniversalTilt {
     this.width =
       this.listener instanceof Window
         ? this.listener.innerWidth
-        : this.listener!.offsetWidth;
+        : this.listener.offsetWidth;
 
     this.height =
       this.listener instanceof Window
         ? this.listener.innerWidth
-        : this.listener!.offsetHeight;
+        : this.listener.offsetHeight;
 
     if (this.listener instanceof HTMLElement) {
       const rect = this.listener.getBoundingClientRect();
@@ -299,7 +298,7 @@ export default class UniversalTilt {
     this.element.style.transform = `${perspective} ${rotateX} ${rotateY} ${scale3d}`;
 
     if (this.settings.shine) {
-      Object.assign(this.shineElement!.style, {
+      Object.assign(this.shineElement.style, {
         transform: `rotate(${values.angle}deg) translate3d(-50%, -50%, 0)`,
         opacity: `${this.settings['shine-opacity']}`,
       });
@@ -369,14 +368,14 @@ export default class UniversalTilt {
     this.element.style.transition = `${this.settings.speed}ms ${this.settings.easing}`;
 
     if (this.settings.shine) {
-      this.shineElement!.style.transition = `opacity ${this.settings.speed}ms ${this.settings.easing}`;
+      this.shineElement.style.transition = `opacity ${this.settings.speed}ms ${this.settings.easing}`;
     }
 
     this.timeout = setTimeout(() => {
       this.element.style.transition = '';
 
       if (this.settings.shine) {
-        this.shineElement!.style.transition = '';
+        this.shineElement.style.transition = '';
       }
     }, this.settings.speed) as any;
   }
@@ -424,7 +423,7 @@ export default class UniversalTilt {
 
     for (const element of elements) {
       if (!('universalTilt' in element)) {
-        return (element!.universalTilt = new UniversalTilt(
+        return ((element as HTMLElement).universalTilt = new UniversalTilt(
           element,
           settings,
           callbacks
@@ -447,7 +446,7 @@ if (typeof document !== 'undefined') {
 if (window.jQuery) {
   const $ = window.jQuery;
 
-  $.fn.universalTilt = function (data: Options = {} as any) {
+  $.fn.universalTilt = function (data = {} as Options) {
     return UniversalTilt.init({
       elements: this,
       settings: data.settings || ({} as Settings),

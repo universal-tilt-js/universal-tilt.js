@@ -1,3 +1,3 @@
-export { Settings } from './settings';
-export { Callbacks } from './callbacks';
-export { Options } from './options';
+export type { Settings } from './Settings';
+export type { Callbacks } from './Callbacks';
+export type { Options } from './Options';
